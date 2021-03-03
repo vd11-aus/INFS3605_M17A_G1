@@ -10,47 +10,51 @@
         android:id="@+id/ivMainBackground"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:scaleType="fitCenter"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/black" />
+        app:srcCompat="@drawable/indigenous_art_splash" />
 
     <ImageView
         android:id="@+id/ivMainLogo"
-        android:layout_width="150dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:rotation="0"
-        android:scaleType="fitXY"
+        android:scaleType="fitStart"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ibMainLogin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/white" />
+        app:srcCompat="@drawable/logo_white_rotate" />
 
     <ImageButton
         android:id="@+id/ibMainLogin"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="15dp"
         android:background="@android:color/transparent"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/ibMainInformation"
+        app:layout_constraintEnd_toEndOf="@+id/ibMainInformation"
         app:srcCompat="@drawable/ic_baseline_login_24" />
 
     <ImageButton
         android:id="@+id/ibMainInformation"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:alpha="0.35"
         android:background="@android:color/transparent"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="@+id/ibMainLogin"
-        app:layout_constraintEnd_toStartOf="@+id/ibMainLogin"
-        app:srcCompat="@drawable/ic_baseline_info_24"
-        android:contentDescription="TODO" />
+        android:contentDescription="TODO"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/ivMainLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_info_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>
