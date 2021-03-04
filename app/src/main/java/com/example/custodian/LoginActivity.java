@@ -2,12 +2,11 @@ package com.example.custodian;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
@@ -29,39 +28,22 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private ImageButton mLoginButton;
-    private ImageButton mInformationButton;
+    private ImageButton mExitButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
-        mLoginButton = findViewById(R.id.ibMainLogin);
-        mInformationButton = findViewById(R.id.ibMainInformation);
+        mExitButton = findViewById(R.id.ibLoginExit);
 
-        mLoginButton.setOnClickListener(new View.OnClickListener() {
+        mExitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("Login Button Clicked");
-                launchLoginActivity();
-            }
-        });
 
-        mInformationButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("Information Button Clicked");
-                launchInformationActivity();
             }
         });
     }
 
-    private void launchLoginActivity() {
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-    }
 
-    c
 }
