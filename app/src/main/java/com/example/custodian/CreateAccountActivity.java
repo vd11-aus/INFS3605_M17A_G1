@@ -2,12 +2,10 @@ package com.example.custodian;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
 
-public class LoginActivity extends AppCompatActivity {
+public class CreateAccountActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
@@ -29,26 +27,9 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private ImageButton mExitButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
-        mExitButton = findViewById(R.id.ibLoginExit);
-
-        mExitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                launchMainActivity();
-            }
-        });
-    }
-
-    private void launchMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        setContentView(R.layout.activity_create_account);
     }
 }

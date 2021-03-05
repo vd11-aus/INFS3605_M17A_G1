@@ -20,4 +20,126 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_baseline_login_24" />
+
+    <ImageView
+        android:id="@+id/ivLoginLogo"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="30dp"
+        android:tint="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/etLoginEmailInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_white" />
+
+    <EditText
+        android:id="@+id/etLoginEmailInput"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/custom_edit_text_background"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:inputType="textEmailAddress"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ivLoginLogo"
+        app:layout_constraintStart_toStartOf="@+id/ivLoginLogo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etLoginPasswordInput"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/custom_edit_text_background"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:inputType="textPassword"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="@+id/etLoginEmailInput"
+        app:layout_constraintStart_toStartOf="@+id/etLoginEmailInput"
+        app:layout_constraintTop_toBottomOf="@+id/etLoginEmailInput" />
+
+    <Button
+        android:id="@+id/btLoginLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/custom_button_style_2"
+        android:fontFamily="@font/montserrat"
+        android:text="Log In"
+        android:textStyle="bold"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toEndOf="@+id/etLoginPasswordInput"
+        app:layout_constraintTop_toBottomOf="@+id/etLoginPasswordInput" />
+
+    <Button
+        android:id="@+id/btLoginCreateAccount"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/custom_button_style_1"
+        android:fontFamily="@font/montserrat"
+        android:text="Create Account"
+        android:textColor="#F7C948"
+        android:textStyle="bold"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toStartOf="@+id/btLoginLogin"
+        app:layout_constraintStart_toStartOf="@+id/etLoginPasswordInput"
+        app:layout_constraintTop_toTopOf="@+id/btLoginLogin" />
+
+    <TextView
+        android:id="@+id/tvLoginForgotDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Click here."
+        app:layout_constraintEnd_toEndOf="@+id/btLoginLogin"
+        app:layout_constraintTop_toBottomOf="@+id/btLoginLogin" />
+
+    <TextView
+        android:id="@+id/tvLoginTextOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="Forgot your details? "
+        app:layout_constraintEnd_toStartOf="@+id/tvLoginForgotDetails"
+        app:layout_constraintTop_toTopOf="@+id/tvLoginForgotDetails" />
+
+    <ImageButton
+        android:id="@+id/ibLoginEmailHelp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@android:color/transparent"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/etLoginEmailInput"
+        app:layout_constraintEnd_toEndOf="@+id/etLoginEmailInput"
+        app:layout_constraintTop_toTopOf="@+id/etLoginEmailInput"
+        app:srcCompat="@drawable/ic_baseline_help_outline_24" />
+
+    <ImageButton
+        android:id="@+id/ibLoginPasswordHelp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@android:color/transparent"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/etLoginPasswordInput"
+        app:layout_constraintEnd_toEndOf="@+id/etLoginPasswordInput"
+        app:layout_constraintTop_toTopOf="@+id/etLoginPasswordInput"
+        app:srcCompat="@drawable/ic_baseline_help_outline_24" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
