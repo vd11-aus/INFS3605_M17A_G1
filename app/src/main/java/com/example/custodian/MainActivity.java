@@ -9,26 +9,12 @@ import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
 
+    // Disable action bar back button
     @Override
     public void onBackPressed() {
     }
 
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (hasFocus) {
-            View decorView = getWindow().getDecorView();
-            decorView.setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_IMMERSIVE
-                            | View.NOT_FOCUSABLE
-                            | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_FULLSCREEN);
-        }
-    }
-
+    // Declaration of variables
     private ImageButton mLoginButton;
     private ImageButton mInformationButton;
 
@@ -37,9 +23,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Assigning of variable values
         mLoginButton = findViewById(R.id.ibMainLogin);
         mInformationButton = findViewById(R.id.ibMainInformation);
 
+        // Log in to account
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // See more information
         mInformationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,11 +46,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // Go to LoginActivity
     private void launchLoginActivity() {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
+
+    // Go to InformationActivity
     private void launchInformationActivity() {
         Intent intent = new Intent(this, InformationActivity.class);
         startActivity(intent);

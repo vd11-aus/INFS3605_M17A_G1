@@ -19,4 +19,75 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_baseline_highlight_off_24" />
+
+    <ImageView
+        android:id="@+id/ivInformationUNSWLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="@+id/tvInformationTextOne"
+        app:layout_constraintTop_toBottomOf="@+id/tvInformationTextOne"
+        app:srcCompat="@drawable/unsw_sydney_logo" />
+
+    <ImageView
+        android:id="@+id/ivInformationAustralianRedCrossLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/tvInformationTextOne"
+        app:layout_constraintTop_toBottomOf="@+id/tvInformationTextOne"
+        app:srcCompat="@drawable/australian_red_cross_logo" />
+
+    <TextView
+        android:id="@+id/tvInformationTextOne"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center"
+        android:text="Sponsored by"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvInformationTwo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginRight="45dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/information_subtext"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivInformationUNSWLogo" />
+
+    <TextView
+        android:id="@+id/tvInformationEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/montserrat"
+        android:text="m17agroup1@unsw.edu.au"
+        android:textColor="#00BCD4"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvInformationTwo"
+        app:layout_constraintStart_toStartOf="@+id/tvInformationTwo"
+        app:layout_constraintTop_toBottomOf="@+id/tvInformationTwo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

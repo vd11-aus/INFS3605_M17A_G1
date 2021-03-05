@@ -6,4 +6,39 @@
     android:layout_height="match_parent"
     tools:context=".CreateAccountActivity">
 
+    <Button
+        android:id="@+id/btCreateAccountCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/custom_button_style_1"
+        android:fontFamily="@font/montserrat"
+        android:text="Cancel"
+        android:textColor="#F7C948"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btCreateAccountCreateAccount"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/custom_button_style_2"
+        android:fontFamily="@font/montserrat"
+        android:text="Create Account"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btCreateAccountCancel" />
 </androidx.constraintlayout.widget.ConstraintLayout>
