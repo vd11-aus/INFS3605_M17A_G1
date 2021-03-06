@@ -35,10 +35,22 @@
         android:background="@drawable/custom_button_style_2"
         android:fontFamily="@font/montserrat"
         android:text="Create Account"
+        android:textColor="#FFFFFF"
         android:textSize="14sp"
         android:textStyle="bold"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btCreateAccountCancel" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_edit_text_background"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        tools:layout_editor_absoluteX="145dp"
+        tools:layout_editor_absoluteY="224dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
