@@ -2,9 +2,37 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clLoginMainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
+
+    <ImageView
+        android:id="@+id/ivLoginBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/indigenous_art_splash" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clLoginLoginContainer"
+        android:layout_width="0dp"
+        android:layout_height="420dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/custom_login_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivLoginBackground">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageButton
         android:id="@+id/ibLoginExit"
@@ -13,49 +41,62 @@
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="20dp"
+        android:alpha="0.5"
         android:background="@android:color/transparent"
         android:rotation="180"
         android:scaleType="fitCenter"
-        android:tint="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_baseline_login_24" />
 
+    <Button
+        android:id="@+id/btLoginCreateAccount"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/custom_button_style_1"
+        android:fontFamily="@font/montserrat"
+        android:text="Create Account"
+        android:textColor="#EBB821"
+        android:textStyle="bold"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toEndOf="@+id/btLoginLogin"
+        app:layout_constraintStart_toStartOf="@+id/btLoginLogin"
+        app:layout_constraintTop_toBottomOf="@+id/btLoginLogin" />
+
     <ImageView
         android:id="@+id/ivLoginLogo"
         android:layout_width="0dp"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
         android:layout_marginTop="30dp"
         android:tint="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/etLoginEmailInput"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/clLoginLoginContainer"
+        app:layout_constraintStart_toStartOf="@+id/clLoginLoginContainer"
+        app:layout_constraintTop_toTopOf="@+id/clLoginLoginContainer"
         app:srcCompat="@drawable/logo_white" />
 
     <EditText
         android:id="@+id/etLoginEmailInput"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginRight="45dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
         android:background="@drawable/custom_edit_text_background"
         android:ems="10"
         android:fontFamily="@font/montserrat"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        android:paddingLeft="15dp"
+        android:paddingLeft="20dp"
         android:paddingRight="45dp"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textColorHint="#666666"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/ivLoginLogo"
-        app:layout_constraintStart_toStartOf="@+id/ivLoginLogo"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/clLoginLoginContainer"
+        app:layout_constraintStart_toStartOf="@+id/clLoginLoginContainer"
+        app:layout_constraintTop_toBottomOf="@+id/ivLoginLogo" />
 
     <EditText
         android:id="@+id/etLoginPasswordInput"
@@ -67,9 +108,9 @@
         android:fontFamily="@font/montserrat"
         android:hint="Password"
         android:inputType="textPassword"
-        android:paddingLeft="15dp"
+        android:paddingLeft="20dp"
         android:paddingRight="45dp"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textColorHint="#666666"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/etLoginEmailInput"
@@ -78,7 +119,7 @@
 
     <Button
         android:id="@+id/btLoginLogin"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/custom_button_style_2"
@@ -87,23 +128,8 @@
         android:textStyle="bold"
         app:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="@+id/etLoginPasswordInput"
-        app:layout_constraintTop_toBottomOf="@+id/etLoginPasswordInput" />
-
-    <Button
-        android:id="@+id/btLoginCreateAccount"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
-        android:background="@drawable/custom_button_style_1"
-        android:fontFamily="@font/montserrat"
-        android:text="Create Account"
-        android:textColor="#F7C948"
-        android:textStyle="bold"
-        app:backgroundTint="@null"
-        app:layout_constraintEnd_toStartOf="@+id/btLoginLogin"
         app:layout_constraintStart_toStartOf="@+id/etLoginPasswordInput"
-        app:layout_constraintTop_toTopOf="@+id/btLoginLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/etLoginPasswordInput" />
 
     <TextView
         android:id="@+id/tvLoginForgotDetails"
@@ -112,8 +138,8 @@
         android:layout_marginTop="15dp"
         android:fontFamily="@font/montserrat"
         android:text="Click here."
-        app:layout_constraintEnd_toEndOf="@+id/btLoginLogin"
-        app:layout_constraintTop_toBottomOf="@+id/btLoginLogin" />
+        app:layout_constraintEnd_toEndOf="@+id/btLoginCreateAccount"
+        app:layout_constraintTop_toBottomOf="@+id/btLoginCreateAccount" />
 
     <TextView
         android:id="@+id/tvLoginTextOne"
@@ -132,6 +158,7 @@
         android:layout_marginRight="10dp"
         android:background="@android:color/transparent"
         android:scaleType="centerInside"
+        android:tint="#666666"
         app:layout_constraintBottom_toBottomOf="@+id/etLoginEmailInput"
         app:layout_constraintEnd_toEndOf="@+id/etLoginEmailInput"
         app:layout_constraintTop_toTopOf="@+id/etLoginEmailInput"
@@ -145,6 +172,7 @@
         android:layout_marginRight="10dp"
         android:background="@android:color/transparent"
         android:scaleType="centerInside"
+        android:tint="#666666"
         app:layout_constraintBottom_toBottomOf="@+id/etLoginPasswordInput"
         app:layout_constraintEnd_toEndOf="@+id/etLoginPasswordInput"
         app:layout_constraintTop_toTopOf="@+id/etLoginPasswordInput"

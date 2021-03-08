@@ -2,13 +2,17 @@ package com.example.custodian;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -47,12 +51,18 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        // Develop messages
+        Snackbar emailHelpMessage = Snackbar.make(findViewById(R.id.clLoginMainLayout),
+                "This is where you enter the email you used to create this account.", Snackbar.LENGTH_SHORT);
+        Snackbar passwordHelpMessage = Snackbar.make(findViewById(R.id.clLoginMainLayout),
+                "This is where you enter the password associated with the email you used to create this account.", Snackbar.LENGTH_SHORT);
+
         // Request for help on email input
         mEmailHelpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 System.out.println("Email Help Button Clicked");
-                Toast.makeText(getApplicationContext(), "This is where you enter the email you used to create this account.", Toast.LENGTH_SHORT).show();
+                emailHelpMessage.show();
             }
         });
 
@@ -61,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 System.out.println("Password Help Button Clicked");
-                Toast.makeText(getApplicationContext(), "This is where you enter the password associated with the email you used to create this account..", Toast.LENGTH_SHORT).show();
+                passwordHelpMessage.show();
             }
         });
 
