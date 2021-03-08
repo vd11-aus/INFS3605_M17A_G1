@@ -21,11 +21,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clLoginLoginContainer"
         android:layout_width="0dp"
-        android:layout_height="420dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginRight="25dp"
+        android:layout_height="385dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
         android:background="@drawable/custom_login_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,6 +49,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_baseline_login_24" />
 
+    <TextView
+        android:id="@+id/tvLoginTextOne"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Account Login"
+        android:textColor="#666666"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/clLoginLoginContainer"
+        app:layout_constraintTop_toTopOf="@+id/clLoginLoginContainer" />
+
     <Button
         android:id="@+id/btLoginCreateAccount"
         android:layout_width="0dp"
@@ -64,26 +79,15 @@
         app:layout_constraintStart_toStartOf="@+id/btLoginLogin"
         app:layout_constraintTop_toBottomOf="@+id/btLoginLogin" />
 
-    <ImageView
-        android:id="@+id/ivLoginLogo"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="30dp"
-        android:tint="@android:color/black"
-        app:layout_constraintEnd_toEndOf="@+id/clLoginLoginContainer"
-        app:layout_constraintStart_toStartOf="@+id/clLoginLoginContainer"
-        app:layout_constraintTop_toTopOf="@+id/clLoginLoginContainer"
-        app:srcCompat="@drawable/logo_white" />
-
     <EditText
         android:id="@+id/etLoginEmailInput"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginRight="25dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
         android:background="@drawable/custom_edit_text_background"
         android:ems="10"
         android:fontFamily="@font/montserrat"
@@ -96,7 +100,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/clLoginLoginContainer"
         app:layout_constraintStart_toStartOf="@+id/clLoginLoginContainer"
-        app:layout_constraintTop_toBottomOf="@+id/ivLoginLogo" />
+        app:layout_constraintTop_toBottomOf="@+id/tvLoginTextOne" />
 
     <EditText
         android:id="@+id/etLoginPasswordInput"
@@ -137,18 +141,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:fontFamily="@font/montserrat"
-        android:text="Click here."
+        android:text="Forgotten your details? Click here."
         app:layout_constraintEnd_toEndOf="@+id/btLoginCreateAccount"
+        app:layout_constraintStart_toStartOf="@+id/btLoginCreateAccount"
         app:layout_constraintTop_toBottomOf="@+id/btLoginCreateAccount" />
-
-    <TextView
-        android:id="@+id/tvLoginTextOne"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat"
-        android:text="Forgot your details? "
-        app:layout_constraintEnd_toStartOf="@+id/tvLoginForgotDetails"
-        app:layout_constraintTop_toTopOf="@+id/tvLoginForgotDetails" />
 
     <ImageButton
         android:id="@+id/ibLoginEmailHelp"
