@@ -9,8 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,11 +35,11 @@ public class WelcomeActivity extends AppCompatActivity {
     // Declaration of variables
     private TextView mUsernameText;
     private Button mNextPageButton;
+    private ImageView mBackgroundImage;
 
     FirebaseAuth mFirebaseAuth;
     FirebaseFirestore mFirebaseDB;
     String username;
-    Integer origin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,12 @@ public class WelcomeActivity extends AppCompatActivity {
         mUsernameText = findViewById(R.id.tvWelcomeUsername);
         mNextPageButton = findViewById(R.id.btWelcomeNextPage);
         mNextPageButton.setEnabled(false);
+        mBackgroundImage = findViewById(R.id.ivWelcomeBackground);
+
+        // Get background
+        BackgroundGenerator background = new BackgroundGenerator();
+        Glide.with(mBackgroundImage).load(background.rest()).centerCrop().placeholder(R.drawable.custom_background_2)
+                .error(R.drawable.custom_background_2).fallback(R.drawable.custom_background_2).into(mBackgroundImage);
 
         // Verify user found
         mFirebaseAuth = FirebaseAuth.getInstance();

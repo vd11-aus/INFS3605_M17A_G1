@@ -12,9 +12,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
@@ -37,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView mForgotDetailsButton;
     private EditText mEmailText;
     private EditText mPasswordText;
+    private ImageView mBackgroundImage;
 
     FirebaseAuth mFirebaseAuth;
 
@@ -55,6 +58,12 @@ public class LoginActivity extends AppCompatActivity {
         mEmailText = findViewById(R.id.etLoginEmailInput);
         mPasswordText = findViewById(R.id.etLoginPasswordInput);
         mFirebaseAuth = FirebaseAuth.getInstance();
+        mBackgroundImage = findViewById(R.id.ivLoginBackground);
+
+        // Get background
+        BackgroundGenerator background = new BackgroundGenerator();
+        Glide.with(mBackgroundImage).load(background.login()).centerCrop().placeholder(R.drawable.custom_background_2)
+                .error(R.drawable.custom_background_2).fallback(R.drawable.custom_background_2).into(mBackgroundImage);
 
         // Cancel log in
         mExitButton.setOnClickListener(new View.OnClickListener() {

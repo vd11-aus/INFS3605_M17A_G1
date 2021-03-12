@@ -102,7 +102,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                         System.out.println("Password: " + password);
                         System.out.println("Origin: " + origin);
                         Snackbar.make(findViewById(R.id.clCreateAccountMainLayout),
-                                "Creating user ...", Snackbar.LENGTH_SHORT).show();
+                                "Confirming user credentials. You will be logged in shortly.", Snackbar.LENGTH_SHORT).show();
                         createUser();
                         new Handler().postDelayed(new Runnable() {
                             @Override

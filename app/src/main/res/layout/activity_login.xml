@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/indigenous_art_splash" />
+        app:srcCompat="@android:color/black" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clLoginLoginContainer"
@@ -41,7 +41,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="20dp"
-        android:alpha="0.5"
+        android:alpha="0.65"
         android:background="@android:color/transparent"
         android:rotation="180"
         android:scaleType="fitCenter"
