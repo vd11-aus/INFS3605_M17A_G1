@@ -46,17 +46,17 @@ public class InformationActivity extends AppCompatActivity {
         });
     }
 
-    // Go to MainActivity
-    private void launchMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
     // Send an email
     private void sendEmailToDevelopers() {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_EMAIL, "m17agroup1@unsw.edu.au");
         intent.setType("message/rfc822");
+        startActivity(intent);
+    }
+
+    // Go to MainActivity
+    private void launchMainActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }

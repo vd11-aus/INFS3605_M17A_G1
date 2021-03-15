@@ -165,7 +165,7 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    // Go to Welcome Activity
+    // Go to WelcomeActivity
     private void launchWelcomeActivity() {
         Intent intent = new Intent(this, WelcomeActivity.class);
         startActivity(intent);

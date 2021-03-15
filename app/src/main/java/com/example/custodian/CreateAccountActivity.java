@@ -9,19 +9,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -40,6 +36,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     private EditText mPasswordInput;
     private EditText mConfirmPasswordInput;
     private RadioGroup mOriginInput;
+    private RadioGroup mGenderInput;
     private ImageButton mCreateAccountButton;
     private ImageButton mCancelButton;
 
@@ -51,6 +48,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     String password = "";
     String passwordConfirm = "";
     String origin = "";
+    String gender = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +63,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         mPasswordInput = findViewById(R.id.etCreateAccountPassword);
         mConfirmPasswordInput = findViewById(R.id.etCreateAccountConfirmPassword);
         mOriginInput = findViewById(R.id.rgCreateAccountOrigin);
+        mGenderInput = findViewById(R.id.rgCreateAccountGender);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDB = FirebaseFirestore.getInstance();
@@ -96,10 +95,12 @@ public class CreateAccountActivity extends AppCompatActivity {
                                 "The passwords you've provided don't match each other. Please correct them and try again.", Snackbar.LENGTH_SHORT).show();
                         break;
                     case "entries-validated":
+                        genderQuestionCheck();
                         originQuestionCheck();
                         System.out.println("Username: " + username);
                         System.out.println("Email: " + email);
                         System.out.println("Password: " + password);
+                        System.out.println("Gender: " + gender);
                         System.out.println("Origin: " + origin);
                         Snackbar.make(findViewById(R.id.clCreateAccountMainLayout),
                                 "Confirming user credentials. You will be logged in shortly.", Snackbar.LENGTH_SHORT).show();
@@ -124,6 +125,23 @@ public class CreateAccountActivity extends AppCompatActivity {
                 showWarningDialog(getCurrentFocus());
             }
         });
+    }
+
+    // Check gender entry
+    private void genderQuestionCheck() {
+        switch (mGenderInput.getCheckedRadioButtonId()) {
+            case R.id.rbCreateAccountGenderMale:
+                gender = "Male";
+                break;
+            case R.id.rbCreateAccountGenderFemale:
+                gender = "Female";
+                break;
+            case R.id.rbCreateAccountGenderOther:
+                gender = "Other";
+                break;
+            case R.id.rbCreateAccountGenderDoNotDisclose:
+                gender = "Did Not Disclose";
+        }
     }
 
     // Check origin entry
@@ -178,7 +196,9 @@ public class CreateAccountActivity extends AppCompatActivity {
     public void addUserDetails() {
         Map<String, Object> map = new HashMap<>();
         map.put("username", username);
+        map.put("gender", gender);
         map.put("origin", origin);
+        map.put("points", (int) 0);
         firebaseDB.collection("users").document(firebaseAuth.getCurrentUser().getUid()).set(map)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -207,7 +227,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         alert.create().show();
     }
 
-    // Go to Welcome Activity
+    // Go to WelcomeActivity
     private void launchWelcomeActivity() {
         Intent intent = new Intent(this, WelcomeActivity.class);
         startActivity(intent);

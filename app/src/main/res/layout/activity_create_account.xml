@@ -7,6 +7,234 @@
     android:layout_height="match_parent"
     tools:context=".CreateAccountActivity">
 
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/ibCreateAccountContinue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCreateAccountTextOne">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/etCreateAccountUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/custom_edit_text_background"
+                    android:ems="10"
+                    android:hint="Username"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/etCreateAccountEmail"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/custom_edit_text_background"
+                    android:ems="10"
+                    android:hint="Email"
+                    android:inputType="textPersonName|textEmailAddress"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="15dp"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@+id/etCreateAccountUsername"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etCreateAccountUsername" />
+
+                <EditText
+                    android:id="@+id/etCreateAccountPassword"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/custom_edit_text_background"
+                    android:ems="10"
+                    android:hint="Password"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="15dp"
+                    android:password="true"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@+id/etCreateAccountEmail"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etCreateAccountEmail" />
+
+                <EditText
+                    android:id="@+id/etCreateAccountConfirmPassword"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/custom_edit_text_background"
+                    android:ems="10"
+                    android:hint="Confirm Password"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:password="true"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@+id/etCreateAccountPassword"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etCreateAccountPassword" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clCreateAccountGenderContainer"
+                    android:layout_width="0dp"
+                    android:layout_height="223dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/custom_background_1"
+                    app:layout_constraintEnd_toEndOf="@+id/etCreateAccountConfirmPassword"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etCreateAccountConfirmPassword">
+
+                    <RadioGroup
+                        android:id="@+id/rgCreateAccountGender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginBottom="15dp"
+                        android:alpha="0.6"
+                        android:checkedButton="@id/rbCreateAccountGenderDoNotDisclose"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <RadioButton
+                            android:id="@+id/rbCreateAccountGenderMale"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Male"
+                            android:textSize="14sp" />
+
+                        <RadioButton
+                            android:id="@+id/rbCreateAccountGenderFemale"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Female" />
+
+                        <RadioButton
+                            android:id="@+id/rbCreateAccountGenderOther"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Other" />
+
+                        <RadioButton
+                            android:id="@+id/rbCreateAccountGenderDoNotDisclose"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Prefer not to say" />
+
+                    </RadioGroup>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tvCreateAccountTextTwo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@android:color/white"
+                    android:fontFamily="@font/montserrat"
+                    android:text="  Gender  "
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etCreateAccountConfirmPassword" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clCreateAccountOriginContainer"
+                    android:layout_width="0dp"
+                    android:layout_height="175dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/custom_background_1"
+                    app:layout_constraintEnd_toEndOf="@+id/clCreateAccountGenderContainer"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/clCreateAccountGenderContainer">
+
+                    <RadioGroup
+                        android:id="@+id/rgCreateAccountOrigin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginBottom="15dp"
+                        android:alpha="0.6"
+                        android:checkedButton="@id/rbCreateAccountOriginDoNotDisclose"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <RadioButton
+                            android:id="@+id/rbCreateAccountOriginTrue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="True"
+                            android:textSize="14sp" />
+
+                        <RadioButton
+                            android:id="@+id/rbCreateAccountOriginFalse"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="False" />
+
+                        <RadioButton
+                            android:id="@+id/rbCreateAccountOriginDoNotDisclose"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Prefer not to say" />
+
+                    </RadioGroup>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tvCreateAccountTextThree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@android:color/white"
+                    android:fontFamily="@font/montserrat"
+                    android:text="  Indigenous Origin  "
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/clCreateAccountGenderContainer" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
     <ImageButton
         android:id="@+id/ibCreateAccountContinue"
         android:layout_width="50dp"
@@ -37,83 +265,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_baseline_highlight_off_24" />
 
-    <EditText
-        android:id="@+id/etCreateAccountConfirmPassword"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/custom_edit_text_background"
-        android:ems="10"
-        android:hint="Confirm Password"
-        android:inputType="textPersonName"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:password="true"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/etCreateAccountPassword"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/etCreateAccountPassword"
-        app:layout_constraintTop_toBottomOf="@+id/etCreateAccountPassword" />
-
-    <EditText
-        android:id="@+id/etCreateAccountPassword"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/custom_edit_text_background"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPersonName"
-        android:paddingLeft="20dp"
-        android:paddingRight="15dp"
-        android:password="true"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/etCreateAccountEmail"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/etCreateAccountEmail"
-        app:layout_constraintTop_toBottomOf="@+id/etCreateAccountEmail" />
-
-    <EditText
-        android:id="@+id/etCreateAccountEmail"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/custom_edit_text_background"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textPersonName|textEmailAddress"
-        android:paddingLeft="20dp"
-        android:paddingRight="15dp"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/etCreateAccountUsername"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/etCreateAccountUsername"
-        app:layout_constraintTop_toBottomOf="@+id/etCreateAccountUsername" />
-
-    <EditText
-        android:id="@+id/etCreateAccountUsername"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginRight="35dp"
-        android:background="@drawable/custom_edit_text_background"
-        android:ems="10"
-        android:hint="Username"
-        android:inputType="textPersonName"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCreateAccountTextOne" />
-
     <TextView
         android:id="@+id/tvCreateAccountTextOne"
         android:layout_width="wrap_content"
@@ -127,66 +278,5 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clCreateAccountOriginContainer"
-        android:layout_width="0dp"
-        android:layout_height="175dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/custom_background_1"
-        app:layout_constraintEnd_toEndOf="@+id/etCreateAccountConfirmPassword"
-        app:layout_constraintStart_toStartOf="@+id/etCreateAccountConfirmPassword"
-        app:layout_constraintTop_toTopOf="@+id/tvCreateAccountTextTwo">
-
-        <RadioGroup
-            android:id="@+id/rgCreateAccountOrigin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="15dp"
-            android:alpha="0.6"
-            android:checkedButton="@id/rbCreateAccountOriginDoNotDisclose"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <RadioButton
-                android:id="@+id/rbCreateAccountOriginTrue"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat"
-                android:text="True"
-                android:textSize="14sp" />
-
-            <RadioButton
-                android:id="@+id/rbCreateAccountOriginFalse"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat"
-                android:text="False" />
-
-            <RadioButton
-                android:id="@+id/rbCreateAccountOriginDoNotDisclose"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat"
-                android:text="Prefer not to say" />
-
-        </RadioGroup>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/tvCreateAccountTextTwo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:background="@android:color/white"
-        android:fontFamily="@font/montserrat"
-        android:text="  Indigenous / Torres Strait Islander Origin  "
-        app:layout_constraintStart_toStartOf="@+id/etCreateAccountConfirmPassword"
-        app:layout_constraintTop_toBottomOf="@+id/etCreateAccountConfirmPassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
