@@ -80,7 +80,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                         break;
                     case "invalid-username":
                         Snackbar.make(findViewById(R.id.clCreateAccountMainLayout),
-                                "Invalid username, it has to be a minimum of 8 characters with no spaces.", Snackbar.LENGTH_SHORT).show();
+                                "Invalid username, it has to be a minimum of 8 characters with no spaces and at least one upper & lower case letter.", Snackbar.LENGTH_SHORT).show();
                         break;
                     case "invalid-email":
                         Snackbar.make(findViewById(R.id.clCreateAccountMainLayout),
@@ -88,7 +88,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                         break;
                     case "invalid-password":
                         Snackbar.make(findViewById(R.id.clCreateAccountMainLayout),
-                                "Invalid password, it has to be a minimum of 8 characters with no spaces.", Snackbar.LENGTH_SHORT).show();
+                                "Invalid password, it has to be a minimum of 8 characters with no spaces and at least one upper & lower case letter.", Snackbar.LENGTH_SHORT).show();
                         break;
                     case "passwords-dont-match":
                         Snackbar.make(findViewById(R.id.clCreateAccountMainLayout),
@@ -168,11 +168,11 @@ public class CreateAccountActivity extends AppCompatActivity {
         passwordConfirm = mConfirmPasswordInput.getText().toString();
         if (username.equals("") || email.equals("") || password.equals("") || passwordConfirm.equals("")) {
             returnValue = "incomplete-entry";
-        } else if (username.length() < 8 || username.contains(" ")) {
+        } else if (username.length() < 8 || username.contains(" ") || username.toLowerCase().equals(username) || username.toUpperCase().equals(username)) {
             returnValue = "invalid-username";
         } else if (!email.contains("@")) {
             returnValue = "invalid-email";
-        } else if (password.length() < 8 || password.contains(" ")) {
+        } else if (password.length() < 8 || password.contains(" ") || password.toLowerCase().equals(password) || password.toUpperCase().equals(password)) {
             returnValue = "invalid-password";
         } else if (!passwordConfirm.equals(password)) {
             returnValue = "passwords-dont-match";
@@ -198,7 +198,8 @@ public class CreateAccountActivity extends AppCompatActivity {
         map.put("username", username);
         map.put("gender", gender);
         map.put("origin", origin);
-        map.put("points", (int) 0);
+        map.put("currentpoints", (int) 0);
+        map.put("alltimepoints", (int) 0);
         firebaseDB.collection("users").document(firebaseAuth.getCurrentUser().getUid()).set(map)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
