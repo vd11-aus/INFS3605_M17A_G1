@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-public class HomeActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
 
     // Disable action bar back button
     @Override
@@ -23,12 +23,12 @@ public class HomeActivity extends AppCompatActivity {
     private ImageButton mRewardsButton;
     private ImageButton mProfileButton;
 
-    private String category = "home";
+    private String category = "profile";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_profile);
 
         // Assigning of variable values
         mHomeButton = findViewById(R.id.ibNavigationHome);
