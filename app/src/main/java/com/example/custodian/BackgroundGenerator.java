@@ -41,7 +41,7 @@ public class BackgroundGenerator {
     }
 
     // Get randomised image
-    public String rest() {
+    public String welcome() {
         String returnValue = "";
         Integer numberGenerator = (int) (Math.random() * (3 - 0)) + 0;
         System.out.println("Background generated: " + numberGenerator);

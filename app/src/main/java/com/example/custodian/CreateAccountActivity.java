@@ -200,6 +200,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         map.put("origin", origin);
         map.put("currentpoints", (int) 0);
         map.put("alltimepoints", (int) 0);
+        map.put("alltimeposts", (int) 0);
         firebaseDB.collection("users").document(firebaseAuth.getCurrentUser().getUid()).set(map)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

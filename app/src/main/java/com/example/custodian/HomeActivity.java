@@ -8,6 +8,9 @@ import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -22,6 +25,7 @@ public class HomeActivity extends AppCompatActivity {
     private ImageButton mNewPostButton;
     private ImageButton mRewardsButton;
     private ImageButton mProfileButton;
+    private ImageView mBackgroundImage;
 
     private String category = "home";
 
@@ -36,11 +40,17 @@ public class HomeActivity extends AppCompatActivity {
         mNewPostButton = findViewById(R.id.ibNavigationNewPost);
         mRewardsButton = findViewById(R.id.ibNavigationRewards);
         mProfileButton = findViewById(R.id.ibNavigationProfile);
+        mBackgroundImage = findViewById(R.id.ivHomeBackground);
 
         NavigationBar navigationBar = new NavigationBar();
         navigationBar.create(mHomeButton, mHistoryButton, mNewPostButton, mRewardsButton, mProfileButton);
         navigationBar.getLocation(category);
         navigationBar.adjustToPage();
+
+        // Get background
+        BackgroundGenerator background = new BackgroundGenerator();
+        Glide.with(mBackgroundImage).load(background.login()).centerCrop().placeholder(R.drawable.custom_background_2)
+                .error(R.drawable.custom_background_2).fallback(R.drawable.custom_background_2).into(mBackgroundImage);
 
         // Go to Home
         mHomeButton.setOnClickListener(new View.OnClickListener() {

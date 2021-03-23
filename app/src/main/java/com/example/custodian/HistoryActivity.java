@@ -8,6 +8,9 @@ import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 
 public class HistoryActivity extends AppCompatActivity {
 
@@ -22,6 +25,7 @@ public class HistoryActivity extends AppCompatActivity {
     private ImageButton mNewPostButton;
     private ImageButton mRewardsButton;
     private ImageButton mProfileButton;
+    private ImageView mBackgroundImage;
 
     private String category = "history";
 
@@ -36,6 +40,7 @@ public class HistoryActivity extends AppCompatActivity {
         mNewPostButton = findViewById(R.id.ibNavigationNewPost);
         mRewardsButton = findViewById(R.id.ibNavigationRewards);
         mProfileButton = findViewById(R.id.ibNavigationProfile);
+        mBackgroundImage = findViewById(R.id.ivHistoryBackground);
 
         NavigationBar navigationBar = new NavigationBar();
         navigationBar.create(mHomeButton, mHistoryButton, mNewPostButton, mRewardsButton, mProfileButton);

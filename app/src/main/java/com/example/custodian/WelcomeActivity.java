@@ -55,7 +55,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         // Get background
         BackgroundGenerator background = new BackgroundGenerator();
-        Glide.with(mBackgroundImage).load(background.rest()).centerCrop().placeholder(R.drawable.custom_background_2)
+        Glide.with(mBackgroundImage).load(background.welcome()).centerCrop().placeholder(R.drawable.custom_background_2)
                 .error(R.drawable.custom_background_2).fallback(R.drawable.custom_background_2).into(mBackgroundImage);
 
         // Verify user found

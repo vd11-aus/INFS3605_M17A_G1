@@ -4,18 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#EBEBEB"
     tools:context=".HomeActivity">
 
     <ImageView
         android:id="@+id/ivHomeBackground"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="145dp"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:color/black" />
+
+    <ImageButton
+        android:id="@+id/ibHomeGetGeolocation"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/custom_geolocation_button"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivHomeBackground"
+        app:srcCompat="@drawable/ic_baseline_my_location_24" />
+
+    <TextView
+        android:id="@+id/tvHomeGeolocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="You are in: Unknown"
+        android:textColor="#FFFFFF"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@+id/tvHomeTextOne"
+        app:layout_constraintTop_toBottomOf="@+id/tvHomeTextOne" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clNavigationLayout"
@@ -105,4 +129,447 @@
             app:srcCompat="@drawable/ic_baseline_person_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tvHomeTextOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="45dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Home"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="85dp"
+        app:layout_constraintBottom_toBottomOf="@+id/clNavigationLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivHomeBackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tvHomeTextFour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Trending Stories"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+
+                <TextView
+                    android:id="@+id/tvHomeTextTwo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Leaderboard"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clHomeLeaderboardFirstPlace"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginRight="25dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvHomeTextTwo">
+
+                    <ImageView
+                        android:id="@+id/ivHomeLeaderboardFirstPlaceBackground"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/custom_background_1" />
+
+                    <ImageView
+                        android:id="@+id/ivHomeLeaderboardFirstPlaceIcon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:srcCompat="@tools:sample/avatars" />
+
+                    <TextView
+                        android:id="@+id/tvHomeLeaderboardFirstPlaceUsername"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="TheRealStevieJ"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivHomeLeaderboardFirstPlaceIcon"
+                        app:layout_constraintStart_toEndOf="@+id/ivHomeLeaderboardFirstPlaceIcon"
+                        app:layout_constraintTop_toTopOf="@+id/ivHomeLeaderboardFirstPlaceIcon" />
+
+                    <ImageView
+                        android:id="@+id/ivHomeLeaderboardFirstPlaceStats"
+                        android:layout_width="70dp"
+                        android:layout_height="30dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginRight="15dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivHomeLeaderboardFirstPlaceBackground"
+                        app:layout_constraintEnd_toEndOf="@+id/ivHomeLeaderboardFirstPlaceBackground"
+                        app:layout_constraintTop_toTopOf="@+id/ivHomeLeaderboardFirstPlaceBackground"
+                        app:srcCompat="@drawable/custom_leaderboard_background_one" />
+
+                    <TextView
+                        android:id="@+id/tvHomeLeaderboardFirstPlacePoints"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:text="9995pts"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivHomeLeaderboardFirstPlaceStats"
+                        app:layout_constraintEnd_toEndOf="@+id/ivHomeLeaderboardFirstPlaceStats"
+                        app:layout_constraintStart_toStartOf="@+id/ivHomeLeaderboardFirstPlaceStats"
+                        app:layout_constraintTop_toTopOf="@+id/ivHomeLeaderboardFirstPlaceStats" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clHomeLeaderboardSecondPlace"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintEnd_toEndOf="@+id/clHomeLeaderboardFirstPlace"
+                    app:layout_constraintStart_toStartOf="@+id/clHomeLeaderboardFirstPlace"
+                    app:layout_constraintTop_toBottomOf="@+id/clHomeLeaderboardFirstPlace">
+
+                    <ImageView
+                        android:id="@+id/ivHomeLeaderboardSecondPlaceBackground"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/custom_background_1" />
+
+                    <ImageView
+                        android:id="@+id/ivHomeLeaderboardSecondPlaceIcon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:srcCompat="@tools:sample/avatars" />
+
+                    <TextView
+                        android:id="@+id/tvHomeLeaderboardSecondPlaceUsername"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="TheRealStevieJ"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivHomeLeaderboardSecondPlaceIcon"
+                        app:layout_constraintStart_toEndOf="@+id/ivHomeLeaderboardSecondPlaceIcon"
+                        app:layout_constraintTop_toTopOf="@+id/ivHomeLeaderboardSecondPlaceIcon" />
+
+                    <ImageView
+                        android:id="@+id/ivHomeLeaderboardSecondPlaceStats"
+                        android:layout_width="70dp"
+                        android:layout_height="30dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginRight="15dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivHomeLeaderboardSecondPlaceBackground"
+                        app:layout_constraintEnd_toEndOf="@+id/ivHomeLeaderboardSecondPlaceBackground"
+                        app:layout_constraintTop_toTopOf="@+id/ivHomeLeaderboardSecondPlaceBackground"
+                        app:srcCompat="@drawable/custom_leaderboard_background_two" />
+
+                    <TextView
+                        android:id="@+id/tvHomeLeaderboardSecondPlacePoints"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:text="2450pts"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivHomeLeaderboardSecondPlaceStats"
+                        app:layout_constraintEnd_toEndOf="@+id/ivHomeLeaderboardSecondPlaceStats"
+                        app:layout_constraintStart_toStartOf="@+id/ivHomeLeaderboardSecondPlaceStats"
+                        app:layout_constraintTop_toTopOf="@+id/ivHomeLeaderboardSecondPlaceStats" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clHomeLeaderboardThirdPlace"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintEnd_toEndOf="@+id/clHomeLeaderboardSecondPlace"
+                    app:layout_constraintStart_toStartOf="@+id/clHomeLeaderboardSecondPlace"
+                    app:layout_constraintTop_toBottomOf="@+id/clHomeLeaderboardSecondPlace">
+
+                    <ImageView
+                        android:id="@+id/ivHomeLeaderboardThirdPlaceBackground"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/custom_background_1" />
+
+                    <ImageView
+                        android:id="@+id/ivHomeLeaderboardThirdPlaceIcon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:srcCompat="@tools:sample/avatars" />
+
+                    <TextView
+                        android:id="@+id/tvHomeLeaderboardThirdPlaceUsername"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="TheRealStevieJ"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivHomeLeaderboardThirdPlaceIcon"
+                        app:layout_constraintStart_toEndOf="@+id/ivHomeLeaderboardThirdPlaceIcon"
+                        app:layout_constraintTop_toTopOf="@+id/ivHomeLeaderboardThirdPlaceIcon" />
+
+                    <ImageView
+                        android:id="@+id/ivHomeLeaderboardThirdPlaceStats"
+                        android:layout_width="70dp"
+                        android:layout_height="30dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginRight="15dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivHomeLeaderboardThirdPlaceBackground"
+                        app:layout_constraintEnd_toEndOf="@+id/ivHomeLeaderboardThirdPlaceBackground"
+                        app:layout_constraintTop_toTopOf="@+id/ivHomeLeaderboardThirdPlaceBackground"
+                        app:srcCompat="@drawable/custom_leaderboard_background_three" />
+
+                    <TextView
+                        android:id="@+id/tvHomeLeaderboardThirdPlacePoints"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:text="900pts"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivHomeLeaderboardThirdPlaceStats"
+                        app:layout_constraintEnd_toEndOf="@+id/ivHomeLeaderboardThirdPlaceStats"
+                        app:layout_constraintStart_toStartOf="@+id/ivHomeLeaderboardThirdPlaceStats"
+                        app:layout_constraintTop_toTopOf="@+id/ivHomeLeaderboardThirdPlaceStats" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tvHomeTextThree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Events Near Me"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/clHomeLeaderboardThirdPlace" />
+
+                <HorizontalScrollView
+                    android:id="@+id/horizontalScrollView"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvHomeTextThree">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="160dp"
+                        android:orientation="vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="160dp">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/clHomeEventsOne"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="25dp"
+                                android:layout_marginLeft="25dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <ImageView
+                                    android:id="@+id/ivHomeEventsOneBackground"
+                                    android:layout_width="250dp"
+                                    android:layout_height="150dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@drawable/custom_background_2" />
+
+                                <TextView
+                                    android:id="@+id/tvHomeEventsOneMainText"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginBottom="30dp"
+                                    android:fontFamily="@font/montserrat"
+                                    android:text="Find geolocation to reveal"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"
+                                    app:layout_constraintBottom_toBottomOf="@+id/ivHomeEventsOneBackground"
+                                    app:layout_constraintStart_toStartOf="@+id/ivHomeEventsOneBackground" />
+
+                                <TextView
+                                    android:id="@+id/tvHomeEventsOneSubtext"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/montserrat"
+                                    android:text="No date applicable"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="12sp"
+                                    app:layout_constraintStart_toStartOf="@+id/tvHomeEventsOneMainText"
+                                    app:layout_constraintTop_toBottomOf="@+id/tvHomeEventsOneMainText" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/clHomeEventsTwo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginLeft="15dp"
+                                app:layout_constraintStart_toEndOf="@+id/clHomeEventsOne"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <ImageView
+                                    android:id="@+id/ivHomeEventsTwoBackground"
+                                    android:layout_width="250dp"
+                                    android:layout_height="150dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@drawable/custom_background_2" />
+
+                                <TextView
+                                    android:id="@+id/tvHomeEventsTwoMainText"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginBottom="30dp"
+                                    android:fontFamily="@font/montserrat"
+                                    android:text="Find geolocation to reveal"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"
+                                    app:layout_constraintBottom_toBottomOf="@+id/ivHomeEventsTwoBackground"
+                                    app:layout_constraintStart_toStartOf="parent" />
+
+                                <TextView
+                                    android:id="@+id/tvHomeEventsTwoSubtext"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/montserrat"
+                                    android:text="No date applicable"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="12sp"
+                                    app:layout_constraintStart_toStartOf="@+id/tvHomeEventsTwoMainText"
+                                    app:layout_constraintTop_toBottomOf="@+id/tvHomeEventsTwoMainText" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/clHomeEventsThree"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginEnd="25dp"
+                                android:layout_marginRight="25dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/clHomeEventsTwo"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <ImageView
+                                    android:id="@+id/ivHomeEventsThreeBackground"
+                                    android:layout_width="250dp"
+                                    android:layout_height="150dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@drawable/custom_background_2" />
+
+                                <TextView
+                                    android:id="@+id/tvHomeEventsThreeMainText"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginBottom="30dp"
+                                    android:fontFamily="@font/montserrat"
+                                    android:text="Find geolocation to reveal"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"
+                                    app:layout_constraintBottom_toBottomOf="@+id/ivHomeEventsThreeBackground"
+                                    app:layout_constraintStart_toStartOf="parent" />
+
+                                <TextView
+                                    android:id="@+id/tvHomeEventsThreeSubtext"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/montserrat"
+                                    android:text="No date applicable"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="12sp"
+                                    app:layout_constraintStart_toStartOf="@+id/tvHomeEventsThreeMainText"
+                                    app:layout_constraintTop_toBottomOf="@+id/tvHomeEventsThreeMainText" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
