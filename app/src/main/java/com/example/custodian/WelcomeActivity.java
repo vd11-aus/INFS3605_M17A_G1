@@ -39,7 +39,7 @@ public class WelcomeActivity extends AppCompatActivity {
     private ImageView mBackgroundImage;
 
     FirebaseAuth mFirebaseAuth;
-    FirebaseFirestore mFirebaseDB;
+    FirebaseFirestore mFirebaseFS;
     String username;
 
     @Override
@@ -65,10 +65,10 @@ public class WelcomeActivity extends AppCompatActivity {
             System.out.println(currentUser.getUid());
         }
 
-        // Connect to Firestore DB
+        // Connect to Firestore FS
         String uniqueIdentifier = currentUser.getUid();
-        mFirebaseDB = FirebaseFirestore.getInstance();
-        DocumentReference referencePathOne = mFirebaseDB.document("users/"+uniqueIdentifier);
+        mFirebaseFS = FirebaseFirestore.getInstance();
+        DocumentReference referencePathOne = mFirebaseFS.document("users/"+uniqueIdentifier);
         referencePathOne.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {

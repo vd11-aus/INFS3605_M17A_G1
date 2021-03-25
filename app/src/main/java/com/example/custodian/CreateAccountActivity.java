@@ -41,7 +41,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     private ImageButton mCancelButton;
 
     FirebaseAuth firebaseAuth;
-    FirebaseFirestore firebaseDB;
+    FirebaseFirestore firebaseFS;
 
     String username = "";
     String email = "";
@@ -66,7 +66,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         mGenderInput = findViewById(R.id.rgCreateAccountGender);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        firebaseDB = FirebaseFirestore.getInstance();
+        firebaseFS = FirebaseFirestore.getInstance();
 
         // Confirm create account
         mCreateAccountButton.setOnClickListener(new View.OnClickListener() {
@@ -201,7 +201,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         map.put("currentpoints", (int) 0);
         map.put("alltimepoints", (int) 0);
         map.put("alltimeposts", (int) 0);
-        firebaseDB.collection("users").document(firebaseAuth.getCurrentUser().getUid()).set(map)
+        firebaseFS.collection("users").document(firebaseAuth.getCurrentUser().getUid()).set(map)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

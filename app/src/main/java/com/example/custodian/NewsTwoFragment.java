@@ -64,7 +64,7 @@ public class NewsTwoFragment extends Fragment {
     private TextView mDate;
     private Button mLink;
 
-    FirebaseFirestore mFirebaseDB;
+    FirebaseFirestore mFirebaseFS;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -86,9 +86,9 @@ public class NewsTwoFragment extends Fragment {
         mDate = view.findViewById(R.id.tvNewsTwoFragmentDate);
         mLink = view.findViewById(R.id.btNewsTwoFragmentLink);
 
-        mFirebaseDB = FirebaseFirestore.getInstance();
-        DocumentReference referencePathOne = mFirebaseDB.document("news/newstwo");
-        referencePathOne.addSnapshotListener((Activity) getActivity(), new EventListener<DocumentSnapshot>() {
+        mFirebaseFS = FirebaseFirestore.getInstance();
+        DocumentReference reference = mFirebaseFS.document("news/newstwo");
+        reference.addSnapshotListener((Activity) getActivity(), new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                 String title = value.getString("title");
