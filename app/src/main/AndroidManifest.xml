@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Custodian">
-        <activity android:name=".NewPostActivity"></activity>
+        <activity android:name=".RedirectActivity"></activity>
+        <activity android:name=".NewPostActivity" />
         <activity android:name=".RewardsActivity" />
         <activity android:name=".HistoryActivity" />
         <activity android:name=".ProfileActivity" />

@@ -6,4 +6,6 @@
         "\n\nPlease note that this app is not intended for commercial use, and any information submitted will not be used for any other purpose then to show proof of concept."
         "\n\nFor more information, please feel free to contact us on:"
     </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

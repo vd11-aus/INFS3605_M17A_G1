@@ -1,16 +1,32 @@
 package com.example.custodian;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import org.w3c.dom.Document;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -25,6 +41,7 @@ public class HomeActivity extends AppCompatActivity {
     private ImageButton mNewPostButton;
     private ImageButton mRewardsButton;
     private ImageButton mProfileButton;
+    private ImageButton mGeolocationButton;
     private ImageView mBackgroundImage;
 
     private String category = "home";
@@ -40,6 +57,7 @@ public class HomeActivity extends AppCompatActivity {
         mNewPostButton = findViewById(R.id.ibNavigationNewPost);
         mRewardsButton = findViewById(R.id.ibNavigationRewards);
         mProfileButton = findViewById(R.id.ibNavigationProfile);
+        mGeolocationButton = findViewById(R.id.ibHomeGetGeolocation);
         mBackgroundImage = findViewById(R.id.ivHomeBackground);
 
         NavigationBar navigationBar = new NavigationBar();
@@ -51,6 +69,15 @@ public class HomeActivity extends AppCompatActivity {
         BackgroundGenerator background = new BackgroundGenerator();
         Glide.with(mBackgroundImage).load(background.login()).centerCrop().placeholder(R.drawable.custom_background_2)
                 .error(R.drawable.custom_background_2).fallback(R.drawable.custom_background_2).into(mBackgroundImage);
+
+        // Get Geolocation
+        mGeolocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("Getting geolocation.");
+                getGeolocation();
+            }
+        });
 
         // Go to Home
         mHomeButton.setOnClickListener(new View.OnClickListener() {
@@ -123,5 +150,8 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(profileIntent);
                 break;
         }
+    }
+
+    public void getGeolocation() {
     }
 }

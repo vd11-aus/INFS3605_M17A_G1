@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EBEBEB"
+    android:background="#E0E0E0"
     tools:context=".HomeActivity">
 
     <ImageView
@@ -16,134 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:color/black" />
-
-    <ImageButton
-        android:id="@+id/ibHomeGetGeolocation"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginRight="25dp"
-        android:background="@drawable/custom_geolocation_button"
-        android:scaleType="centerInside"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ivHomeBackground"
-        app:srcCompat="@drawable/ic_baseline_my_location_24" />
-
-    <TextView
-        android:id="@+id/tvHomeGeolocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat"
-        android:text="You are in: Unknown"
-        android:textColor="#FFFFFF"
-        android:textStyle="italic"
-        app:layout_constraintStart_toStartOf="@+id/tvHomeTextOne"
-        app:layout_constraintTop_toBottomOf="@+id/tvHomeTextOne" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clNavigationLayout"
-        android:layout_width="0dp"
-        android:layout_height="110dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageView
-            android:id="@+id/ivNavigationBackground"
-            android:layout_width="365dp"
-            android:layout_height="60dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/custom_background_1" />
-
-        <ImageButton
-            android:id="@+id/ibNavigationNewPost"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="@drawable/custom_new_post_background"
-            android:scaleType="centerInside"
-            app:layout_constraintBottom_toBottomOf="@+id/ivNavigationBackground"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/ivNavigationBackground"
-            app:srcCompat="@drawable/ic_baseline_create_24" />
-
-        <ImageButton
-            android:id="@+id/ibNavigationHistory"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@android:color/transparent"
-            android:scaleType="centerInside"
-            android:scaleX="0.6"
-            android:scaleY="0.6"
-            app:layout_constraintBottom_toBottomOf="@+id/ivNavigationBackground"
-            app:layout_constraintEnd_toStartOf="@+id/ibNavigationNewPost"
-            app:layout_constraintTop_toTopOf="@+id/ivNavigationBackground"
-            app:srcCompat="@drawable/ic_baseline_menu_book_24" />
-
-        <ImageButton
-            android:id="@+id/ibNavigationHome"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@android:color/transparent"
-            android:scaleX="0.6"
-            android:scaleY="0.6"
-            app:layout_constraintBottom_toBottomOf="@+id/ivNavigationBackground"
-            app:layout_constraintEnd_toStartOf="@+id/ibNavigationHistory"
-            app:layout_constraintTop_toTopOf="@+id/ivNavigationBackground"
-            app:srcCompat="@drawable/ic_baseline_home_24" />
-
-        <ImageButton
-            android:id="@+id/ibNavigationRewards"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:background="@android:color/transparent"
-            android:scaleX="0.6"
-            android:scaleY="0.6"
-            app:layout_constraintBottom_toBottomOf="@+id/ivNavigationBackground"
-            app:layout_constraintStart_toEndOf="@+id/ibNavigationNewPost"
-            app:layout_constraintTop_toTopOf="@+id/ivNavigationBackground"
-            app:srcCompat="@drawable/ic_baseline_grade_24" />
-
-        <ImageButton
-            android:id="@+id/ibNavigationProfile"
-            android:layout_width="60dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:background="@android:color/transparent"
-            android:scaleX="0.6"
-            android:scaleY="0.6"
-            app:layout_constraintBottom_toBottomOf="@+id/ivNavigationBackground"
-            app:layout_constraintStart_toEndOf="@+id/ibNavigationRewards"
-            app:layout_constraintTop_toTopOf="@+id/ivNavigationBackground"
-            app:srcCompat="@drawable/ic_baseline_person_24" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/tvHomeTextOne"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="45dp"
-        android:fontFamily="@font/montserrat"
-        android:text="Home"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:layout_width="0dp"
@@ -165,21 +37,6 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/tvHomeTextFour"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/montserrat"
-                    android:text="Trending Stories"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
-
-                <TextView
                     android:id="@+id/tvHomeTextTwo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -189,212 +46,50 @@
                     android:fontFamily="@font/montserrat"
                     android:text="Leaderboard"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp"
+                    android:textSize="22sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/clHomeLeaderboardFirstPlace"
+                <fragment
+                    android:id="@+id/frHomeLeaderboardOneContainer"
+                    android:name="com.example.custodian.LeaderboardThreeFragment"
                     android:layout_width="0dp"
                     android:layout_height="60dp"
                     android:layout_marginStart="25dp"
                     android:layout_marginLeft="25dp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="25dp"
                     android:layout_marginRight="25dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvHomeTextTwo">
+                    app:layout_constraintTop_toBottomOf="@+id/tvHomeTextTwo" />
 
-                    <ImageView
-                        android:id="@+id/ivHomeLeaderboardFirstPlaceBackground"
-                        android:layout_width="0dp"
-                        android:layout_height="60dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/custom_background_1" />
-
-                    <ImageView
-                        android:id="@+id/ivHomeLeaderboardFirstPlaceIcon"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:srcCompat="@tools:sample/avatars" />
-
-                    <TextView
-                        android:id="@+id/tvHomeLeaderboardFirstPlaceUsername"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:fontFamily="@font/montserrat"
-                        android:text="TheRealStevieJ"
-                        app:layout_constraintBottom_toBottomOf="@+id/ivHomeLeaderboardFirstPlaceIcon"
-                        app:layout_constraintStart_toEndOf="@+id/ivHomeLeaderboardFirstPlaceIcon"
-                        app:layout_constraintTop_toTopOf="@+id/ivHomeLeaderboardFirstPlaceIcon" />
-
-                    <ImageView
-                        android:id="@+id/ivHomeLeaderboardFirstPlaceStats"
-                        android:layout_width="70dp"
-                        android:layout_height="30dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginRight="15dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/ivHomeLeaderboardFirstPlaceBackground"
-                        app:layout_constraintEnd_toEndOf="@+id/ivHomeLeaderboardFirstPlaceBackground"
-                        app:layout_constraintTop_toTopOf="@+id/ivHomeLeaderboardFirstPlaceBackground"
-                        app:srcCompat="@drawable/custom_leaderboard_background_one" />
-
-                    <TextView
-                        android:id="@+id/tvHomeLeaderboardFirstPlacePoints"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="9995pts"
-                        android:textSize="10sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/ivHomeLeaderboardFirstPlaceStats"
-                        app:layout_constraintEnd_toEndOf="@+id/ivHomeLeaderboardFirstPlaceStats"
-                        app:layout_constraintStart_toStartOf="@+id/ivHomeLeaderboardFirstPlaceStats"
-                        app:layout_constraintTop_toTopOf="@+id/ivHomeLeaderboardFirstPlaceStats" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/clHomeLeaderboardSecondPlace"
+                <fragment
+                    android:id="@+id/frHomeLeaderboardTwoContainer"
+                    android:name="com.example.custodian.LeaderboardThreeFragment"
                     android:layout_width="0dp"
                     android:layout_height="60dp"
-                    android:layout_marginTop="5dp"
-                    app:layout_constraintEnd_toEndOf="@+id/clHomeLeaderboardFirstPlace"
-                    app:layout_constraintStart_toStartOf="@+id/clHomeLeaderboardFirstPlace"
-                    app:layout_constraintTop_toBottomOf="@+id/clHomeLeaderboardFirstPlace">
+                    android:layout_marginStart="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginRight="25dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/frHomeLeaderboardOneContainer" />
 
-                    <ImageView
-                        android:id="@+id/ivHomeLeaderboardSecondPlaceBackground"
-                        android:layout_width="0dp"
-                        android:layout_height="60dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/custom_background_1" />
-
-                    <ImageView
-                        android:id="@+id/ivHomeLeaderboardSecondPlaceIcon"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:srcCompat="@tools:sample/avatars" />
-
-                    <TextView
-                        android:id="@+id/tvHomeLeaderboardSecondPlaceUsername"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:fontFamily="@font/montserrat"
-                        android:text="TheRealStevieJ"
-                        app:layout_constraintBottom_toBottomOf="@+id/ivHomeLeaderboardSecondPlaceIcon"
-                        app:layout_constraintStart_toEndOf="@+id/ivHomeLeaderboardSecondPlaceIcon"
-                        app:layout_constraintTop_toTopOf="@+id/ivHomeLeaderboardSecondPlaceIcon" />
-
-                    <ImageView
-                        android:id="@+id/ivHomeLeaderboardSecondPlaceStats"
-                        android:layout_width="70dp"
-                        android:layout_height="30dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginRight="15dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/ivHomeLeaderboardSecondPlaceBackground"
-                        app:layout_constraintEnd_toEndOf="@+id/ivHomeLeaderboardSecondPlaceBackground"
-                        app:layout_constraintTop_toTopOf="@+id/ivHomeLeaderboardSecondPlaceBackground"
-                        app:srcCompat="@drawable/custom_leaderboard_background_two" />
-
-                    <TextView
-                        android:id="@+id/tvHomeLeaderboardSecondPlacePoints"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="2450pts"
-                        android:textSize="10sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/ivHomeLeaderboardSecondPlaceStats"
-                        app:layout_constraintEnd_toEndOf="@+id/ivHomeLeaderboardSecondPlaceStats"
-                        app:layout_constraintStart_toStartOf="@+id/ivHomeLeaderboardSecondPlaceStats"
-                        app:layout_constraintTop_toTopOf="@+id/ivHomeLeaderboardSecondPlaceStats" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/clHomeLeaderboardThirdPlace"
+                <fragment
+                    android:id="@+id/frHomeLeaderboardThreeContainer"
+                    android:name="com.example.custodian.LeaderboardThreeFragment"
                     android:layout_width="0dp"
                     android:layout_height="60dp"
-                    android:layout_marginTop="5dp"
-                    app:layout_constraintEnd_toEndOf="@+id/clHomeLeaderboardSecondPlace"
-                    app:layout_constraintStart_toStartOf="@+id/clHomeLeaderboardSecondPlace"
-                    app:layout_constraintTop_toBottomOf="@+id/clHomeLeaderboardSecondPlace">
-
-                    <ImageView
-                        android:id="@+id/ivHomeLeaderboardThirdPlaceBackground"
-                        android:layout_width="0dp"
-                        android:layout_height="60dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/custom_background_1" />
-
-                    <ImageView
-                        android:id="@+id/ivHomeLeaderboardThirdPlaceIcon"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:srcCompat="@tools:sample/avatars" />
-
-                    <TextView
-                        android:id="@+id/tvHomeLeaderboardThirdPlaceUsername"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:fontFamily="@font/montserrat"
-                        android:text="TheRealStevieJ"
-                        app:layout_constraintBottom_toBottomOf="@+id/ivHomeLeaderboardThirdPlaceIcon"
-                        app:layout_constraintStart_toEndOf="@+id/ivHomeLeaderboardThirdPlaceIcon"
-                        app:layout_constraintTop_toTopOf="@+id/ivHomeLeaderboardThirdPlaceIcon" />
-
-                    <ImageView
-                        android:id="@+id/ivHomeLeaderboardThirdPlaceStats"
-                        android:layout_width="70dp"
-                        android:layout_height="30dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginRight="15dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/ivHomeLeaderboardThirdPlaceBackground"
-                        app:layout_constraintEnd_toEndOf="@+id/ivHomeLeaderboardThirdPlaceBackground"
-                        app:layout_constraintTop_toTopOf="@+id/ivHomeLeaderboardThirdPlaceBackground"
-                        app:srcCompat="@drawable/custom_leaderboard_background_three" />
-
-                    <TextView
-                        android:id="@+id/tvHomeLeaderboardThirdPlacePoints"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="900pts"
-                        android:textSize="10sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/ivHomeLeaderboardThirdPlaceStats"
-                        app:layout_constraintEnd_toEndOf="@+id/ivHomeLeaderboardThirdPlaceStats"
-                        app:layout_constraintStart_toStartOf="@+id/ivHomeLeaderboardThirdPlaceStats"
-                        app:layout_constraintTop_toTopOf="@+id/ivHomeLeaderboardThirdPlaceStats" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:layout_marginStart="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginRight="25dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/frHomeLeaderboardTwoContainer" />
 
                 <TextView
                     android:id="@+id/tvHomeTextThree"
@@ -406,16 +101,16 @@
                     android:fontFamily="@font/montserrat"
                     android:text="Events Near Me"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp"
+                    android:textSize="22sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/clHomeLeaderboardThirdPlace" />
+                    app:layout_constraintTop_toBottomOf="@+id/frHomeLeaderboardThreeContainer" />
 
                 <HorizontalScrollView
                     android:id="@+id/horizontalScrollView"
                     android:layout_width="match_parent"
                     android:layout_height="160dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvHomeTextThree">
@@ -568,8 +263,194 @@
                     </LinearLayout>
                 </HorizontalScrollView>
 
+                <TextView
+                    android:id="@+id/tvHomeTextFour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Trending Stories"
+                    android:textColor="@android:color/black"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+
+                <fragment
+                    android:id="@+id/frHomeNewsOneContainer"
+                    android:name="com.example.custodian.NewsOneFragment"
+                    android:layout_width="0dp"
+                    android:layout_height="110dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginRight="25dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvHomeTextFour" />
+
+                <fragment
+                    android:id="@+id/frHomeNewsTwoContainer"
+                    android:name="com.example.custodian.NewsTwoFragment"
+                    android:layout_width="0dp"
+                    android:layout_height="110dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginRight="25dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/frHomeNewsOneContainer" />
+
+                <fragment
+                    android:id="@+id/frHomeNewsThreeContainer"
+                    android:name="com.example.custodian.NewsThreeFragment"
+                    android:layout_width="0dp"
+                    android:layout_height="110dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginBottom="25dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/frHomeNewsTwoContainer" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
+
+    <ImageButton
+        android:id="@+id/ibHomeGetGeolocation"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/custom_geolocation_button"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivHomeBackground"
+        app:srcCompat="@drawable/ic_baseline_my_location_24" />
+
+    <TextView
+        android:id="@+id/tvHomeGeolocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="You are in: Unknown"
+        android:textColor="#FFFFFF"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@+id/tvHomeTextOne"
+        app:layout_constraintTop_toBottomOf="@+id/tvHomeTextOne" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clNavigationLayout"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/ivNavigationBackground"
+            android:layout_width="365dp"
+            android:layout_height="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/custom_background_1" />
+
+        <ImageButton
+            android:id="@+id/ibNavigationNewPost"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/custom_new_post_background"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="@+id/ivNavigationBackground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ivNavigationBackground"
+            app:srcCompat="@drawable/ic_baseline_create_24" />
+
+        <ImageButton
+            android:id="@+id/ibNavigationHistory"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@android:color/transparent"
+            android:scaleType="centerInside"
+            android:scaleX="0.6"
+            android:scaleY="0.6"
+            app:layout_constraintBottom_toBottomOf="@+id/ivNavigationBackground"
+            app:layout_constraintEnd_toStartOf="@+id/ibNavigationNewPost"
+            app:layout_constraintTop_toTopOf="@+id/ivNavigationBackground"
+            app:srcCompat="@drawable/ic_baseline_menu_book_24" />
+
+        <ImageButton
+            android:id="@+id/ibNavigationHome"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@android:color/transparent"
+            android:scaleX="0.6"
+            android:scaleY="0.6"
+            app:layout_constraintBottom_toBottomOf="@+id/ivNavigationBackground"
+            app:layout_constraintEnd_toStartOf="@+id/ibNavigationHistory"
+            app:layout_constraintTop_toTopOf="@+id/ivNavigationBackground"
+            app:srcCompat="@drawable/ic_baseline_home_24" />
+
+        <ImageButton
+            android:id="@+id/ibNavigationRewards"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@android:color/transparent"
+            android:scaleX="0.6"
+            android:scaleY="0.6"
+            app:layout_constraintBottom_toBottomOf="@+id/ivNavigationBackground"
+            app:layout_constraintStart_toEndOf="@+id/ibNavigationNewPost"
+            app:layout_constraintTop_toTopOf="@+id/ivNavigationBackground"
+            app:srcCompat="@drawable/ic_baseline_grade_24" />
+
+        <ImageButton
+            android:id="@+id/ibNavigationProfile"
+            android:layout_width="60dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@android:color/transparent"
+            android:scaleX="0.6"
+            android:scaleY="0.6"
+            app:layout_constraintBottom_toBottomOf="@+id/ivNavigationBackground"
+            app:layout_constraintStart_toEndOf="@+id/ibNavigationRewards"
+            app:layout_constraintTop_toTopOf="@+id/ivNavigationBackground"
+            app:srcCompat="@drawable/ic_baseline_person_24" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tvHomeTextOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="45dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Home"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
