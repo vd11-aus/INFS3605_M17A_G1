@@ -1,5 +1,6 @@
 package com.example.custodian;
 
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,11 +11,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,6 +88,7 @@ public class LeaderboardOneFragment extends Fragment {
 
         ArrayList<Integer> pointArray = new ArrayList<Integer>();
         ArrayList<String> usernameArray = new ArrayList<String>();
+        ArrayList<String> idArray = new ArrayList<String>();
         FirebaseFirestore firebaseFS = FirebaseFirestore.getInstance();
         firebaseFS.collection("users").orderBy("alltimepoints", Query.Direction.DESCENDING).limit(3).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
@@ -91,9 +98,16 @@ public class LeaderboardOneFragment extends Fragment {
                     System.out.println("onSuccess: " + snapshot.getData());
                     pointArray.add(snapshot.getLong("alltimepoints").intValue());
                     usernameArray.add(snapshot.getString("username"));
+                    idArray.add(snapshot.getString("uniqueid"));
                 }
                 mUsernameText.setText(usernameArray.get(0));
                 mPointsText.setText(pointArray.get(0).toString());
+                FirebaseStorage.getInstance().getReference().child("profileicons/").child(idArray.get(0)).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Glide.with(getActivity()).load(uri).into(mIcon);
+                    }
+                });
             }
         });
         return view;

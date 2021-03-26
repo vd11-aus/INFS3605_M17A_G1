@@ -1,24 +1,36 @@
 package com.example.custodian;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,6 +43,9 @@ public class CreateAccountActivity extends AppCompatActivity {
     }
 
     // Declaration of variables
+    private static final int PICKER_CODE = 1000;
+    private static final int PERMISSION_CODE = 1001;
+
     private EditText mUsernameInput;
     private EditText mEmailInput;
     private EditText mPasswordInput;
@@ -39,10 +54,13 @@ public class CreateAccountActivity extends AppCompatActivity {
     private RadioGroup mGenderInput;
     private ImageButton mCreateAccountButton;
     private ImageButton mCancelButton;
+    private ImageView mProfileIcon;
 
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFS;
+    FirebaseStorage firebaseStorage;
 
+    Uri iconImage;
     String username = "";
     String email = "";
     String password = "";
@@ -64,9 +82,11 @@ public class CreateAccountActivity extends AppCompatActivity {
         mConfirmPasswordInput = findViewById(R.id.etCreateAccountConfirmPassword);
         mOriginInput = findViewById(R.id.rgCreateAccountOrigin);
         mGenderInput = findViewById(R.id.rgCreateAccountGender);
+        mProfileIcon = findViewById(R.id.ivCreateAccountIcon);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFS = FirebaseFirestore.getInstance();
+        firebaseStorage = FirebaseStorage.getInstance();
 
         // Confirm create account
         mCreateAccountButton.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +123,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                         System.out.println("Gender: " + gender);
                         System.out.println("Origin: " + origin);
                         Snackbar.make(findViewById(R.id.clCreateAccountMainLayout),
-                                "Confirming user credentials. You will be logged in shortly.", Snackbar.LENGTH_SHORT).show();
+                                "Confirming user credentials. You will be logged in shortly.", Snackbar.LENGTH_INDEFINITE).show();
                         createUser();
                         new Handler().postDelayed(new Runnable() {
                             @Override
@@ -111,7 +131,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                                 addUserDetails();
                                 launchWelcomeActivity();
                             }
-                        }, 2500);
+                        }, 5000);
                         break;
                 }
             }
@@ -125,6 +145,54 @@ public class CreateAccountActivity extends AppCompatActivity {
                 showWarningDialog(getCurrentFocus());
             }
         });
+
+        // Select profile picture
+        mProfileIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                            PackageManager.PERMISSION_DENIED) {
+                        String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                        requestPermissions(permissions, PERMISSION_CODE);
+                    } else {
+                        selectImage();
+                    }
+                } else {
+                    selectImage();
+                }
+            }
+        });
+    }
+
+    // Pick image
+    private void selectImage() {
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent, PICKER_CODE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_CODE: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    selectImage();
+                } else {
+                    Snackbar.make(findViewById(R.id.clCreateAccountMainLayout),
+                            "Permission denied.", Snackbar.LENGTH_SHORT).show();
+                }
+            }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == PICKER_CODE) {
+            iconImage = data.getData();
+            mProfileIcon.setImageURI(iconImage);
+        }
     }
 
     // Check gender entry
@@ -194,6 +262,13 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     // Adds user document in Firebase Cloud Firestore
     public void addUserDetails() {
+        firebaseStorage.getReference().child("profileicons/"+firebaseAuth.getCurrentUser().getUid()).putFile(iconImage);
+        firebaseStorage.getReference().child("profileicons/"+firebaseAuth.getCurrentUser().getUid()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                firebaseAuth.getCurrentUser().updateProfile(new UserProfileChangeRequest.Builder().setPhotoUri(uri).build());
+            }
+        });
         Map<String, Object> map = new HashMap<>();
         map.put("username", username);
         map.put("gender", gender);
@@ -201,6 +276,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         map.put("currentpoints", (int) 0);
         map.put("alltimepoints", (int) 0);
         map.put("alltimeposts", (int) 0);
+        map.put("uniqueid", firebaseAuth.getCurrentUser().getUid());
         firebaseFS.collection("users").document(firebaseAuth.getCurrentUser().getUid()).set(map)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -26,6 +27,9 @@ public class ProfileActivity extends AppCompatActivity {
     private ImageButton mRewardsButton;
     private ImageButton mProfileButton;
     private ImageView mBackgroundImage;
+    private ImageView mProfileIcon;
+
+    FirebaseAuth firebaseAuth;
 
     private String category = "profile";
 
@@ -41,6 +45,12 @@ public class ProfileActivity extends AppCompatActivity {
         mRewardsButton = findViewById(R.id.ibNavigationRewards);
         mProfileButton = findViewById(R.id.ibNavigationProfile);
         mBackgroundImage = findViewById(R.id.ivProfileBackground);
+        mProfileIcon = findViewById(R.id.ivProfileSample);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        if (firebaseAuth.getCurrentUser().getPhotoUrl() != null) {
+            Glide.with(this).load(firebaseAuth.getCurrentUser().getPhotoUrl()).into(mProfileIcon);
+        }
 
         NavigationBar navigationBar = new NavigationBar();
         navigationBar.create(mHomeButton, mHistoryButton, mNewPostButton, mRewardsButton, mProfileButton);
