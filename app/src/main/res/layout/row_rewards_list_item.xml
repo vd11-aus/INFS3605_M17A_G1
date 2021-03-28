@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clRewardsRowItemMainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="25dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clRewardsRowItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvRewardsRowItemTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="40dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/montserrat"
+            android:singleLine="true"
+            android:text="5% off Discount"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/ivRewardsRowItemIndicator"
+            app:layout_constraintStart_toEndOf="@+id/ivRewardsRowItemImage"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvRewardsRowItemDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/montserrat"
+            android:singleLine="true"
+            android:text="Get 5% any food at participating store, please see terms and conditions. However, I could personally see it being way more that what we have now, let's just see!"
+            android:textSize="10sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="@+id/tvRewardsRowItemTitle"
+            app:layout_constraintStart_toStartOf="@+id/tvRewardsRowItemTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvRewardsRowItemTitle" />
+
+        <ImageView
+            android:id="@+id/ivRewardsRowItemIndicator"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/custom_circle_2" />
+
+        <ImageView
+            android:id="@+id/ivRewardsRowItemImage"
+            android:layout_width="125dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/custom_background_1" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

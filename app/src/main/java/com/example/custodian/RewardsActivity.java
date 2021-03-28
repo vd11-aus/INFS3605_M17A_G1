@@ -1,7 +1,12 @@
 package com.example.custodian;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -9,8 +14,23 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RewardsActivity extends AppCompatActivity {
 
@@ -26,6 +46,8 @@ public class RewardsActivity extends AppCompatActivity {
     private ImageButton mRewardsButton;
     private ImageButton mProfileButton;
     private ImageView mBackgroundImage;
+    private RecyclerView mRewardsList;
+    private TextView mCurrentPoints;
 
     private String category = "rewards";
 
@@ -41,11 +63,51 @@ public class RewardsActivity extends AppCompatActivity {
         mRewardsButton = findViewById(R.id.ibNavigationRewards);
         mProfileButton = findViewById(R.id.ibNavigationProfile);
         mBackgroundImage = findViewById(R.id.ivRewardsBackground);
+        mRewardsList = findViewById(R.id.rvRewardsList);
+        mCurrentPoints = findViewById(R.id.tvRewardsCurrentPoints);
 
         NavigationBar navigationBar = new NavigationBar();
         navigationBar.create(mHomeButton, mHistoryButton, mNewPostButton, mRewardsButton, mProfileButton);
         navigationBar.getLocation(category);
         navigationBar.adjustToPage();
+
+        // Get background
+        BackgroundGenerator background = new BackgroundGenerator();
+        Glide.with(mBackgroundImage).load(background.login()).centerCrop().placeholder(R.drawable.custom_background_2)
+                .error(R.drawable.custom_background_2).fallback(R.drawable.custom_background_2).into(mBackgroundImage);
+
+        // Making the Rewards List
+        String uniqueIdentifier = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        Context pageContext = this;
+        FirebaseFirestore.getInstance().document("users/"+uniqueIdentifier).get().addOnCompleteListener(this, new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot snapshot = task.getResult();
+                Integer currentPoints = snapshot.getLong("currentpoints").intValue();
+                FirebaseFirestore.getInstance().collection("rewards").orderBy("cost").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        ArrayList<String> rewardTitles = new ArrayList<String>();
+                        ArrayList<String> rewardDescriptions = new ArrayList<String>();
+                        ArrayList<String> rewardImages = new ArrayList<String>();
+                        ArrayList<String> rewardIds = new ArrayList<String>();
+                        ArrayList<Integer> rewardCosts = new ArrayList<Integer>();
+                        List<DocumentSnapshot> snapshotList = queryDocumentSnapshots.getDocuments();
+                        for (DocumentSnapshot snapshot: snapshotList) {
+                            System.out.println("onSuccess: " + snapshot.getData());
+                            rewardTitles.add(snapshot.getString("title"));
+                            rewardDescriptions.add(snapshot.getString("description"));
+                            rewardCosts.add(snapshot.getLong("cost").intValue());
+                            rewardImages.add(snapshot.getString("image"));
+                            rewardIds.add(snapshot.getString("id"));
+                        }
+                        RewardsListAdapter listAdapter = new RewardsListAdapter(pageContext, rewardTitles, rewardDescriptions, rewardImages, rewardIds, rewardCosts, currentPoints);
+                        mRewardsList.setAdapter(listAdapter);
+                        mRewardsList.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                    }
+                });
+            }
+        });
 
         // Go to Home
         mHomeButton.setOnClickListener(new View.OnClickListener() {
