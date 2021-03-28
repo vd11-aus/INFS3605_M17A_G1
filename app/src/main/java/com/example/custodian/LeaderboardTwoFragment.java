@@ -99,7 +99,7 @@ public class LeaderboardTwoFragment extends Fragment {
                     idArray.add(snapshot.getString("uniqueid"));
                 }
                 mUsernameText.setText(usernameArray.get(1));
-                mPointsText.setText(pointArray.get(1).toString());
+                mPointsText.setText(pointArray.get(1).toString() + "pts");
                 FirebaseStorage.getInstance().getReference().child("profileicons/").child(idArray.get(1)).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {

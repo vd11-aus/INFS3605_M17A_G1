@@ -50,6 +50,7 @@ public class RewardsActivity extends AppCompatActivity {
     private TextView mCurrentPoints;
 
     private String category = "rewards";
+    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +67,8 @@ public class RewardsActivity extends AppCompatActivity {
         mRewardsList = findViewById(R.id.rvRewardsList);
         mCurrentPoints = findViewById(R.id.tvRewardsCurrentPoints);
 
+        id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
         NavigationBar navigationBar = new NavigationBar();
         navigationBar.create(mHomeButton, mHistoryButton, mNewPostButton, mRewardsButton, mProfileButton);
         navigationBar.getLocation(category);
@@ -77,9 +80,8 @@ public class RewardsActivity extends AppCompatActivity {
                 .error(R.drawable.custom_background_2).fallback(R.drawable.custom_background_2).into(mBackgroundImage);
 
         // Making the Rewards List
-        String uniqueIdentifier = FirebaseAuth.getInstance().getCurrentUser().getUid();
         Context pageContext = this;
-        FirebaseFirestore.getInstance().document("users/"+uniqueIdentifier).get().addOnCompleteListener(this, new OnCompleteListener<DocumentSnapshot>() {
+        FirebaseFirestore.getInstance().document("users/" + id).get().addOnCompleteListener(this, new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 DocumentSnapshot snapshot = task.getResult();
