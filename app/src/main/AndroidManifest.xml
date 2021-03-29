@@ -13,7 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Custodian">
-        <activity android:name=".RedemptionCodeActivity"></activity>
+        <activity android:name=".VideoPostActivity"></activity>
+        <activity android:name=".ImagePostActivity" />
+        <activity android:name=".TextPostActivity" />
+        <activity android:name=".RedemptionCodeActivity" />
         <activity android:name=".RewardInfoActivity" />
         <activity android:name=".RedirectActivity" />
         <activity android:name=".NewPostActivity" />

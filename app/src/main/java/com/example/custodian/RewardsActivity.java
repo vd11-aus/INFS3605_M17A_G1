@@ -86,6 +86,7 @@ public class RewardsActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 DocumentSnapshot snapshot = task.getResult();
                 Integer currentPoints = snapshot.getLong("currentpoints").intValue();
+                mCurrentPoints.setText(String.valueOf(snapshot.getLong("currentpoints").intValue()));
                 FirebaseFirestore.getInstance().collection("rewards").orderBy("cost").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
