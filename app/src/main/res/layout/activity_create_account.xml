@@ -7,7 +7,28 @@
     android:layout_height="match_parent"
     tools:context=".CreateAccountActivity">
 
+    <ImageView
+        android:id="@+id/ivCreateAccountBackground"
+        android:layout_width="0dp"
+        android:layout_height="175dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/custom_background_2" />
+
+    <ImageView
+        android:id="@+id/ivCreateAccountContentBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/custom_background_1" />
+
     <ScrollView
+        android:id="@+id/svCreateAccountContent"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="35dp"
@@ -231,13 +252,35 @@
                     app:layout_constraintTop_toBottomOf="@+id/clCreateAccountGenderContainer" />
 
                 <ImageView
-                    android:id="@+id/ivCreateAccountIcon"
+                    android:id="@+id/ivCreateAccountIconBorder"
                     android:layout_width="175dp"
                     android:layout_height="175dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/clCreateAccountOriginContainer"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCreateAccountTextFour"
                     app:srcCompat="@drawable/custom_background_1" />
+
+                <TextView
+                    android:id="@+id/tvCreateAccountTextFour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Profile Icon (click to change)"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/clCreateAccountOriginContainer" />
+
+                <ImageView
+                    android:id="@+id/ivCreateAccountIcon"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivCreateAccountIconBorder"
+                    app:layout_constraintEnd_toEndOf="@+id/ivCreateAccountIconBorder"
+                    app:layout_constraintStart_toStartOf="@+id/ivCreateAccountIconBorder"
+                    app:layout_constraintTop_toTopOf="@+id/ivCreateAccountIconBorder"
+                    app:srcCompat="@drawable/default_icon" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -253,7 +296,7 @@
         android:layout_marginBottom="20dp"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
-        android:tint="#666666"
+        android:tint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_baseline_login_24" />
@@ -280,9 +323,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
         android:layout_marginLeft="35dp"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="125dp"
         android:fontFamily="@font/montserrat"
         android:text="My Details"
+        android:textColor="#000000"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"

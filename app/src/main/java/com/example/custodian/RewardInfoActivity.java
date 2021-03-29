@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -54,6 +55,7 @@ public class RewardInfoActivity extends AppCompatActivity {
         // Get and set data
         Intent intent = getIntent();
         String id = intent.getStringExtra("id");
+        Integer cost = intent.getIntExtra("cost", 0);
         System.out.println(id);
 
         FirebaseFirestore.getInstance().document("rewards/"+id).addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
@@ -67,13 +69,23 @@ public class RewardInfoActivity extends AppCompatActivity {
             }
         });
 
-        mConfirmButton.setOnClickListener(new View.OnClickListener() {
+        FirebaseFirestore.getInstance().document("users/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(this, new OnSuccessListener<DocumentSnapshot>() {
             @Override
-            public void onClick(View v) {
-                showWarningDialog(getCurrentFocus());
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Integer currentPoints = documentSnapshot.getLong("currentpoints").intValue();
+                mConfirmButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (currentPoints < cost) {
+                            Snackbar.make(findViewById(R.id.clRewardInfoMainLayout),
+                                    "You don't have enough points to redeem this reward. Accumulate more by making posts!", Snackbar.LENGTH_SHORT).show();
+                        } else {
+                            showWarningDialog(getCurrentFocus());
+                        }
+                    }
+                });
             }
         });
-
         mCancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

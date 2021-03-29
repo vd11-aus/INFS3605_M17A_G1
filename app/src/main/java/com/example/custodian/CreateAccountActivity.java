@@ -20,6 +20,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -29,6 +30,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.auth.User;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -55,6 +57,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     private ImageButton mCreateAccountButton;
     private ImageButton mCancelButton;
     private ImageView mProfileIcon;
+    private ImageView mBackgroundImage;
 
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFS;
@@ -67,6 +70,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     String passwordConfirm = "";
     String origin = "";
     String gender = "";
+    Boolean imageSelected = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,10 +87,16 @@ public class CreateAccountActivity extends AppCompatActivity {
         mOriginInput = findViewById(R.id.rgCreateAccountOrigin);
         mGenderInput = findViewById(R.id.rgCreateAccountGender);
         mProfileIcon = findViewById(R.id.ivCreateAccountIcon);
+        mBackgroundImage = findViewById(R.id.ivCreateAccountBackground);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFS = FirebaseFirestore.getInstance();
         firebaseStorage = FirebaseStorage.getInstance();
+
+        // Get background
+        BackgroundGenerator background = new BackgroundGenerator();
+        Glide.with(mBackgroundImage).load(background.login()).centerCrop().placeholder(R.drawable.custom_background_2)
+                .error(R.drawable.custom_background_2).fallback(R.drawable.custom_background_2).into(mBackgroundImage);
 
         // Confirm create account
         mCreateAccountButton.setOnClickListener(new View.OnClickListener() {
@@ -113,6 +123,10 @@ public class CreateAccountActivity extends AppCompatActivity {
                     case "passwords-dont-match":
                         Snackbar.make(findViewById(R.id.clCreateAccountMainLayout),
                                 "The passwords you've provided don't match each other. Please correct them and try again.", Snackbar.LENGTH_SHORT).show();
+                        break;
+                    case "no-icon":
+                        Snackbar.make(findViewById(R.id.clCreateAccountMainLayout),
+                                "You haven't added an icon yet!", Snackbar.LENGTH_SHORT).show();
                         break;
                     case "entries-validated":
                         genderQuestionCheck();
@@ -192,6 +206,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK && requestCode == PICKER_CODE) {
             iconImage = data.getData();
             mProfileIcon.setImageURI(iconImage);
+            imageSelected = true;
         }
     }
 
@@ -244,6 +259,8 @@ public class CreateAccountActivity extends AppCompatActivity {
             returnValue = "invalid-password";
         } else if (!passwordConfirm.equals(password)) {
             returnValue = "passwords-dont-match";
+        } else if (imageSelected == false ){
+            returnValue = "no-icon";
         } else {
             returnValue = "entries-validated";
         }

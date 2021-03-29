@@ -65,6 +65,7 @@ public class RewardsListAdapter extends RecyclerView.Adapter<RewardsListAdapter.
             public void onClick(View v) {
                 Intent intent = new Intent(context, RewardInfoActivity.class);
                 intent.putExtra("id", idData.get(position));
+                intent.putExtra("cost", costData.get(position));
                 context.startActivity(intent);
             }
         });
