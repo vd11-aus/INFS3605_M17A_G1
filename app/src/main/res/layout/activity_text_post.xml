@@ -21,10 +21,10 @@
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="0dp"
-        android:layout_height="300dp"
+        android:layout_height="175dp"
         android:layout_marginStart="25dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="115dp"
         android:layout_marginEnd="25dp"
         android:layout_marginRight="25dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,22 +33,42 @@
         app:srcCompat="@drawable/custom_background_1" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/etLoginEmailInput2"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_height="50dp"
+        android:background="#FFFFFF"
         android:ems="10"
-        android:hint="New Post Title ...."
-        android:inputType="textPersonName"
-        android:text="Hello"
+        android:fontFamily="@font/montserrat"
+        android:hint="Title"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="20dp"
+        android:paddingRight="45dp"
         android:textColor="#000000"
-        android:textColorHint="#252525"
+        android:textColorHint="#555555"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/ivTextPostBackground"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2" />
+
+    <EditText
+        android:id="@+id/editTextTextMultiLine"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        android:background="#FFFFFF"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:gravity="start|top"
+        android:hint="Briefly describe your environmental post."
+        android:inputType="textMultiLine"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/etLoginEmailInput2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
