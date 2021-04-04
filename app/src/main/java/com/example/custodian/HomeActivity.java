@@ -1,14 +1,17 @@
 package com.example.custodian;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +24,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -32,8 +36,11 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import org.w3c.dom.Document;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -50,10 +57,24 @@ public class HomeActivity extends AppCompatActivity {
     private ImageButton mProfileButton;
     private ImageButton mGeolocationButton;
     private ImageView mBackgroundImage;
+    private TextView mGeolocation;
+
+    private ImageView mEventOneBackground;
+    private TextView mEventOneHeader;
+    private TextView mEventOneSubtext;
+    private Button mEventOneInteractButton;
+
+    private ImageView mEventTwoBackground;
+    private TextView mEventTwoHeader;
+    private TextView mEventTwoSubtext;
+    private Button mEventTwoInteractButton;
+
+    private ImageView mEventThreeBackground;
+    private TextView mEventThreeHeader;
+    private TextView mEventThreeSubtext;
+    private Button mEventThreeInteractButton;
 
     private String category = "home";
-
-    FusedLocationProviderClient fusedLocationProviderClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +82,8 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         // Assigning of variable values
+        Context context = getApplicationContext();
+
         mHomeButton = findViewById(R.id.ibNavigationHome);
         mHistoryButton = findViewById(R.id.ibNavigationHistory);
         mNewPostButton = findViewById(R.id.ibNavigationNewPost);
@@ -68,13 +91,27 @@ public class HomeActivity extends AppCompatActivity {
         mProfileButton = findViewById(R.id.ibNavigationProfile);
         mGeolocationButton = findViewById(R.id.ibHomeGetGeolocation);
         mBackgroundImage = findViewById(R.id.ivHomeBackground);
+        mGeolocation = findViewById(R.id.tvHomeGeolocation);
+
+        mEventOneBackground = findViewById(R.id.ivHomeEventsOneBackground);
+        mEventOneHeader = findViewById(R.id.tvHomeEventsOneMainText);
+        mEventOneSubtext = findViewById(R.id.tvHomeEventsOneSubtext);
+        mEventOneInteractButton = findViewById(R.id.btHomeEventsOneInteract);
+
+        mEventTwoBackground = findViewById(R.id.ivHomeEventsTwoBackground);
+        mEventTwoHeader = findViewById(R.id.tvHomeEventsTwoMainText);
+        mEventTwoSubtext = findViewById(R.id.tvHomeEventsTwoSubtext);
+        mEventTwoInteractButton = findViewById(R.id.btHomeEventsTwoInteract);
+
+        mEventThreeBackground = findViewById(R.id.ivHomeEventsThreeBackground);
+        mEventThreeHeader = findViewById(R.id.tvHomeEventsThreeMainText);
+        mEventThreeSubtext = findViewById(R.id.tvHomeEventsThreeSubtext);
+        mEventThreeInteractButton = findViewById(R.id.btHomeEventsThreeInteract);
 
         NavigationBar navigationBar = new NavigationBar();
         navigationBar.create(mHomeButton, mHistoryButton, mNewPostButton, mRewardsButton, mProfileButton);
         navigationBar.getLocation(category);
         navigationBar.adjustToPage();
-
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         // Get background
         BackgroundGenerator background = new BackgroundGenerator();
@@ -86,7 +123,8 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 System.out.println("Getting geolocation.");
-                getGeolocation();
+                mGeolocation.setText(getGeolocation());
+                updateEvents(Integer.parseInt(getGeolocation()), context);
             }
         });
 
@@ -163,31 +201,71 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-    public void getGeolocation() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        Task<Location> locationTask = fusedLocationProviderClient.getLastLocation();
+    // Finds current location
+    public String getGeolocation() {
+        return "7150";
+    }
 
-        locationTask.addOnSuccessListener(new OnSuccessListener<Location>() {
+    // Updates events
+    public void updateEvents(Integer postcode, Context context) {
+        ArrayList<String> backgroundArray = new ArrayList<String>();
+        ArrayList<String> headerArray = new ArrayList<String>();
+        ArrayList<String> subtextArray = new ArrayList<String>();
+        ArrayList<String> linkArray = new ArrayList<String>();
+        FirebaseFirestore.getInstance().collection("events").orderBy("date", Query.Direction.DESCENDING).limit(3).whereEqualTo("postcode", postcode).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
-            public void onSuccess(Location location) {
-                double latitude = location.getLatitude();
-                double longitude = location.getLongitude();
-                System.out.println(latitude + " and " + longitude);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                System.out.println("Fail");
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                List<DocumentSnapshot> snapshotList = queryDocumentSnapshots.getDocuments();
+                for (DocumentSnapshot document: snapshotList) {
+                    backgroundArray.add(document.getString("image"));
+                    headerArray.add(document.getString("event"));
+                    SimpleDateFormat formatter = new SimpleDateFormat("dd MMM YYYY");
+                    Date date = Objects.requireNonNull(document.getTimestamp("date")).toDate();
+                    subtextArray.add(formatter.format(date));
+                    linkArray.add(document.getString("link"));
+                }
+
+                Glide.with(mEventOneBackground).load(backgroundArray.get(0)).centerCrop().placeholder(R.drawable.custom_background_2)
+                        .error(R.drawable.custom_background_2).fallback(R.drawable.custom_background_2).into(mEventOneBackground);
+                mEventOneHeader.setText(headerArray.get(0));
+                mEventOneSubtext.setText(subtextArray.get(0));
+                mEventOneInteractButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        System.out.println("Redirecting ...");
+                        Intent intent = new Intent(context, RedirectActivity.class);
+                        intent.putExtra("LINK_LOCATION", linkArray.get(0));
+                        startActivity(intent);
+                    }
+                });
+
+                Glide.with(mEventTwoBackground).load(backgroundArray.get(1)).centerCrop().placeholder(R.drawable.custom_background_2)
+                        .error(R.drawable.custom_background_2).fallback(R.drawable.custom_background_2).into(mEventTwoBackground);
+                mEventTwoHeader.setText(headerArray.get(1));
+                mEventTwoSubtext.setText(subtextArray.get(1));
+                mEventTwoInteractButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        System.out.println("Redirecting ...");
+                        Intent intent = new Intent(context, RedirectActivity.class);
+                        intent.putExtra("LINK_LOCATION", linkArray.get(1));
+                        startActivity(intent);
+                    }
+                });
+
+                Glide.with(mEventThreeBackground).load(backgroundArray.get(2)).centerCrop().placeholder(R.drawable.custom_background_2)
+                        .error(R.drawable.custom_background_2).fallback(R.drawable.custom_background_2).into(mEventThreeBackground);
+                mEventThreeHeader.setText(headerArray.get(2));
+                mEventThreeSubtext.setText(subtextArray.get(2));
+                mEventThreeInteractButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        System.out.println("Redirecting ...");
+                        Intent intent = new Intent(context, RedirectActivity.class);
+                        intent.putExtra("LINK_LOCATION", linkArray.get(2));
+                        startActivity(intent);
+                    }
+                });
             }
         });
     }

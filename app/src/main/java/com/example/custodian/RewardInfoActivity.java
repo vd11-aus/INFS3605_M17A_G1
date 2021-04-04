@@ -80,7 +80,7 @@ public class RewardInfoActivity extends AppCompatActivity {
                             Snackbar.make(findViewById(R.id.clRewardInfoMainLayout),
                                     "You don't have enough points to redeem this reward. Accumulate more by making posts!", Snackbar.LENGTH_SHORT).show();
                         } else {
-                            showWarningDialog(getCurrentFocus());
+                            showWarningDialog(getCurrentFocus(), currentPoints, cost);
                         }
                     }
                 });
@@ -95,7 +95,7 @@ public class RewardInfoActivity extends AppCompatActivity {
     }
 
     // Warn user that any entered data will be wiped
-    public void showWarningDialog(View v) {
+    public void showWarningDialog(View v, Integer currentPoints, Integer cost) {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle("Are you sure?");
         alert.setMessage("If you proceed, points will be immediately deducted from your account and your one-time use code will be created. It is " +
@@ -103,6 +103,7 @@ public class RewardInfoActivity extends AppCompatActivity {
         alert.setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                FirebaseFirestore.getInstance().document("users/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).update("currentpoints", currentPoints - cost);
                 launchRedemptionCodeActivity();
             }
         });
