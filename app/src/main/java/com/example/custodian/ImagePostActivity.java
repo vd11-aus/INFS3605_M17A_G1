@@ -23,12 +23,17 @@ import android.widget.Spinner;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.UploadTask;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,6 +56,7 @@ public class ImagePostActivity extends AppCompatActivity {
     Spinner mCategorySelect;
     ImageView mSelectImage;
 
+    String uniqueEntry = System.currentTimeMillis()/1000 + "-" + codeGenerator();
     Uri imageLocation;
     Integer postcode;
     Boolean imageSelected = false;
@@ -67,6 +73,7 @@ public class ImagePostActivity extends AppCompatActivity {
         mOverview = findViewById(R.id.etImagePostOverview);
         mBackgroundImage = findViewById(R.id.ivImagePostBackground);
         mCategorySelect = findViewById(R.id.spImagePostCategorySelect);
+        mSelectImage = findViewById(R.id.ivImagePostInsertMedia);
 
         Intent intent = getIntent();
         postcode = intent.getIntExtra("POSTCODE", 0);
@@ -103,7 +110,7 @@ public class ImagePostActivity extends AppCompatActivity {
             }
         });
 
-        // Select profile picture
+        // Select image media
         mSelectImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,7 +143,7 @@ public class ImagePostActivity extends AppCompatActivity {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     selectImage();
                 } else {
-                    Snackbar.make(findViewById(R.id.clCreateAccountMainLayout),
+                    Snackbar.make(findViewById(R.id.clImagePostMainLayout),
                             "Permission denied.", Snackbar.LENGTH_SHORT).show();
                 }
             }
@@ -164,18 +171,32 @@ public class ImagePostActivity extends AppCompatActivity {
 
     // Upload data
     private void submitData() {
-        String uniqueEntry = System.currentTimeMillis()/1000 + "-" + codeGenerator();
-        Map<String, Object> map = new HashMap<>();
-        map.put("title", mTitle.getText().toString());
-        map.put("overview", mOverview.getText().toString());
-        map.put("type", "image");
-        map.put("category", mCategorySelect.getSelectedItem().toString());
-        map.put("postcode", postcode);
-        map.put("content", "");
-        map.put("user", FirebaseAuth.getInstance().getCurrentUser().getUid());
-        FirebaseFirestore.getInstance().collection("entries").document(uniqueEntry).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+        Snackbar.make(findViewById(R.id.clImagePostMainLayout),
+                "Submitting data - please wait.", Snackbar.LENGTH_INDEFINITE).show();
+        FirebaseStorage.getInstance().getReference().child("entries/" + uniqueEntry).putFile(imageLocation).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<Void> task) {
+            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                FirebaseStorage.getInstance().getReference().child("entries/" + uniqueEntry).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Map<String, Object> map = new HashMap<>();
+                        Timestamp time = new Timestamp(System.currentTimeMillis());
+                        map.put("time", time);
+                        map.put("title", mTitle.getText().toString());
+                        map.put("overview", mOverview.getText().toString());
+                        map.put("type", "image");
+                        map.put("category", mCategorySelect.getSelectedItem().toString());
+                        map.put("postcode", postcode);
+                        map.put("content", uri.toString());
+                        map.put("user", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                        FirebaseFirestore.getInstance().collection("entries").document(uniqueEntry).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                launchIndigenousQuestionsActivity();
+                            }
+                        });
+                    }
+                });
             }
         });
     }
@@ -223,15 +244,7 @@ public class ImagePostActivity extends AppCompatActivity {
         alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Snackbar.make(findViewById(R.id.clImagePostMainLayout),
-                        "Submitting data - please wait.", Snackbar.LENGTH_INDEFINITE).show();
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        submitData();
-                        launchIndigenousQuestionsActivity();
-                    }
-                }, 5000);
+                submitData();
             }
         });
         alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -252,6 +265,7 @@ public class ImagePostActivity extends AppCompatActivity {
     // Go to IndigenousQuestionsActivity
     private void launchIndigenousQuestionsActivity() {
         Intent intent = new Intent(this, IndigenousQuestionsActivity.class);
+        intent.putExtra("ENTRY_ID", uniqueEntry);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }

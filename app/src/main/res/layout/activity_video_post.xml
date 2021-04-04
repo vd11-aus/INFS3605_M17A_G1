@@ -162,20 +162,25 @@
         app:layout_constraintTop_toTopOf="@+id/ivVideoPostBackgroundTwo"
         app:srcCompat="@drawable/ic_baseline_arrow_drop_down_24" />
 
-    <VideoView
-        android:id="@+id/vvVideoPostMediaPreview"
+    <FrameLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="35dp"
         app:layout_constraintBottom_toBottomOf="@+id/ivVideoPostBackgroundThree"
         app:layout_constraintEnd_toEndOf="@+id/ivVideoPostBackgroundThree"
         app:layout_constraintStart_toStartOf="@+id/ivVideoPostBackgroundThree"
-        app:layout_constraintTop_toTopOf="@+id/ivVideoPostBackgroundThree" />
+        app:layout_constraintTop_toTopOf="@+id/ivVideoPostBackgroundThree">
+
+        <VideoView
+            android:id="@+id/vvVideoPostMediaPreview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
 
     <ImageView
         android:id="@+id/ivVideoPostInsertMedia"
@@ -183,12 +188,27 @@
         android:layout_height="0dp"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/ivVideoPostBackgroundThree"
         app:layout_constraintEnd_toEndOf="@+id/ivVideoPostBackgroundThree"
         app:layout_constraintStart_toStartOf="@+id/ivVideoPostBackgroundThree"
         app:layout_constraintTop_toTopOf="@+id/ivVideoPostBackgroundThree"
         app:srcCompat="@drawable/insert_media_large" />
+
+    <ImageButton
+        android:id="@+id/ibVideoPostInsertMediaAlternate"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="55dp"
+        android:background="@drawable/custom_circle_1"
+        android:rotation="45"
+        app:layout_constraintBottom_toTopOf="@+id/btVideoPostProceed"
+        app:layout_constraintEnd_toEndOf="@+id/btVideoPostProceed"
+        app:srcCompat="@drawable/ic_baseline_attach_file_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

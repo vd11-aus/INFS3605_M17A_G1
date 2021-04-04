@@ -139,13 +139,6 @@ public class CreateAccountActivity extends AppCompatActivity {
                         Snackbar.make(findViewById(R.id.clCreateAccountMainLayout),
                                 "Confirming user credentials. You will be logged in shortly.", Snackbar.LENGTH_INDEFINITE).show();
                         createUser();
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                addUserDetails();
-                                launchWelcomeActivity();
-                            }
-                        }, 5000);
                         break;
                 }
             }
@@ -273,6 +266,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+                addUserDetails();
             }
         });
     }
@@ -284,6 +278,7 @@ public class CreateAccountActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Uri uri) {
                 firebaseAuth.getCurrentUser().updateProfile(new UserProfileChangeRequest.Builder().setPhotoUri(uri).build());
+                launchWelcomeActivity();
             }
         });
         Map<String, Object> map = new HashMap<>();

@@ -23,6 +23,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -43,6 +44,7 @@ public class TextPostActivity extends AppCompatActivity {
     Spinner mCategorySelect;
     EditText mContent;
 
+    String uniqueEntry = System.currentTimeMillis()/1000 + "-" + codeGenerator();
     Integer postcode;
 
     @Override
@@ -86,7 +88,7 @@ public class TextPostActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!checkFields()) {
-                    Snackbar.make(findViewById(R.id.clImagePostMainLayout),
+                    Snackbar.make(findViewById(R.id.clTextPostMainLayout),
                             "You haven't filled out all the fields yet.", Snackbar.LENGTH_SHORT).show();
                 } else {
                     showProceedWarningDialog(getCurrentFocus());
@@ -98,7 +100,7 @@ public class TextPostActivity extends AppCompatActivity {
     // Check fields have been filled
     private boolean checkFields() {
         boolean returnValue = true;
-        if (mTitle.getText().toString().isEmpty() || mOverview.getText().toString().isEmpty() || mCategorySelect.getSelectedItemPosition() == 0) {
+        if (mTitle.getText().toString().isEmpty() || mOverview.getText().toString().isEmpty() || mCategorySelect.getSelectedItemPosition() == 0 || mContent.getText().toString().isEmpty()) {
             returnValue = false;
         }
         return returnValue;
@@ -106,8 +108,11 @@ public class TextPostActivity extends AppCompatActivity {
 
     // Upload data
     private void submitData() {
-        String uniqueEntry = System.currentTimeMillis()/1000 + "-" + codeGenerator();
+        Snackbar.make(findViewById(R.id.clTextPostMainLayout),
+                "Submitting data - please wait.", Snackbar.LENGTH_INDEFINITE).show();
         Map<String, Object> map = new HashMap<>();
+        Timestamp time = new Timestamp(System.currentTimeMillis());
+        map.put("time", time);
         map.put("title", mTitle.getText().toString());
         map.put("overview", mOverview.getText().toString());
         map.put("type", "text");
@@ -118,6 +123,7 @@ public class TextPostActivity extends AppCompatActivity {
         FirebaseFirestore.getInstance().collection("entries").document(uniqueEntry).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
+                launchIndigenousQuestionsActivity();
             }
         });
     }
@@ -165,15 +171,7 @@ public class TextPostActivity extends AppCompatActivity {
         alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Snackbar.make(findViewById(R.id.clTextPostMainLayout),
-                        "Submitting data - please wait.", Snackbar.LENGTH_INDEFINITE).show();
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        submitData();
-                        launchIndigenousQuestionsActivity();
-                    }
-                }, 5000);
+                submitData();
             }
         });
         alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -194,6 +192,7 @@ public class TextPostActivity extends AppCompatActivity {
     // Go to IndigenousQuestionsActivity
     private void launchIndigenousQuestionsActivity() {
         Intent intent = new Intent(this, IndigenousQuestionsActivity.class);
+        intent.putExtra("ENTRY_ID", uniqueEntry);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }

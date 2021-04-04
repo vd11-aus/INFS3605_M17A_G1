@@ -10,6 +10,11 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
 
     // Disable action bar back button
@@ -54,6 +59,11 @@ public class MainActivity extends AppCompatActivity {
                 launchInformationActivity();
             }
         });
+
+        // Get time
+        Timestamp time = new Timestamp(System.currentTimeMillis());
+        Date date = new Date (time.getTime());
+        System.out.println(date);
     }
 
     // Go to LoginActivity
