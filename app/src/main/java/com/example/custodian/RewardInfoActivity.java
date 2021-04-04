@@ -86,6 +86,8 @@ public class RewardInfoActivity extends AppCompatActivity {
                 });
             }
         });
+
+        // Cancel reward redemption
         mCancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

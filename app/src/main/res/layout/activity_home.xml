@@ -423,7 +423,7 @@
             android:id="@+id/ibNavigationNewPost"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:background="@drawable/custom_new_post_background"
+            android:background="@drawable/custom_button_style_2"
             android:scaleType="centerInside"
             app:layout_constraintBottom_toBottomOf="@+id/ivNavigationBackground"
             app:layout_constraintEnd_toEndOf="parent"

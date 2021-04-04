@@ -81,14 +81,17 @@ public class NewPostActivity extends AppCompatActivity {
             case "text":
                 System.out.println("Going to text post.");
                 startActivity(textIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
             case "image":
                 System.out.println("Going to image post.");
                 startActivity(imageIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
             case "video":
                 System.out.println("Going to video post.");
                 startActivity(videoIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
         }
     }

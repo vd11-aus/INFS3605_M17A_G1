@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clTextPostMainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E0E0E0"
@@ -10,7 +11,7 @@
     <ImageView
         android:id="@+id/ivTextPostBackground"
         android:layout_width="0dp"
-        android:layout_height="175dp"
+        android:layout_height="155dp"
         android:scaleType="centerCrop"
         android:tint="#6F000000"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,12 +20,12 @@
         app:srcCompat="@android:color/black" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/ivTextPostBackgroundOne"
         android:layout_width="0dp"
-        android:layout_height="175dp"
+        android:layout_height="160dp"
         android:layout_marginStart="25dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="115dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="25dp"
         android:layout_marginRight="25dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,25 +34,25 @@
         app:srcCompat="@drawable/custom_background_1" />
 
     <EditText
-        android:id="@+id/etLoginEmailInput2"
+        android:id="@+id/etTextPostTitle"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:background="#FFFFFF"
         android:ems="10"
         android:fontFamily="@font/montserrat"
-        android:hint="Title"
-        android:inputType="textEmailAddress"
+        android:hint="Your title"
+        android:inputType="text"
         android:paddingLeft="20dp"
         android:paddingRight="45dp"
         android:textColor="#000000"
         android:textColorHint="#555555"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/ivTextPostBackground"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/imageView2" />
+        app:layout_constraintEnd_toEndOf="@+id/ivTextPostBackgroundOne"
+        app:layout_constraintStart_toStartOf="@+id/ivTextPostBackgroundOne" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/etTextPostOverview"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="25dp"
@@ -63,12 +64,124 @@
         android:ems="10"
         android:fontFamily="@font/montserrat"
         android:gravity="start|top"
-        android:hint="Briefly describe your environmental post."
+        android:hint="Briefly describe your post."
         android:inputType="textMultiLine"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/etLoginEmailInput2" />
+        app:layout_constraintBottom_toBottomOf="@+id/ivTextPostBackgroundOne"
+        app:layout_constraintEnd_toEndOf="@+id/ivTextPostBackgroundOne"
+        app:layout_constraintStart_toStartOf="@+id/ivTextPostBackgroundOne"
+        app:layout_constraintTop_toBottomOf="@+id/etTextPostTitle" />
+
+    <Button
+        android:id="@+id/btTextPostProceed"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/custom_background_1"
+        android:fontFamily="@font/montserrat"
+        android:text="Proceed"
+        android:textColor="#F0C862"
+        android:textStyle="bold"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/ibTextPostBack"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:tint="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
+    <ImageView
+        android:id="@+id/ivTextPostBackgroundTwo"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivTextPostBackgroundOne"
+        app:srcCompat="@drawable/custom_background_1" />
+
+    <ImageView
+        android:id="@+id/ivTextPostBackgroundThree"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="75dp"
+        app:layout_constraintBottom_toTopOf="@+id/btTextPostProceed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivTextPostBackgroundTwo"
+        app:srcCompat="@drawable/custom_background_1" />
+
+    <EditText
+        android:id="@+id/etTextPostContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        android:background="#FFFFFF"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:gravity="start|top"
+        android:hint="What did you want to say?"
+        android:inputType="textMultiLine"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivTextPostBackgroundThree"
+        app:layout_constraintEnd_toEndOf="@+id/ivTextPostBackgroundThree"
+        app:layout_constraintStart_toStartOf="@+id/ivTextPostBackgroundThree"
+        app:layout_constraintTop_toTopOf="@+id/ivTextPostBackgroundThree" />
+
+    <Spinner
+        android:id="@+id/spTextPostCategorySelect"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/ivTextPostBackgroundTwo"
+        app:layout_constraintEnd_toEndOf="@+id/ivTextPostBackgroundTwo"
+        app:layout_constraintStart_toStartOf="@+id/ivTextPostBackgroundTwo"
+        app:layout_constraintTop_toTopOf="@+id/ivTextPostBackgroundTwo" />
+
+    <ImageView
+        android:id="@+id/ivTextPostCategoryDownImage"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivTextPostBackgroundTwo"
+        app:layout_constraintEnd_toEndOf="@+id/ivTextPostBackgroundTwo"
+        app:layout_constraintTop_toTopOf="@+id/ivTextPostBackgroundTwo"
+        app:srcCompat="@drawable/ic_baseline_arrow_drop_down_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
