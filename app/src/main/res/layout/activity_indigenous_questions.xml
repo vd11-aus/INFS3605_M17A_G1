@@ -2,8 +2,202 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clIndigenousQuestionsMainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E0E0E0"
     tools:context=".IndigenousQuestionsActivity">
+
+    <Button
+        android:id="@+id/btIndigenousQuestionsSubmit"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/custom_button_style_2"
+        android:fontFamily="@font/montserrat"
+        android:text="Submit"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivIndigenousQuestionsBackground"
+        android:layout_width="0dp"
+        android:layout_height="275dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/custom_background_2" />
+
+    <TextView
+        android:id="@+id/tvIndigenousQuestionsBackgroundOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Your thoughts?"
+        android:textColor="#FFFFFF"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvIndigenousQuestionsBackgroundTwo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center"
+        android:text="Please give us your opinions on the state of the Indigenous culture."
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvIndigenousQuestionsBackgroundOne" />
+
+    <ImageView
+        android:id="@+id/ivIndigenousQuestionsBackgroundOne"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvIndigenousQuestionsBackgroundTwo"
+        app:srcCompat="@drawable/custom_background_1" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivIndigenousQuestionsBackgroundOne"
+        app:layout_constraintEnd_toEndOf="@+id/ivIndigenousQuestionsBackgroundOne"
+        app:layout_constraintStart_toStartOf="@+id/ivIndigenousQuestionsBackgroundOne"
+        app:layout_constraintTop_toTopOf="@+id/ivIndigenousQuestionsBackgroundOne">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tvIndigenousQuestionsTextThree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:text="What do you think about the health of the Indigenous heritage in your community?"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.hsalf.smilerating.SmileRating
+                    android:id="@+id/srIndigenousQuestionsRatingOne"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvIndigenousQuestionsTextThree" />
+
+                <TextView
+                    android:id="@+id/tvIndigenousQuestionsTextFour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="How do you feel about the current work being done to protect Indigenous communities against climate change?"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/srIndigenousQuestionsRatingOne" />
+
+                <com.hsalf.smilerating.SmileRating
+                    android:id="@+id/srIndigenousQuestionsRatingTwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvIndigenousQuestionsTextFour" />
+
+                <TextView
+                    android:id="@+id/tvIndigenousQuestionsTextFive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="What is your stance on public exposure to the harming effects of climate change on the traditional Indigenous way of life."
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/srIndigenousQuestionsRatingTwo" />
+
+                <com.hsalf.smilerating.SmileRating
+                    android:id="@+id/srIndigenousQuestionsRatingThree"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvIndigenousQuestionsTextFive" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/ivIndigenousQuestionsBackgroundTwo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="75dp"
+        app:layout_constraintBottom_toTopOf="@+id/btIndigenousQuestionsSubmit"
+        app:layout_constraintEnd_toEndOf="@+id/ivIndigenousQuestionsBackgroundOne"
+        app:layout_constraintStart_toStartOf="@+id/ivIndigenousQuestionsBackgroundOne"
+        app:layout_constraintTop_toBottomOf="@+id/ivIndigenousQuestionsBackgroundOne"
+        app:srcCompat="@drawable/custom_background_1" />
+
+    <EditText
+        android:id="@+id/etIndigenousQuestionsComments"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        android:background="#FFFFFF"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:gravity="start|top"
+        android:hint="Optional: Any additional comments?"
+        android:inputType="textMultiLine"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivIndigenousQuestionsBackgroundTwo"
+        app:layout_constraintEnd_toEndOf="@+id/ivIndigenousQuestionsBackgroundTwo"
+        app:layout_constraintStart_toStartOf="@+id/ivIndigenousQuestionsBackgroundTwo"
+        app:layout_constraintTop_toTopOf="@+id/ivIndigenousQuestionsBackgroundTwo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

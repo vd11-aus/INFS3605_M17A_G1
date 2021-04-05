@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -37,6 +38,7 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         // Assigning of variable values
         mHomeButton = findViewById(R.id.ibNavigationHome);
@@ -118,6 +120,7 @@ public class ProfileActivity extends AppCompatActivity {
             case "new-post":
                 System.out.println("Section clicked: New Post");
                 startActivity(newPostIntent);
+                overridePendingTransition(R.anim.slide_in_top, R.anim.slide_out_bottom);
                 break;
             case "rewards":
                 System.out.println("Section clicked: Rewards");
