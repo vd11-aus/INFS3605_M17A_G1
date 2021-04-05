@@ -55,7 +55,7 @@
         android:layout_marginTop="15dp"
         android:fontFamily="@font/montserrat"
         android:gravity="center"
-        android:text="You can redeem points to get prizes from the Rewards section. Please wait while we return you to the Home Screen."
+        android:text="You can redeem points to get prizes from the Rewards section. Click anywhere to return to the Home Screen."
         app:layout_constraintEnd_toEndOf="@+id/tvPointAccumulationTextOne"
         app:layout_constraintStart_toStartOf="@+id/tvPointAccumulationTextOne"
         app:layout_constraintTop_toBottomOf="@+id/tvPointAccumulationPoints" />

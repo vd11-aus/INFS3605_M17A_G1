@@ -7,7 +7,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,6 +31,7 @@ public class PointAccumulationActivity extends AppCompatActivity {
 
     // Declaration of variables
     TextView mPoints;
+    Button mNextButton;
 
     Context context;
     String type;
@@ -41,6 +44,7 @@ public class PointAccumulationActivity extends AppCompatActivity {
 
         // Assigning of variable values
         mPoints = findViewById(R.id.tvPointAccumulationPoints);
+        mNextButton = findViewById(R.id.btPointAccumulationNext);
 
         context = this;
 
@@ -79,6 +83,13 @@ public class PointAccumulationActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                     }
                 });
+            }
+        });
+
+        mNextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchHomeActivity();
             }
         });
     }
