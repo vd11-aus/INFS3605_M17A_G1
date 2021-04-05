@@ -14,21 +14,9 @@
         android:scaleType="centerCrop"
         android:tint="#6F000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/black" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        app:layout_constraintBottom_toBottomOf="@+id/ivRewardsBackground"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ivRewardsBackground"
-        app:srcCompat="@drawable/custom_circle_3" />
+        app:srcCompat="@drawable/custom_background_2" />
 
     <TextView
         android:id="@+id/tvRewardsTextOne"
@@ -45,18 +33,43 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivRewardsBackground"
+        app:layout_constraintEnd_toEndOf="@+id/tvRewardsCurrentPoints"
+        app:layout_constraintStart_toStartOf="@+id/ivRewardsPointsImageOne"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/custom_background_1" />
+
+    <ImageView
+        android:id="@+id/ivRewardsPointsImageOne"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginRight="75dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivRewardsBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivRewardsBackground"
+        app:srcCompat="@drawable/points" />
+
     <TextView
         android:id="@+id/tvRewardsCurrentPoints"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
         android:fontFamily="@font/montserrat"
+        android:paddingRight="7dp"
         android:text="0"
-        android:textColor="#FFFFFF"
-        android:textSize="28sp"
+        android:textColor="#BBBBBB"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/ivRewardsPointsImageOne"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <ScrollView
@@ -100,34 +113,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
-
-    <TextView
-        android:id="@+id/tvRewardsTextTwo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="35dp"
-        android:fontFamily="@font/montserrat"
-        android:text="You have"
-        android:textColor="#FFFFFF"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
-
-    <TextView
-        android:id="@+id/tvRewardsTextThree"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:fontFamily="@font/montserrat"
-        android:text="pts"
-        android:textColor="#FFFFFF"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clNavigationLayout"

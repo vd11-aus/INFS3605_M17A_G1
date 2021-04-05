@@ -1,8 +1,10 @@
 package com.example.custodian;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -39,6 +41,7 @@ public class IndigenousQuestionsActivity extends AppCompatActivity {
     Button mSubmitButton;
 
     String document;
+    String type;
 
     // Brought to you by: https://github.com/sujithkanna/SmileyRating
 
@@ -62,6 +65,7 @@ public class IndigenousQuestionsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         document = intent.getStringExtra("ENTRY_ID");
+        type = intent.getStringExtra("ENTRY_TYPE");
 
         // Get background
         BackgroundGenerator background = new BackgroundGenerator();
@@ -71,9 +75,28 @@ public class IndigenousQuestionsActivity extends AppCompatActivity {
         mSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showSubmitWarningDialog(getCurrentFocus());
+            }
+        });
+    }
+
+    // Warn user that you can't go back once you proceed
+    public void showSubmitWarningDialog(View v) {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle("Are you sure?");
+        alert.setMessage("If you submit, you will not be able to go back to change your submission.");
+        alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
                 submit();
             }
         });
+        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        alert.create().show();
     }
 
     // Initialise after performing field check
@@ -156,15 +179,16 @@ public class IndigenousQuestionsActivity extends AppCompatActivity {
         FirebaseFirestore.getInstance().collection("entries").document(document).update(map).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                launchHomeActivity();
+                launchPointAccumulationActivity();
             }
         });
     }
 
-    // Go to HomeActivity
-    private void launchHomeActivity() {
-        Intent intent = new Intent(this, HomeActivity.class);
+    // Go to PointAccumulationActivity
+    private void launchPointAccumulationActivity() {
+        Intent intent = new Intent(this, PointAccumulationActivity.class);
+        intent.putExtra("ENTRY_TYPE", type);
         startActivity(intent);
-        overridePendingTransition(R.anim.slide_in_bottom, R.anim.slide_out_top);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 }

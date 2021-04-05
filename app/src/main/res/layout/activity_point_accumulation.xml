@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clPointAccumulationMainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E0E0E0"
+    tools:context=".PointAccumulationActivity">
+
+    <ImageView
+        android:id="@+id/ivPointAccumulationBackgroundOne"
+        android:layout_width="0dp"
+        android:layout_height="380dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/custom_background_1" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="305dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivPointAccumulationBackgroundOne"
+        app:layout_constraintEnd_toEndOf="@+id/ivPointAccumulationBackgroundOne"
+        app:layout_constraintStart_toStartOf="@+id/ivPointAccumulationBackgroundOne"
+        app:srcCompat="@drawable/points" />
+
+    <TextView
+        android:id="@+id/tvPointAccumulationTextOne"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center"
+        android:text="Thanks for helping us make a difference in the world. Here are some points in return for your troubles:"
+        app:layout_constraintBottom_toTopOf="@+id/tvPointAccumulationPoints"
+        app:layout_constraintEnd_toEndOf="@+id/ivPointAccumulationBackgroundOne"
+        app:layout_constraintStart_toStartOf="@+id/ivPointAccumulationBackgroundOne" />
+
+    <TextView
+        android:id="@+id/tvPointAccumulationTextTwo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center"
+        android:text="You can redeem points to get prizes from the Rewards section. Please wait while we return you to the Home Screen."
+        app:layout_constraintEnd_toEndOf="@+id/tvPointAccumulationTextOne"
+        app:layout_constraintStart_toStartOf="@+id/tvPointAccumulationTextOne"
+        app:layout_constraintTop_toBottomOf="@+id/tvPointAccumulationPoints" />
+
+    <TextView
+        android:id="@+id/tvPointAccumulationPoints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="+0pts"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ivPointAccumulationBackgroundOne"
+        app:layout_constraintEnd_toEndOf="@+id/tvPointAccumulationTextOne"
+        app:layout_constraintStart_toStartOf="@+id/tvPointAccumulationTextOne"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <Button
+        android:id="@+id/btPointAccumulationNext"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

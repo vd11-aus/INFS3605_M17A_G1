@@ -195,6 +195,7 @@ public class TextPostActivity extends AppCompatActivity {
     private void launchIndigenousQuestionsActivity() {
         Intent intent = new Intent(this, IndigenousQuestionsActivity.class);
         intent.putExtra("ENTRY_ID", uniqueEntry);
+        intent.putExtra("ENTRY_TYPE", "text");
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }

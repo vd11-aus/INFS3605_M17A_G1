@@ -11,7 +11,7 @@
     <string-array name="categories">
         <item>-- Pick a Category --</item>
         <item>Environmental Observations</item>
-        <item>Natural Disasters</item>
+        <item>Geographic Hazards</item>
         <item>Eco-friendly Behaviours</item>
         <item>Thoughts and Others</item>
     </string-array>

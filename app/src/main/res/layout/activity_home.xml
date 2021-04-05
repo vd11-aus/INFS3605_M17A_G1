@@ -12,11 +12,11 @@
         android:layout_width="0dp"
         android:layout_height="145dp"
         android:scaleType="centerCrop"
-        android:tint="#6F000000"
+        android:tint="#4F000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/black" />
+        app:srcCompat="@drawable/custom_background_2" />
 
     <ScrollView
         android:layout_width="0dp"
@@ -380,7 +380,7 @@
         android:layout_marginTop="120dp"
         android:layout_marginEnd="25dp"
         android:layout_marginRight="25dp"
-        android:background="@drawable/custom_geolocation_button"
+        android:background="@drawable/custom_circle_1"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/ivHomeBackground"
@@ -392,7 +392,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
-        android:alpha="0.75"
+        android:alpha="0.85"
         android:fontFamily="@font/montserrat"
         android:text="Unknown Location"
         android:textColor="#FFFFFF"
