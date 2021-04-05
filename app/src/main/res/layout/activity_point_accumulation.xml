@@ -23,7 +23,7 @@
         app:srcCompat="@drawable/custom_background_1" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/ivPointAccumulationPoints"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginBottom="305dp"
@@ -71,7 +71,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/ivPointAccumulationBackgroundOne"
         app:layout_constraintEnd_toEndOf="@+id/tvPointAccumulationTextOne"
         app:layout_constraintStart_toStartOf="@+id/tvPointAccumulationTextOne"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/ivPointAccumulationPoints" />
 
     <Button
         android:id="@+id/btPointAccumulationNext"
