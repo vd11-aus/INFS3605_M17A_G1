@@ -43,7 +43,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginLeft="15dp"
             android:fontFamily="@font/montserrat"
-            android:text="TheRealStevieJ"
+            android:text="loading ..."
             app:layout_constraintBottom_toBottomOf="@+id/ivLeaderboardThreeIcon"
             app:layout_constraintStart_toEndOf="@+id/ivLeaderboardThreeIcon"
             app:layout_constraintTop_toTopOf="@+id/ivLeaderboardThreeIcon" />
@@ -64,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat"
-            android:text="900pts"
+            android:text="0pts"
             android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="@+id/ivLeaderboardThreeStats"
             app:layout_constraintEnd_toEndOf="@+id/ivLeaderboardThreeStats"

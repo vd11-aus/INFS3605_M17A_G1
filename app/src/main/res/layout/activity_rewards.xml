@@ -19,95 +19,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:color/black" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clNavigationLayout"
-        android:layout_width="0dp"
-        android:layout_height="110dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageView
-            android:id="@+id/ivNavigationBackground"
-            android:layout_width="365dp"
-            android:layout_height="60dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/custom_background_1" />
-
-        <ImageButton
-            android:id="@+id/ibNavigationNewPost"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="@drawable/custom_button_style_2"
-            android:scaleType="centerInside"
-            app:layout_constraintBottom_toBottomOf="@+id/ivNavigationBackground"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/ivNavigationBackground"
-            app:srcCompat="@drawable/ic_baseline_create_24" />
-
-        <ImageButton
-            android:id="@+id/ibNavigationHistory"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@android:color/transparent"
-            android:scaleType="centerInside"
-            android:scaleX="0.6"
-            android:scaleY="0.6"
-            app:layout_constraintBottom_toBottomOf="@+id/ivNavigationBackground"
-            app:layout_constraintEnd_toStartOf="@+id/ibNavigationNewPost"
-            app:layout_constraintTop_toTopOf="@+id/ivNavigationBackground"
-            app:srcCompat="@drawable/ic_baseline_menu_book_24" />
-
-        <ImageButton
-            android:id="@+id/ibNavigationHome"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@android:color/transparent"
-            android:scaleX="0.6"
-            android:scaleY="0.6"
-            app:layout_constraintBottom_toBottomOf="@+id/ivNavigationBackground"
-            app:layout_constraintEnd_toStartOf="@+id/ibNavigationHistory"
-            app:layout_constraintTop_toTopOf="@+id/ivNavigationBackground"
-            app:srcCompat="@drawable/ic_baseline_home_24" />
-
-        <ImageButton
-            android:id="@+id/ibNavigationRewards"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:background="@android:color/transparent"
-            android:scaleX="0.6"
-            android:scaleY="0.6"
-            app:layout_constraintBottom_toBottomOf="@+id/ivNavigationBackground"
-            app:layout_constraintStart_toEndOf="@+id/ibNavigationNewPost"
-            app:layout_constraintTop_toTopOf="@+id/ivNavigationBackground"
-            app:srcCompat="@drawable/ic_baseline_grade_24" />
-
-        <ImageButton
-            android:id="@+id/ibNavigationProfile"
-            android:layout_width="60dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:background="@android:color/transparent"
-            android:scaleX="0.6"
-            android:scaleY="0.6"
-            app:layout_constraintBottom_toBottomOf="@+id/ivNavigationBackground"
-            app:layout_constraintStart_toEndOf="@+id/ibNavigationRewards"
-            app:layout_constraintTop_toTopOf="@+id/ivNavigationBackground"
-            app:srcCompat="@drawable/ic_baseline_person_24" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="100dp"
@@ -217,5 +128,94 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clNavigationLayout"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/ivNavigationBackground"
+            android:layout_width="365dp"
+            android:layout_height="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/custom_background_1" />
+
+        <ImageButton
+            android:id="@+id/ibNavigationNewPost"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/custom_button_style_2"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="@+id/ivNavigationBackground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ivNavigationBackground"
+            app:srcCompat="@drawable/ic_baseline_create_24" />
+
+        <ImageButton
+            android:id="@+id/ibNavigationHistory"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@android:color/transparent"
+            android:scaleType="centerInside"
+            android:scaleX="0.6"
+            android:scaleY="0.6"
+            app:layout_constraintBottom_toBottomOf="@+id/ivNavigationBackground"
+            app:layout_constraintEnd_toStartOf="@+id/ibNavigationNewPost"
+            app:layout_constraintTop_toTopOf="@+id/ivNavigationBackground"
+            app:srcCompat="@drawable/ic_baseline_menu_book_24" />
+
+        <ImageButton
+            android:id="@+id/ibNavigationHome"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@android:color/transparent"
+            android:scaleX="0.6"
+            android:scaleY="0.6"
+            app:layout_constraintBottom_toBottomOf="@+id/ivNavigationBackground"
+            app:layout_constraintEnd_toStartOf="@+id/ibNavigationHistory"
+            app:layout_constraintTop_toTopOf="@+id/ivNavigationBackground"
+            app:srcCompat="@drawable/ic_baseline_home_24" />
+
+        <ImageButton
+            android:id="@+id/ibNavigationRewards"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@android:color/transparent"
+            android:scaleX="0.6"
+            android:scaleY="0.6"
+            app:layout_constraintBottom_toBottomOf="@+id/ivNavigationBackground"
+            app:layout_constraintStart_toEndOf="@+id/ibNavigationNewPost"
+            app:layout_constraintTop_toTopOf="@+id/ivNavigationBackground"
+            app:srcCompat="@drawable/ic_baseline_grade_24" />
+
+        <ImageButton
+            android:id="@+id/ibNavigationProfile"
+            android:layout_width="60dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@android:color/transparent"
+            android:scaleX="0.6"
+            android:scaleY="0.6"
+            app:layout_constraintBottom_toBottomOf="@+id/ivNavigationBackground"
+            app:layout_constraintStart_toEndOf="@+id/ibNavigationRewards"
+            app:layout_constraintTop_toTopOf="@+id/ivNavigationBackground"
+            app:srcCompat="@drawable/ic_baseline_person_24" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
