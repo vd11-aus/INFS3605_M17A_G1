@@ -49,9 +49,6 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     // Declaration of variables
-    private static final int PERMISSION_CODE = 1001;
-    private static final String TAG = "GEOLOCATION";
-
     private ImageButton mHomeButton;
     private ImageButton mHistoryButton;
     private ImageButton mNewPostButton;

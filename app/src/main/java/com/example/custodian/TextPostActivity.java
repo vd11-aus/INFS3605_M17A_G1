@@ -24,6 +24,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import org.w3c.dom.Text;
+
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -65,6 +67,7 @@ public class TextPostActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         postcode = intent.getIntExtra("POSTCODE", 0);
+        System.out.println("Postcode for entry: " + postcode);
 
         String[] categories = getResources().getStringArray(R.array.categories);
         ArrayAdapter categoryAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, categories);
@@ -110,8 +113,8 @@ public class TextPostActivity extends AppCompatActivity {
 
     // Upload data
     private void submitData() {
-        Snackbar.make(findViewById(R.id.clTextPostMainLayout),
-                "Submitting data - please wait.", Snackbar.LENGTH_INDEFINITE).show();
+        final LoadingDialog loadingDialog = new LoadingDialog(TextPostActivity.this);
+        loadingDialog.startLoadingAnimation();
         Map<String, Object> map = new HashMap<>();
         Timestamp time = new Timestamp(System.currentTimeMillis());
         map.put("time", time);

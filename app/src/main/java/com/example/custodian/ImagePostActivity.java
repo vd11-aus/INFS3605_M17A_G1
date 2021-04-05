@@ -9,6 +9,7 @@ import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -79,6 +80,7 @@ public class ImagePostActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         postcode = intent.getIntExtra("POSTCODE", 0);
+        System.out.println("Postcode for entry: " + postcode);
 
         String[] categories = getResources().getStringArray(R.array.categories);
         ArrayAdapter categoryAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, categories);
@@ -173,8 +175,8 @@ public class ImagePostActivity extends AppCompatActivity {
 
     // Upload data
     private void submitData() {
-        Snackbar.make(findViewById(R.id.clImagePostMainLayout),
-                "Submitting data - please wait.", Snackbar.LENGTH_INDEFINITE).show();
+        final LoadingDialog loadingDialog = new LoadingDialog(ImagePostActivity.this);
+        loadingDialog.startLoadingAnimation();
         FirebaseStorage.getInstance().getReference().child("entries/" + uniqueEntry).putFile(imageLocation).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {

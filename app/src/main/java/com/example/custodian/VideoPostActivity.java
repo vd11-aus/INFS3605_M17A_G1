@@ -84,6 +84,7 @@ public class VideoPostActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         postcode = intent.getIntExtra("POSTCODE", 0);
+        System.out.println("Postcode for entry: " + postcode);
 
         mSelectVideo.setVisibility(View.VISIBLE);
         mSelectVideoAlternate.setVisibility(View.GONE);
@@ -204,8 +205,8 @@ public class VideoPostActivity extends AppCompatActivity {
 
     // Upload data
     private void submitData() {
-        Snackbar.make(findViewById(R.id.clVideoPostMainLayout),
-                "Submitting data - please wait.", Snackbar.LENGTH_INDEFINITE).show();
+        final LoadingDialog loadingDialog = new LoadingDialog(VideoPostActivity.this);
+        loadingDialog.startLoadingAnimation();
         FirebaseStorage.getInstance().getReference().child("entries/" + uniqueEntry).putFile(videoLocation).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {

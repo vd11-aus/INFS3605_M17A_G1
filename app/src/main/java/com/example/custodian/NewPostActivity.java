@@ -1,8 +1,16 @@
 package com.example.custodian;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -11,6 +19,14 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 public class NewPostActivity extends AppCompatActivity {
 
@@ -25,6 +41,8 @@ public class NewPostActivity extends AppCompatActivity {
     private Button mTextButton;
     private Button mImageButton;
     private Button mVideoButton;
+
+    private Integer postCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,28 +74,82 @@ public class NewPostActivity extends AppCompatActivity {
         mTextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchXActivity("text");
+                getGeolocation("text");
             }
         });
         mImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchXActivity("image");
+                getGeolocation("image");
             }
         });
         mVideoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchXActivity("video");
+                getGeolocation("video");
             }
         });
+    }
+
+    // Finds current location
+    private void getGeolocation(String type) {
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(NewPostActivity.this, new String[] {Manifest.permission.ACCESS_COARSE_LOCATION}, 45);
+        } else if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(NewPostActivity.this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, 44);
+        } else if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_NETWORK_STATE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(NewPostActivity.this, new String[] {Manifest.permission.ACCESS_NETWORK_STATE}, 43);
+        } else {
+            Double latitude;
+            Double longitude;
+            Location gpsLocation = null;
+            Location networkLocation = null;
+            Location finalLocation = null;
+            try {
+                gpsLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                networkLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            if (gpsLocation != null) {
+                finalLocation = gpsLocation;
+                latitude = finalLocation.getLatitude();
+                longitude = finalLocation.getLongitude();
+            } else if (networkLocation != null) {
+                finalLocation = networkLocation;
+                latitude = finalLocation.getLatitude();
+                longitude = finalLocation.getLongitude();
+            } else {
+                latitude = 0.0;
+                longitude = 0.0;
+            }
+            Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+            try {
+                List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
+                String address = addresses.get(0).getAddressLine(0);
+                String city = addresses.get(0).getLocality();
+                String state = addresses.get(0).getAdminArea();
+                String country = addresses.get(0).getCountryName();
+                String postalCode = addresses.get(0).getPostalCode();
+                String knownName = addresses.get(0).getFeatureName();
+
+                postCode = Integer.parseInt(postalCode);
+                launchXActivity(type);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     // Go to New Post Part 2
     private void launchXActivity(String type) {
         Intent textIntent = new Intent(this, TextPostActivity.class);
+        textIntent.putExtra("POSTCODE", postCode);
         Intent imageIntent = new Intent(this, ImagePostActivity.class);
+        imageIntent.putExtra("POSTCODE", postCode);
         Intent videoIntent = new Intent(this, VideoPostActivity.class);
+        videoIntent.putExtra("POSTCODE", postCode);
 
         switch (type) {
             case "text":

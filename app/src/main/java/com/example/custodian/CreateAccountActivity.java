@@ -138,8 +138,8 @@ public class CreateAccountActivity extends AppCompatActivity {
                         System.out.println("Password: " + password);
                         System.out.println("Gender: " + gender);
                         System.out.println("Origin: " + origin);
-                        Snackbar.make(findViewById(R.id.clCreateAccountMainLayout),
-                                "Confirming user credentials. You will be logged in shortly.", Snackbar.LENGTH_INDEFINITE).show();
+                        final LoadingDialog loadingDialog = new LoadingDialog(CreateAccountActivity.this);
+                        loadingDialog.startLoadingAnimation();
                         createUser();
                         break;
                 }

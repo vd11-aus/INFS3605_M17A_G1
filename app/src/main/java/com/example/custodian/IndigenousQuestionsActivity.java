@@ -111,8 +111,8 @@ public class IndigenousQuestionsActivity extends AppCompatActivity {
 
     // Insert data into existing file
     private void insertData() {
-        Snackbar.make(findViewById(R.id.clIndigenousQuestionsMainLayout),
-                "Submitting data - please wait.", Snackbar.LENGTH_INDEFINITE).show();
+        final LoadingDialog loadingDialog = new LoadingDialog(IndigenousQuestionsActivity.this);
+        loadingDialog.startLoadingAnimation();
         String indigenousQuestionOne = "";
         switch (mRatingOne.getRating()) {
             case SmileRating.TERRIBLE:
