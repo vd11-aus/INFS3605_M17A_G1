@@ -38,6 +38,8 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        System.out.println("test");
+
         // Assigning of variable values
         mHomeButton = findViewById(R.id.ibNavigationHome);
         mHistoryButton = findViewById(R.id.ibNavigationHistory);
