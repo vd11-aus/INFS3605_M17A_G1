@@ -193,6 +193,7 @@ public class ImagePostActivity extends AppCompatActivity {
                         map.put("postcode", postcode);
                         map.put("content", uri.toString());
                         map.put("user", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                        map.put("analysed", false);
                         FirebaseFirestore.getInstance().collection("entries").document(uniqueEntry).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {

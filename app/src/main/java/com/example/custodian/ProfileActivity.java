@@ -3,6 +3,7 @@ package com.example.custodian;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
@@ -12,7 +13,14 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+
+import java.util.List;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -29,8 +37,6 @@ public class ProfileActivity extends AppCompatActivity {
     private ImageButton mProfileButton;
     private ImageView mBackgroundImage;
     private ImageView mProfileIcon;
-
-    FirebaseAuth firebaseAuth;
 
     private String category = "profile";
 
@@ -49,10 +55,12 @@ public class ProfileActivity extends AppCompatActivity {
         mBackgroundImage = findViewById(R.id.ivProfileBackground);
         mProfileIcon = findViewById(R.id.ivProfileSample);
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        if (firebaseAuth.getCurrentUser().getPhotoUrl() != null) {
-            Glide.with(this).load(firebaseAuth.getCurrentUser().getPhotoUrl()).into(mProfileIcon);
-        }
+        FirebaseStorage.getInstance().getReference().child("profileicons/").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Glide.with(getApplicationContext()).load(uri).into(mProfileIcon);
+            }
+        });
 
         NavigationBar navigationBar = new NavigationBar();
         navigationBar.create(mHomeButton, mHistoryButton, mNewPostButton, mRewardsButton, mProfileButton);

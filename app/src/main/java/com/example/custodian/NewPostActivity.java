@@ -1,10 +1,12 @@
 package com.example.custodian;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -74,21 +76,40 @@ public class NewPostActivity extends AppCompatActivity {
         mTextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getGeolocation("text");
+                showProceedWarningDialog(getCurrentFocus(), "text");
             }
         });
         mImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getGeolocation("image");
+                showProceedWarningDialog(getCurrentFocus(), "image");
             }
         });
         mVideoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getGeolocation("video");
+                showProceedWarningDialog(getCurrentFocus(), "video");
             }
         });
+    }
+
+    // Warn user that you can't go back once you proceed
+    public void showProceedWarningDialog(View v, String type) {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle("Are you sure?");
+        alert.setMessage("If you continue, your current location postcode will be recorded.");
+        alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                getGeolocation(type);
+            }
+        });
+        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        alert.create().show();
     }
 
     // Finds current location
