@@ -58,6 +58,7 @@
                     android:layout_height="60dp"
                     android:layout_marginStart="25dp"
                     android:layout_marginLeft="25dp"
+                    android:layout_marginTop="0dp"
                     android:layout_marginEnd="25dp"
                     android:layout_marginRight="25dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -71,6 +72,7 @@
                     android:layout_height="60dp"
                     android:layout_marginStart="25dp"
                     android:layout_marginLeft="25dp"
+                    android:layout_marginTop="3dp"
                     android:layout_marginEnd="25dp"
                     android:layout_marginRight="25dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -85,6 +87,7 @@
                     android:layout_height="60dp"
                     android:layout_marginStart="25dp"
                     android:layout_marginLeft="25dp"
+                    android:layout_marginTop="3dp"
                     android:layout_marginEnd="25dp"
                     android:layout_marginRight="25dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -109,25 +112,24 @@
                 <HorizontalScrollView
                     android:id="@+id/horizontalScrollView"
                     android:layout_width="match_parent"
-                    android:layout_height="160dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvHomeTextThree">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="160dp"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="160dp">
+                            android:layout_height="wrap_content">
 
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:id="@+id/clHomeEventsOne"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="250dp"
+                                android:layout_height="150dp"
                                 android:layout_marginStart="25dp"
                                 android:layout_marginLeft="25dp"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -135,9 +137,17 @@
 
                                 <ImageView
                                     android:id="@+id/ivHomeEventsOneBackground"
-                                    android:layout_width="250dp"
-                                    android:layout_height="150dp"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_marginBottom="5dp"
                                     android:tint="#2F000000"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent"
                                     app:srcCompat="@drawable/custom_background_2" />
@@ -175,6 +185,16 @@
                                     app:layout_constraintStart_toStartOf="@+id/tvHomeEventsOneMainText"
                                     app:layout_constraintTop_toBottomOf="@+id/tvHomeEventsOneMainText" />
 
+                                <ImageView
+                                    android:id="@+id/ivHomeEventsOneBorder"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@drawable/custom_icon_border_3" />
+
                                 <Button
                                     android:id="@+id/btHomeEventsOneInteract"
                                     android:layout_width="0dp"
@@ -188,18 +208,24 @@
 
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:id="@+id/clHomeEventsTwo"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="15dp"
-                                android:layout_marginLeft="15dp"
+                                android:layout_width="250dp"
+                                android:layout_height="150dp"
                                 app:layout_constraintStart_toEndOf="@+id/clHomeEventsOne"
                                 app:layout_constraintTop_toTopOf="parent">
 
                                 <ImageView
                                     android:id="@+id/ivHomeEventsTwoBackground"
-                                    android:layout_width="250dp"
-                                    android:layout_height="150dp"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_marginBottom="5dp"
                                     android:tint="#2F000000"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent"
                                     app:srcCompat="@drawable/custom_background_2" />
@@ -238,6 +264,16 @@
                                     app:layout_constraintStart_toStartOf="@+id/tvHomeEventsTwoMainText"
                                     app:layout_constraintTop_toBottomOf="@+id/tvHomeEventsTwoMainText" />
 
+                                <ImageView
+                                    android:id="@+id/ivHomeEventsTwoBorder"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@drawable/custom_icon_border_3" />
+
                                 <Button
                                     android:id="@+id/btHomeEventsTwoInteract"
                                     android:layout_width="0dp"
@@ -251,10 +287,8 @@
 
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:id="@+id/clHomeEventsThree"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="15dp"
-                                android:layout_marginLeft="15dp"
+                                android:layout_width="250dp"
+                                android:layout_height="150dp"
                                 android:layout_marginEnd="25dp"
                                 android:layout_marginRight="25dp"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -263,9 +297,17 @@
 
                                 <ImageView
                                     android:id="@+id/ivHomeEventsThreeBackground"
-                                    android:layout_width="250dp"
-                                    android:layout_height="150dp"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_marginBottom="5dp"
                                     android:tint="#2F000000"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent"
                                     app:srcCompat="@drawable/custom_background_2" />
@@ -304,6 +346,16 @@
                                     app:layout_constraintStart_toStartOf="@+id/tvHomeEventsThreeMainText"
                                     app:layout_constraintTop_toBottomOf="@+id/tvHomeEventsThreeMainText" />
 
+                                <ImageView
+                                    android:id="@+id/ivHomeEventsThreeBorder"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@drawable/custom_icon_border_3" />
+
                                 <Button
                                     android:id="@+id/btHomeEventsThreeInteract"
                                     android:layout_width="0dp"
@@ -326,6 +378,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginLeft="30dp"
+                    android:layout_marginTop="7dp"
                     android:fontFamily="@font/montserrat"
                     android:text="Trending Stories"
                     android:textColor="@android:color/black"
@@ -345,10 +398,10 @@
                     android:layout_marginEnd="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginBottom="5dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView4"
-                    app:layout_constraintStart_toStartOf="@+id/imageView4"
-                    app:layout_constraintTop_toTopOf="@+id/imageView4" />
+                    app:layout_constraintBottom_toBottomOf="@+id/ivHomeNewsOneBorder"
+                    app:layout_constraintEnd_toEndOf="@+id/ivHomeNewsOneBorder"
+                    app:layout_constraintStart_toStartOf="@+id/ivHomeNewsOneBorder"
+                    app:layout_constraintTop_toTopOf="@+id/ivHomeNewsOneBorder" />
 
                 <fragment
                     android:id="@+id/frHomeNewsTwoContainer"
@@ -357,56 +410,73 @@
                     android:layout_height="0dp"
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginEnd="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginBottom="5dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView6"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView6"
-                    app:layout_constraintStart_toStartOf="@+id/imageView6"
-                    app:layout_constraintTop_toTopOf="@+id/imageView6" />
+                    app:layout_constraintBottom_toBottomOf="@+id/ivHomeNewsTwoBorder"
+                    app:layout_constraintEnd_toEndOf="@+id/ivHomeNewsTwoBorder"
+                    app:layout_constraintStart_toStartOf="@+id/ivHomeNewsTwoBorder"
+                    app:layout_constraintTop_toTopOf="@+id/ivHomeNewsTwoBorder" />
 
                 <fragment
                     android:id="@+id/frHomeNewsThreeContainer"
                     android:name="com.example.custodian.NewsThreeFragment"
                     android:layout_width="0dp"
-                    android:layout_height="250dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="25dp"
-                    android:layout_marginRight="25dp"
-                    android:layout_marginBottom="25dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/frHomeNewsTwoContainer" />
+                    android:layout_height="0dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivHomeNewsThreeBorder"
+                    app:layout_constraintEnd_toEndOf="@+id/ivHomeNewsThreeBorder"
+                    app:layout_constraintStart_toStartOf="@+id/ivHomeNewsThreeBorder"
+                    app:layout_constraintTop_toTopOf="@+id/ivHomeNewsThreeBorder" />
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/ivHomeNewsOneBorder"
                     android:layout_width="0dp"
                     android:layout_height="250dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="25dp"
-                    android:layout_marginRight="25dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginRight="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvHomeTextFour"
                     app:srcCompat="@drawable/custom_icon_border_3" />
 
                 <ImageView
-                    android:id="@+id/imageView6"
+                    android:id="@+id/ivHomeNewsTwoBorder"
                     android:layout_width="0dp"
                     android:layout_height="250dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="25dp"
-                    android:layout_marginRight="25dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginRight="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/frHomeNewsOneContainer"
+                    app:srcCompat="@drawable/custom_icon_border_3" />
+
+                <ImageView
+                    android:id="@+id/ivHomeNewsThreeBorder"
+                    android:layout_width="0dp"
+                    android:layout_height="250dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/frHomeNewsTwoContainer"
                     app:srcCompat="@drawable/custom_icon_border_3" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
