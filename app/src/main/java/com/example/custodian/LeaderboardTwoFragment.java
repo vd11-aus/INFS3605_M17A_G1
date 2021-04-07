@@ -103,7 +103,8 @@ public class LeaderboardTwoFragment extends Fragment {
                 FirebaseStorage.getInstance().getReference().child("profileicons/").child(idArray.get(1)).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        Glide.with(getActivity()).load(uri).into(mIcon);
+                        Glide.with(getActivity()).load(uri).placeholder(R.drawable.avatar)
+                                .error(R.drawable.avatar).fallback(R.drawable.avatar).into(mIcon);
                     }
                 });
             }

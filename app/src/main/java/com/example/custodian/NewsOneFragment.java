@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.Timestamp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -27,6 +28,9 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Objects;
 import java.util.concurrent.Executor;
 
 /**
@@ -101,11 +105,12 @@ public class NewsOneFragment extends Fragment {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                 String title = value.getString("title");
-                String date = value.getString("date");
+                Date time = Objects.requireNonNull(value.getTimestamp("date")).toDate();
+                SimpleDateFormat format = new SimpleDateFormat("dd MMM YYYY");
                 String link = value.getString("link");
                 String image = value.getString("image");
                 mTitle.setText(title);
-                mDate.setText(date);
+                mDate.setText(format.format(time).toUpperCase());
                 Glide.with(mBackgroundImage).load(image).centerCrop().placeholder(R.drawable.custom_background_2)
                         .error(R.drawable.custom_background_2).fallback(R.drawable.custom_background_2).into(mBackgroundImage);
                 mLink.setOnClickListener(new View.OnClickListener() {

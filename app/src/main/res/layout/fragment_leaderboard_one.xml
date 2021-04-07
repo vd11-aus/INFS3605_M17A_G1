@@ -34,7 +34,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:srcCompat="@drawable/avatar" />
 
         <TextView
             android:id="@+id/tvLeaderboardOneUsername"
@@ -50,7 +50,7 @@
 
         <ImageView
             android:id="@+id/ivLeaderboardOneStats"
-            android:layout_width="70dp"
+            android:layout_width="80dp"
             android:layout_height="30dp"
             android:layout_marginEnd="15dp"
             android:layout_marginRight="15dp"
@@ -70,5 +70,15 @@
             app:layout_constraintEnd_toEndOf="@+id/ivLeaderboardOneStats"
             app:layout_constraintStart_toStartOf="@+id/ivLeaderboardOneStats"
             app:layout_constraintTop_toTopOf="@+id/ivLeaderboardOneStats" />
+
+        <ImageView
+            android:id="@+id/ivLeaderboardOneBorder"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/custom_icon_border_2"
+            app:layout_constraintBottom_toBottomOf="@+id/ivLeaderboardOneIcon"
+            app:layout_constraintEnd_toEndOf="@+id/ivLeaderboardOneIcon"
+            app:layout_constraintStart_toStartOf="@+id/ivLeaderboardOneIcon"
+            app:layout_constraintTop_toTopOf="@+id/ivLeaderboardOneIcon" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

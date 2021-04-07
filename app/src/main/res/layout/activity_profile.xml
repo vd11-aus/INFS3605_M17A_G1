@@ -2,22 +2,21 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clProfileMainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black"
+    android:background="#E0E0E0"
     tools:context=".ProfileActivity">
 
     <ImageView
-        android:id="@+id/ivProfileBackground"
+        android:id="@+id/ivProfileOriginBackground"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:alpha="0.65"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/black" />
+        app:layout_constraintBottom_toBottomOf="@+id/tvProfileOrigin"
+        app:layout_constraintEnd_toEndOf="@+id/tvProfileOrigin"
+        app:layout_constraintStart_toStartOf="@+id/tvProfileOrigin"
+        app:layout_constraintTop_toTopOf="@+id/tvProfileOrigin"
+        app:srcCompat="@drawable/custom_button_style_4" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clNavigationLayout"
@@ -108,30 +107,330 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <ImageView
+        android:id="@+id/ivProfileResponsesUsedOne"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toStartOf="@+id/ivProfilePointsOne"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivProfilePointsOne"
+        app:srcCompat="@drawable/custom_background_1" />
+
+    <ImageView
+        android:id="@+id/ivProfileResponsesUsedTwo"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="90dp"
+        app:layout_constraintEnd_toEndOf="@+id/ivProfileResponsesUsedOne"
+        app:layout_constraintStart_toStartOf="@+id/ivProfileResponsesUsedOne"
+        app:layout_constraintTop_toTopOf="@+id/ivProfileResponsesUsedOne"
+        app:srcCompat="@drawable/custom_button_style_5" />
+
     <TextView
         android:id="@+id/tvProfileTextOne"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="60dp"
         android:fontFamily="@font/montserrat"
-        android:text="Profile"
+        android:text="Responses Used"
         android:textColor="#FFFFFF"
-        android:textSize="30sp"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivProfileResponsesUsedTwo"
+        app:layout_constraintEnd_toEndOf="@+id/ivProfileResponsesUsedTwo"
+        app:layout_constraintStart_toStartOf="@+id/ivProfileResponsesUsedTwo"
+        app:layout_constraintTop_toTopOf="@+id/ivProfileResponsesUsedTwo" />
+
+    <TextView
+        android:id="@+id/tvProfileResponses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="---"
+        android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/ivProfileResponsesUsedOne"
+        app:layout_constraintEnd_toEndOf="@+id/ivProfileResponsesUsedOne"
+        app:layout_constraintStart_toStartOf="@+id/ivProfileResponsesUsedOne"
+        app:layout_constraintTop_toTopOf="@+id/ivProfileResponsesUsedOne" />
+
+    <Button
+        android:id="@+id/btProfileResponsesHelp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/ivProfileResponsesUsedTwo"
+        app:layout_constraintEnd_toEndOf="@+id/ivProfileResponsesUsedOne"
+        app:layout_constraintStart_toStartOf="@+id/ivProfileResponsesUsedOne"
+        app:layout_constraintTop_toTopOf="@+id/ivProfileResponsesUsedOne" />
 
     <ImageView
-        android:id="@+id/ivProfileSample"
+        android:id="@+id/ivProfilePointsOne"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/clNavigationLayout"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivProfileIconBorder"
+        app:srcCompat="@drawable/custom_background_1" />
+
+    <ImageView
+        android:id="@+id/ivProfilePointsTwo"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="90dp"
+        app:layout_constraintEnd_toEndOf="@+id/ivProfilePointsOne"
+        app:layout_constraintStart_toStartOf="@+id/ivProfilePointsOne"
+        app:layout_constraintTop_toTopOf="@+id/ivProfilePointsOne"
+        app:srcCompat="@drawable/custom_button_style_5" />
+
+    <TextView
+        android:id="@+id/tvProfileTextTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="All-time Points"
+        android:textColor="#FFFFFF"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivProfilePointsTwo"
+        app:layout_constraintEnd_toEndOf="@+id/ivProfilePointsTwo"
+        app:layout_constraintStart_toStartOf="@+id/ivProfilePointsTwo"
+        app:layout_constraintTop_toTopOf="@+id/ivProfilePointsTwo" />
+
+    <TextView
+        android:id="@+id/tvProfilePoints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="---"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ivProfilePointsOne"
+        app:layout_constraintEnd_toEndOf="@+id/ivProfilePointsOne"
+        app:layout_constraintStart_toStartOf="@+id/ivProfilePointsOne"
+        app:layout_constraintTop_toTopOf="@+id/ivProfilePointsOne" />
+
+    <Button
+        android:id="@+id/btProfilePointsHelp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/ivProfilePointsTwo"
+        app:layout_constraintEnd_toEndOf="@+id/ivProfilePointsOne"
+        app:layout_constraintStart_toStartOf="@+id/ivProfilePointsOne"
+        app:layout_constraintTop_toTopOf="@+id/ivProfilePointsOne" />
+
+    <ImageView
+        android:id="@+id/ivProfilePostsOne"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivProfilePointsOne"
+        app:layout_constraintTop_toTopOf="@+id/ivProfilePointsOne"
+        app:srcCompat="@drawable/custom_background_1" />
+
+    <ImageView
+        android:id="@+id/ivProfilePostsTwo"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="90dp"
+        app:layout_constraintEnd_toEndOf="@+id/ivProfilePostsOne"
+        app:layout_constraintStart_toStartOf="@+id/ivProfilePostsOne"
+        app:layout_constraintTop_toTopOf="@+id/ivProfileResponsesUsedOne"
+        app:srcCompat="@drawable/custom_button_style_5" />
+
+    <TextView
+        android:id="@+id/tvProfilePosts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="---"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ivProfilePostsOne"
+        app:layout_constraintEnd_toEndOf="@+id/ivProfilePostsOne"
+        app:layout_constraintStart_toStartOf="@+id/ivProfilePostsOne"
+        app:layout_constraintTop_toTopOf="@+id/ivProfilePostsOne" />
+
+    <TextView
+        android:id="@+id/tvProfileTextThree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="No. of Posts"
+        android:textColor="#FFFFFF"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivProfilePostsTwo"
+        app:layout_constraintEnd_toEndOf="@+id/ivProfilePostsTwo"
+        app:layout_constraintStart_toStartOf="@+id/ivProfilePostsTwo"
+        app:layout_constraintTop_toTopOf="@+id/ivProfilePostsTwo" />
+
+    <Button
+        android:id="@+id/btProfilePostsHelp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/ivProfilePostsTwo"
+        app:layout_constraintEnd_toEndOf="@+id/ivProfilePostsOne"
+        app:layout_constraintStart_toStartOf="@+id/ivProfilePostsOne"
+        app:layout_constraintTop_toTopOf="@+id/ivProfilePostsOne" />
+
+    <ImageView
+        android:id="@+id/ivProfileBackground"
+        android:layout_width="0dp"
+        android:layout_height="145dp"
+        android:scaleType="centerCrop"
+        android:tint="#4F000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:color/black" />
+
+    <ImageView
+        android:id="@+id/ivProfileIcon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="100dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="@+id/ivProfileBackground"
         app:layout_constraintTop_toTopOf="@+id/ivProfileBackground"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/avatar" />
+
+    <ImageView
+        android:id="@+id/ivProfileIconBorder"
+        android:layout_width="115dp"
+        android:layout_height="115dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivProfileIcon"
+        app:layout_constraintEnd_toEndOf="@+id/ivProfileIcon"
+        app:layout_constraintStart_toStartOf="@+id/ivProfileIcon"
+        app:layout_constraintTop_toTopOf="@+id/ivProfileIcon"
+        app:srcCompat="@drawable/custom_icon_border_1" />
+
+    <TextView
+        android:id="@+id/tvProfileUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/montserrat"
+        android:text="TheRealStevieJ"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/ivProfileIconBorder"
+        app:layout_constraintTop_toBottomOf="@+id/ivProfileBackground" />
+
+    <ImageButton
+        android:id="@+id/ibProfileEditAccount"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/custom_circle_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_edit_24" />
+
+    <ImageView
+        android:id="@+id/ivProfileGenderBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvProfileGender"
+        app:layout_constraintEnd_toEndOf="@+id/tvProfileGender"
+        app:layout_constraintStart_toStartOf="@+id/tvProfileGender"
+        app:layout_constraintTop_toTopOf="@+id/tvProfileGender"
+        app:srcCompat="@drawable/custom_button_style_4" />
+
+    <TextView
+        android:id="@+id/tvProfileGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/montserrat"
+        android:paddingLeft="6dp"
+        android:paddingTop="2dp"
+        android:paddingRight="6dp"
+        android:paddingBottom="3dp"
+        android:text="Gender: Male"
+        android:textColor="#FFFFFF"
+        android:textSize="8sp"
+        app:layout_constraintStart_toStartOf="@+id/tvProfileUsername"
+        app:layout_constraintTop_toBottomOf="@+id/tvProfileUsername" />
+
+    <TextView
+        android:id="@+id/tvProfileOrigin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginLeft="7dp"
+        android:fontFamily="@font/montserrat"
+        android:paddingLeft="6dp"
+        android:paddingTop="2dp"
+        android:paddingRight="6dp"
+        android:paddingBottom="3dp"
+        android:text="Origin: Torres Strait"
+        android:textColor="#FFFFFF"
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@+id/ivProfileGenderBackground"
+        app:layout_constraintTop_toTopOf="@+id/ivProfileGenderBackground" />
+
+    <ImageView
+        android:id="@+id/ivProfileFeedbackMessages"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="35dp"
+        app:layout_constraintBottom_toTopOf="@+id/clNavigationLayout"
+        app:layout_constraintEnd_toEndOf="@+id/ivProfilePostsOne"
+        app:layout_constraintStart_toStartOf="@+id/ivProfileResponsesUsedOne"
+        app:layout_constraintTop_toBottomOf="@+id/ivProfilePointsTwo"
+        app:srcCompat="@drawable/custom_button_style_4" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rlProfileFeed"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivProfileFeedbackMessages"
+        app:layout_constraintEnd_toEndOf="@+id/ivProfileFeedbackMessages"
+        app:layout_constraintStart_toStartOf="@+id/ivProfileFeedbackMessages"
+        app:layout_constraintTop_toBottomOf="@+id/ivProfileFeedTitle">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <ImageView
+        android:id="@+id/ivProfileFeedTitle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvProfileTextFour"
+        app:layout_constraintEnd_toEndOf="@+id/tvProfileTextFour"
+        app:layout_constraintStart_toStartOf="@+id/tvProfileTextFour"
+        app:layout_constraintTop_toTopOf="@+id/tvProfileTextFour"
+        app:srcCompat="@drawable/custom_button_style_5" />
+
+    <TextView
+        android:id="@+id/tvProfileTextFour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/montserrat"
+        android:paddingLeft="10dp"
+        android:paddingTop="3dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="3dp"
+        android:text="My Messages"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/ivProfileFeedbackMessages"
+        app:layout_constraintTop_toBottomOf="@+id/ivProfilePointsTwo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

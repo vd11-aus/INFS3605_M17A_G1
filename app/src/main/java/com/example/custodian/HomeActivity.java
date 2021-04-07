@@ -280,7 +280,7 @@ public class HomeActivity extends AppCompatActivity {
                     headerArray.add(document.getString("event"));
                     @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd MMM YYYY");
                     Date date = Objects.requireNonNull(document.getTimestamp("date")).toDate();
-                    subtextArray.add(formatter.format(date));
+                    subtextArray.add(formatter.format(date).toUpperCase());
                     linkArray.add(document.getString("link"));
                 }
 

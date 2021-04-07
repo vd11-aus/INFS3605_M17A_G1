@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Custodian">
-        <activity android:name=".PointAccumulationActivity"></activity>
+        <activity android:name=".FeedInfoActivity"></activity>
+        <activity android:name=".PointAccumulationActivity" />
         <activity android:name=".IndigenousQuestionsActivity" />
         <activity android:name=".VideoPostActivity" />
         <activity android:name=".ImagePostActivity" />

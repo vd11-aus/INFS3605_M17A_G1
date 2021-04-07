@@ -59,6 +59,8 @@ public class CreateAccountActivity extends AppCompatActivity {
     private ImageButton mCancelButton;
     private ImageView mProfileIcon;
     private ImageView mBackgroundImage;
+    private ImageView mProfileIconBorder;
+    private ImageButton mProfileIconAlternate;
 
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFS;
@@ -90,6 +92,8 @@ public class CreateAccountActivity extends AppCompatActivity {
         mGenderInput = findViewById(R.id.rgCreateAccountGender);
         mProfileIcon = findViewById(R.id.ivCreateAccountIcon);
         mBackgroundImage = findViewById(R.id.ivCreateAccountBackground);
+        mProfileIconBorder = findViewById(R.id.ivCreateAccountIconBorder);
+        mProfileIconAlternate = findViewById(R.id.ibCreateAccountIconAlternate);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFS = FirebaseFirestore.getInstance();
@@ -157,6 +161,38 @@ public class CreateAccountActivity extends AppCompatActivity {
 
         // Select profile picture
         mProfileIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                            PackageManager.PERMISSION_DENIED) {
+                        String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                        requestPermissions(permissions, PERMISSION_CODE);
+                    } else {
+                        selectImage();
+                    }
+                } else {
+                    selectImage();
+                }
+            }
+        });
+        mProfileIconBorder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                            PackageManager.PERMISSION_DENIED) {
+                        String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                        requestPermissions(permissions, PERMISSION_CODE);
+                    } else {
+                        selectImage();
+                    }
+                } else {
+                    selectImage();
+                }
+            }
+        });
+        mProfileIconAlternate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
