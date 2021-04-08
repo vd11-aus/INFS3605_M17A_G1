@@ -6,6 +6,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -74,6 +76,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     String origin = "";
     String gender = "";
     Boolean imageSelected = false;
+    Context pageContext = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,7 +145,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                         System.out.println("Password: " + password);
                         System.out.println("Gender: " + gender);
                         System.out.println("Origin: " + origin);
-                        final LoadingDialog loadingDialog = new LoadingDialog(CreateAccountActivity.this);
+                        final LoadingDialog loadingDialog = new LoadingDialog(new Dialog(pageContext));
                         loadingDialog.startLoadingAnimation();
                         createUser();
                         break;

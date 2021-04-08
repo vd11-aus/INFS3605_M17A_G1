@@ -2,19 +2,22 @@ package com.example.custodian;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         mInformationButton = findViewById(R.id.ibMainInformation);
         mBackgroundImage = findViewById(R.id.ivMainBackground);
 
+        Context pageContext = this;
+
         // Get background
         BackgroundGenerator background = new BackgroundGenerator();
         Glide.with(mBackgroundImage).load(background.splash()).centerCrop().placeholder(R.drawable.custom_background_2)
@@ -58,7 +63,30 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 System.out.println("Information Button Clicked");
-                launchInformationActivity();
+                Dialog dialog = new Dialog(pageContext);
+                dialog.setContentView(R.layout.information_view);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.setCancelable(false);
+                ImageButton mExitButton = dialog.findViewById(R.id.ibInformationExit);
+                TextView mEmailButton = dialog.findViewById(R.id.tvInformationEmail);
+                mExitButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        System.out.println("Back Button Clicked");
+                        dialog.dismiss();
+                    }
+                });
+                mEmailButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        System.out.println("Email Button Clicked");
+                        Intent intent = new Intent(Intent.ACTION_SEND);
+                        intent.putExtra(Intent.EXTRA_EMAIL, "m17agroup1@unsw.edu.au");
+                        intent.setType("message/rfc822");
+                        startActivity(intent);
+                    }
+                });
+                dialog.show();
             }
         });
 
@@ -73,11 +101,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-    }
-
-    // Go to InformationActivity
-    private void launchInformationActivity() {
-        Intent intent = new Intent(this, InformationActivity.class);
-        startActivity(intent);
     }
 }

@@ -6,6 +6,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -64,6 +66,7 @@ public class VideoPostActivity extends AppCompatActivity {
     Uri videoLocation;
     Integer postcode;
     Boolean videoSelected = false;
+    Context pageContext = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -205,7 +208,7 @@ public class VideoPostActivity extends AppCompatActivity {
 
     // Upload data
     private void submitData() {
-        final LoadingDialog loadingDialog = new LoadingDialog(VideoPostActivity.this);
+        final LoadingDialog loadingDialog = new LoadingDialog(new Dialog(pageContext));
         loadingDialog.startLoadingAnimation();
         FirebaseStorage.getInstance().getReference().child("entries/" + uniqueEntry).putFile(videoLocation).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
             @Override

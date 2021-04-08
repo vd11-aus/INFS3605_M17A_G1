@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -49,6 +51,7 @@ public class TextPostActivity extends AppCompatActivity {
 
     String uniqueEntry = System.currentTimeMillis()/1000 + "-" + codeGenerator();
     Integer postcode;
+    Context pageContext = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,7 +116,7 @@ public class TextPostActivity extends AppCompatActivity {
 
     // Upload data
     private void submitData() {
-        final LoadingDialog loadingDialog = new LoadingDialog(TextPostActivity.this);
+        final LoadingDialog loadingDialog = new LoadingDialog(new Dialog(pageContext));
         loadingDialog.startLoadingAnimation();
         Map<String, Object> map = new HashMap<>();
         Timestamp time = new Timestamp(System.currentTimeMillis());

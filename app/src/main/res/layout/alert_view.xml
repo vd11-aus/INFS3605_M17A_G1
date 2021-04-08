@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/ivStandardAlertBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvStandardAlertMessage"
+        app:layout_constraintEnd_toEndOf="@+id/tvStandardAlertMessage"
+        app:layout_constraintStart_toStartOf="@+id/tvStandardAlertMessage"
+        app:layout_constraintTop_toTopOf="@+id/tvStandardAlertMessage"
+        app:srcCompat="@drawable/custom_background_1" />
+
+    <ImageView
+        android:id="@+id/ivStandardAlertIcon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:translationY="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvStandardAlertMessage"
+        app:layout_constraintEnd_toEndOf="@+id/ivStandardAlertBackground"
+        app:layout_constraintStart_toStartOf="@+id/ivStandardAlertBackground"
+        app:srcCompat="@drawable/information_icon" />
+
+    <TextView
+        android:id="@+id/tvStandardAlertMessage"
+        android:layout_width="325dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:paddingLeft="25dp"
+        android:paddingTop="65dp"
+        android:paddingRight="25dp"
+        android:paddingBottom="25dp"
+        android:text="Getting message ..."
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

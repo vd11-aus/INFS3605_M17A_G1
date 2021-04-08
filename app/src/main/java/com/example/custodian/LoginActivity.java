@@ -3,11 +3,11 @@ package com.example.custodian;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -15,7 +15,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -62,6 +61,8 @@ public class LoginActivity extends AppCompatActivity {
         mFirebaseAuth = FirebaseAuth.getInstance();
         mBackgroundImage = findViewById(R.id.ivLoginBackground);
 
+        Context pageContext = this;
+
         // Get background
         BackgroundGenerator background = new BackgroundGenerator();
         Glide.with(mBackgroundImage).load(background.login()).centerCrop().placeholder(R.drawable.custom_background_2)
@@ -76,22 +77,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        // Develop messages
-        Snackbar emailHelpMessage = Snackbar.make(findViewById(R.id.clLoginMainLayout),
-                "This is where you enter the email you used to create this account.", Snackbar.LENGTH_SHORT);
-        Snackbar passwordHelpMessage = Snackbar.make(findViewById(R.id.clLoginMainLayout),
-                "This is where you enter the password associated with the email you used to create this account.", Snackbar.LENGTH_SHORT);
-        Snackbar wrongCredentialsMessage = Snackbar.make(findViewById(R.id.clLoginMainLayout),
-                "There's something wrong with the email or password that you entered. Please try again.", Snackbar.LENGTH_SHORT);
-        Snackbar invalidCredentialsMessage = Snackbar.make(findViewById(R.id.clLoginMainLayout),
-                "Please enter an email and password.", Snackbar.LENGTH_SHORT);
-
         // Request for help on email input
         mEmailHelpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 System.out.println("Email Help Button Clicked");
-                emailHelpMessage.show();
+                final AlertDialog emailDialog = new AlertDialog(new Dialog(pageContext), "This is where you enter the email you used to create this account.", "information");
+                emailDialog.startLoadingAnimation();
             }
         });
 
@@ -100,7 +92,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 System.out.println("Password Help Button Clicked");
-                passwordHelpMessage.show();
+                final AlertDialog passwordDialog = new AlertDialog(new Dialog(pageContext), "This is where you enter the password associated with the email you used to create this account.", "information");
+                passwordDialog.startLoadingAnimation();
             }
         });
 
@@ -111,9 +104,9 @@ public class LoginActivity extends AppCompatActivity {
                 System.out.println("Log In Button Clicked");
                 String email = mEmailText.getText().toString();
                 String password = mPasswordText.getText().toString();
-
                 if (email.isEmpty() || password.isEmpty()) {
-                    invalidCredentialsMessage.show();
+                    final AlertDialog invalidDialog = new AlertDialog(new Dialog(pageContext), "Please enter an email and password.", "warning");
+                    invalidDialog.startLoadingAnimation();
                 } else {
                     mFirebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
@@ -121,7 +114,8 @@ public class LoginActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 launchWelcomeActivity();
                             } else {
-                                wrongCredentialsMessage.show();
+                                final AlertDialog invalidDialog = new AlertDialog(new Dialog(pageContext), "There's something wrong with the email or password that you entered. Please try again.", "warning");
+                                invalidDialog.startLoadingAnimation();
                             }
                         }
                     });

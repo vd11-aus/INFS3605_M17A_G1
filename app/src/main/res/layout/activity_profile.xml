@@ -8,16 +8,6 @@
     android:background="#E0E0E0"
     tools:context=".ProfileActivity">
 
-    <ImageView
-        android:id="@+id/ivProfileOriginBackground"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvProfileOrigin"
-        app:layout_constraintEnd_toEndOf="@+id/tvProfileOrigin"
-        app:layout_constraintStart_toStartOf="@+id/tvProfileOrigin"
-        app:layout_constraintTop_toTopOf="@+id/tvProfileOrigin"
-        app:srcCompat="@drawable/custom_button_style_4" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clNavigationLayout"
         android:layout_width="0dp"
@@ -108,170 +98,96 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/ivProfileResponsesUsedOne"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:layout_constraintEnd_toStartOf="@+id/ivProfilePointsOne"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ivProfilePointsOne"
-        app:srcCompat="@drawable/custom_background_1" />
-
-    <ImageView
-        android:id="@+id/ivProfileResponsesUsedTwo"
-        android:layout_width="80dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="90dp"
-        app:layout_constraintEnd_toEndOf="@+id/ivProfileResponsesUsedOne"
-        app:layout_constraintStart_toStartOf="@+id/ivProfileResponsesUsedOne"
-        app:layout_constraintTop_toTopOf="@+id/ivProfileResponsesUsedOne"
-        app:srcCompat="@drawable/custom_button_style_5" />
-
-    <TextView
-        android:id="@+id/tvProfileTextOne"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat"
-        android:text="Others Helped"
-        android:textColor="#FFFFFF"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ivProfileResponsesUsedTwo"
-        app:layout_constraintEnd_toEndOf="@+id/ivProfileResponsesUsedTwo"
-        app:layout_constraintStart_toStartOf="@+id/ivProfileResponsesUsedTwo"
-        app:layout_constraintTop_toTopOf="@+id/ivProfileResponsesUsedTwo" />
-
-    <TextView
-        android:id="@+id/tvProfileResponses"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat"
-        android:text="---"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/ivProfileResponsesUsedOne"
-        app:layout_constraintEnd_toEndOf="@+id/ivProfileResponsesUsedOne"
-        app:layout_constraintStart_toStartOf="@+id/ivProfileResponsesUsedOne"
-        app:layout_constraintTop_toTopOf="@+id/ivProfileResponsesUsedOne" />
-
-    <Button
-        android:id="@+id/btProfileResponsesHelp"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="@+id/ivProfileResponsesUsedTwo"
-        app:layout_constraintEnd_toEndOf="@+id/ivProfileResponsesUsedOne"
-        app:layout_constraintStart_toStartOf="@+id/ivProfileResponsesUsedOne"
-        app:layout_constraintTop_toTopOf="@+id/ivProfileResponsesUsedOne" />
-
-    <ImageView
         android:id="@+id/ivProfilePointsOne"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="0dp"
+        android:layout_height="105dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
         android:layout_marginTop="15dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivProfileIconBorder"
         app:srcCompat="@drawable/custom_background_1" />
 
-    <ImageView
-        android:id="@+id/ivProfilePointsTwo"
-        android:layout_width="80dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="90dp"
-        app:layout_constraintEnd_toEndOf="@+id/ivProfilePointsOne"
+    <TextView
+        android:id="@+id/tvProfileTextOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Others Helped"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvProfileResponses"
+        app:layout_constraintStart_toStartOf="@+id/tvProfileResponses"
+        app:layout_constraintTop_toBottomOf="@+id/tvProfileResponses" />
+
+    <TextView
+        android:id="@+id/tvProfileResponses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:fontFamily="@font/montserrat"
+        android:text="---"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/tvProfilePoints"
         app:layout_constraintStart_toStartOf="@+id/ivProfilePointsOne"
-        app:layout_constraintTop_toTopOf="@+id/ivProfilePointsOne"
-        app:srcCompat="@drawable/custom_button_style_5" />
+        app:layout_constraintTop_toTopOf="@+id/tvProfilePoints" />
 
     <TextView
         android:id="@+id/tvProfileTextTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:fontFamily="@font/montserrat"
         android:text="All-time Points"
-        android:textColor="#FFFFFF"
         android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ivProfilePointsTwo"
-        app:layout_constraintEnd_toEndOf="@+id/ivProfilePointsTwo"
-        app:layout_constraintStart_toStartOf="@+id/ivProfilePointsTwo"
-        app:layout_constraintTop_toTopOf="@+id/ivProfilePointsTwo" />
+        app:layout_constraintEnd_toEndOf="@+id/tvProfilePoints"
+        app:layout_constraintStart_toStartOf="@+id/tvProfilePoints"
+        app:layout_constraintTop_toBottomOf="@+id/tvProfilePoints" />
 
     <TextView
         android:id="@+id/tvProfilePoints"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/montserrat"
         android:text="---"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/ivProfilePointsOne"
         app:layout_constraintEnd_toEndOf="@+id/ivProfilePointsOne"
         app:layout_constraintStart_toStartOf="@+id/ivProfilePointsOne"
         app:layout_constraintTop_toTopOf="@+id/ivProfilePointsOne" />
 
-    <Button
-        android:id="@+id/btProfilePointsHelp"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="@+id/ivProfilePointsTwo"
-        app:layout_constraintEnd_toEndOf="@+id/ivProfilePointsOne"
-        app:layout_constraintStart_toStartOf="@+id/ivProfilePointsOne"
-        app:layout_constraintTop_toTopOf="@+id/ivProfilePointsOne" />
-
-    <ImageView
-        android:id="@+id/ivProfilePostsOne"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ivProfilePointsOne"
-        app:layout_constraintTop_toTopOf="@+id/ivProfilePointsOne"
-        app:srcCompat="@drawable/custom_background_1" />
-
-    <ImageView
-        android:id="@+id/ivProfilePostsTwo"
-        android:layout_width="80dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="90dp"
-        app:layout_constraintEnd_toEndOf="@+id/ivProfilePostsOne"
-        app:layout_constraintStart_toStartOf="@+id/ivProfilePostsOne"
-        app:layout_constraintTop_toTopOf="@+id/ivProfileResponsesUsedOne"
-        app:srcCompat="@drawable/custom_button_style_5" />
-
     <TextView
         android:id="@+id/tvProfilePosts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
         android:fontFamily="@font/montserrat"
         android:text="---"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/ivProfilePostsOne"
-        app:layout_constraintEnd_toEndOf="@+id/ivProfilePostsOne"
-        app:layout_constraintStart_toStartOf="@+id/ivProfilePostsOne"
-        app:layout_constraintTop_toTopOf="@+id/ivProfilePostsOne" />
+        app:layout_constraintEnd_toEndOf="@+id/ivProfilePointsOne"
+        app:layout_constraintStart_toEndOf="@+id/tvProfilePoints"
+        app:layout_constraintTop_toTopOf="@+id/tvProfilePoints" />
 
     <TextView
         android:id="@+id/tvProfileTextThree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:fontFamily="@font/montserrat"
         android:text="No. of Posts"
-        android:textColor="#FFFFFF"
         android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ivProfilePostsTwo"
-        app:layout_constraintEnd_toEndOf="@+id/ivProfilePostsTwo"
-        app:layout_constraintStart_toStartOf="@+id/ivProfilePostsTwo"
-        app:layout_constraintTop_toTopOf="@+id/ivProfilePostsTwo" />
-
-    <Button
-        android:id="@+id/btProfilePostsHelp"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="@+id/ivProfilePostsTwo"
-        app:layout_constraintEnd_toEndOf="@+id/ivProfilePostsOne"
-        app:layout_constraintStart_toStartOf="@+id/ivProfilePostsOne"
-        app:layout_constraintTop_toTopOf="@+id/ivProfilePostsOne" />
+        app:layout_constraintEnd_toEndOf="@+id/tvProfilePosts"
+        app:layout_constraintStart_toStartOf="@+id/tvProfilePosts"
+        app:layout_constraintTop_toBottomOf="@+id/tvProfilePosts" />
 
     <ImageView
         android:id="@+id/ivProfileBackground"
@@ -333,6 +249,16 @@
         app:srcCompat="@drawable/ic_baseline_edit_24" />
 
     <ImageView
+        android:id="@+id/ivProfileOriginBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvProfileOrigin"
+        app:layout_constraintEnd_toEndOf="@+id/tvProfileOrigin"
+        app:layout_constraintStart_toStartOf="@+id/tvProfileOrigin"
+        app:layout_constraintTop_toTopOf="@+id/tvProfileOrigin"
+        app:srcCompat="@drawable/custom_button_style_5" />
+
+    <ImageView
         android:id="@+id/ivProfileGenderBackground"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -340,7 +266,7 @@
         app:layout_constraintEnd_toEndOf="@+id/tvProfileGender"
         app:layout_constraintStart_toStartOf="@+id/tvProfileGender"
         app:layout_constraintTop_toTopOf="@+id/tvProfileGender"
-        app:srcCompat="@drawable/custom_button_style_4" />
+        app:srcCompat="@drawable/custom_button_style_5" />
 
     <TextView
         android:id="@+id/tvProfileGender"
@@ -381,11 +307,15 @@
         android:id="@+id/ivProfileFeedbackMessages"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
         app:layout_constraintBottom_toTopOf="@+id/clNavigationLayout"
-        app:layout_constraintEnd_toEndOf="@+id/ivProfilePostsOne"
-        app:layout_constraintStart_toStartOf="@+id/ivProfileResponsesUsedOne"
-        app:layout_constraintTop_toBottomOf="@+id/ivProfilePointsTwo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivProfileFeedTitle"
         app:srcCompat="@drawable/custom_button_style_4" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -421,7 +351,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/montserrat"
         android:paddingLeft="10dp"
         android:paddingTop="3dp"
@@ -431,6 +361,6 @@
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/ivProfileFeedbackMessages"
-        app:layout_constraintTop_toBottomOf="@+id/ivProfilePointsTwo" />
+        app:layout_constraintTop_toBottomOf="@+id/ivProfilePointsOne" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

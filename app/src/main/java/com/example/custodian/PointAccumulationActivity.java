@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -32,6 +33,7 @@ public class PointAccumulationActivity extends AppCompatActivity {
     // Declaration of variables
     TextView mPoints;
     Button mNextButton;
+    ImageButton mShareButton;
 
     Context context;
     String type;
@@ -45,6 +47,7 @@ public class PointAccumulationActivity extends AppCompatActivity {
         // Assigning of variable values
         mPoints = findViewById(R.id.tvPointAccumulationPoints);
         mNextButton = findViewById(R.id.btPointAccumulationNext);
+        mShareButton = findViewById(R.id.ibPointAccumulationShare);
 
         context = this;
 
@@ -92,6 +95,13 @@ public class PointAccumulationActivity extends AppCompatActivity {
                 launchHomeActivity();
             }
         });
+
+        mShareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shareInfo();
+            }
+        });
     }
 
     // Go to HomeActivity
@@ -99,5 +109,16 @@ public class PointAccumulationActivity extends AppCompatActivity {
         Intent intent = new Intent(context, HomeActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_bottom, R.anim.slide_out_top);
+    }
+
+    // Share info
+    private void shareInfo() {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "I received points for sharing environment data and my thoughts on the Indigenous culture and way of life. You can too by downloading Custodian on the Google Play / App Store today!");
+        sendIntent.setType("text/plain");
+
+        Intent shareIntent = Intent.createChooser(sendIntent, null);
+        startActivity(shareIntent);
     }
 }

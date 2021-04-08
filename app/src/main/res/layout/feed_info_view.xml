@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clFeedInfoMainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/ivFeedInfoBackground"
+        android:layout_width="345dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="65dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/custom_button_style_5" />
+
+    <ImageView
+        android:id="@+id/ivFeedInfoSmile"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:translationY="75dp"
+        app:layout_constraintBottom_toTopOf="@+id/ivFeedInfoBackground"
+        app:layout_constraintEnd_toEndOf="@+id/ivFeedInfoBackground"
+        app:layout_constraintStart_toStartOf="@+id/ivFeedInfoBackground"
+        app:srcCompat="@drawable/smiley_face" />
+
+    <TextView
+        android:id="@+id/tvFeedInfoTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Getting content ..."
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/ivFeedInfoBackground"
+        app:layout_constraintStart_toStartOf="@+id/ivFeedInfoBackground"
+        app:layout_constraintTop_toTopOf="@+id/ivFeedInfoBackground" />
+
+    <TextView
+        android:id="@+id/tvFeedInfoAuthor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:alpha="0.5"
+        android:fontFamily="@font/montserrat"
+        android:text="Getting content ..."
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvFeedInfoContent"
+        app:layout_constraintEnd_toStartOf="@+id/tvFeedInfoDate"
+        app:layout_constraintStart_toStartOf="@+id/tvFeedInfoTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvFeedInfoTitle" />
+
+    <TextView
+        android:id="@+id/tvFeedInfoDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.5"
+        android:fontFamily="@font/montserrat"
+        android:gravity="right"
+        android:text="Getting content ..."
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvFeedInfoTitle"
+        app:layout_constraintTop_toTopOf="@+id/tvFeedInfoAuthor" />
+
+    <TextView
+        android:id="@+id/tvFeedInfoContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Getting content ..."
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/btFeedInfoClose"
+        app:layout_constraintEnd_toEndOf="@+id/tvFeedInfoTitle"
+        app:layout_constraintStart_toStartOf="@+id/tvFeedInfoTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvFeedInfoTitle" />
+
+    <Button
+        android:id="@+id/btFeedInfoClose"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/custom_background_1"
+        android:fontFamily="@font/montserrat"
+        android:text="Close"
+        android:textColor="#333333"
+        android:textStyle="bold"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="@+id/ivFeedInfoBackground"
+        app:layout_constraintEnd_toEndOf="@+id/ivFeedInfoBackground"
+        app:layout_constraintStart_toStartOf="@+id/ivFeedInfoBackground" />
+</androidx.constraintlayout.widget.ConstraintLayout>

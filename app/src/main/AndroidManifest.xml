@@ -15,7 +15,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Custodian">
-        <activity android:name=".FeedInfoActivity"></activity>
         <activity android:name=".PointAccumulationActivity" />
         <activity android:name=".IndigenousQuestionsActivity" />
         <activity android:name=".VideoPostActivity" />
@@ -32,7 +31,6 @@
         <activity android:name=".AccountSettingsActivity" />
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".CreateAccountActivity" />
-        <activity android:name=".InformationActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

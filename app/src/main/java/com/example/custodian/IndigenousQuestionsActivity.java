@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -42,6 +44,7 @@ public class IndigenousQuestionsActivity extends AppCompatActivity {
 
     String document;
     String type;
+    Context pageContext = this;
 
     // Brought to you by: https://github.com/sujithkanna/SmileyRating
 
@@ -111,7 +114,7 @@ public class IndigenousQuestionsActivity extends AppCompatActivity {
 
     // Insert data into existing file
     private void insertData() {
-        final LoadingDialog loadingDialog = new LoadingDialog(IndigenousQuestionsActivity.this);
+        final LoadingDialog loadingDialog = new LoadingDialog(new Dialog(pageContext));
         loadingDialog.startLoadingAnimation();
         String indigenousQuestionOne = "";
         switch (mRatingOne.getRating()) {

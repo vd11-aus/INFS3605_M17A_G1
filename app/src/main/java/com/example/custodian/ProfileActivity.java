@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -180,7 +181,7 @@ public class ProfileActivity extends AppCompatActivity {
                     authorData.add(snapshot.getString("author"));
                     contentData.add(snapshot.getString("content"));
                 }
-                FeedListAdapter listAdapter = new FeedListAdapter(pageContext, identifierData, timeData, titleData, idData, authorData, contentData, FirebaseAuth.getInstance().getCurrentUser().getUid());
+                FeedListAdapter listAdapter = new FeedListAdapter(pageContext, identifierData, timeData, titleData, idData, authorData, contentData, FirebaseAuth.getInstance().getCurrentUser().getUid(), new Dialog(pageContext));
                 mFeedList.setAdapter(listAdapter);
                 mFeedList.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
             }

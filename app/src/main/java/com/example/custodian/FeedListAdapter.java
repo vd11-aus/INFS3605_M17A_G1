@@ -1,20 +1,19 @@
 package com.example.custodian;
 
+import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,8 +28,9 @@ public class FeedListAdapter extends RecyclerView.Adapter<FeedListAdapter.MyView
     ArrayList<String> contentData;
     String user;
     Context context;
+    Dialog dialog;
 
-    public FeedListAdapter(Context ct, ArrayList<String> identifiers, ArrayList<Date> times, ArrayList<String> titles, ArrayList<String> ids, ArrayList<String> authors, ArrayList<String> contents, String userId) {
+    public FeedListAdapter(Context ct, ArrayList<String> identifiers, ArrayList<Date> times, ArrayList<String> titles, ArrayList<String> ids, ArrayList<String> authors, ArrayList<String> contents, String userId, Dialog feedDialog) {
         context = ct;
         identifierData = identifiers;
         titleData = titles;
@@ -39,6 +39,7 @@ public class FeedListAdapter extends RecyclerView.Adapter<FeedListAdapter.MyView
         authorData = authors;
         contentData = contents;
         user = userId;
+        dialog = feedDialog;
     }
 
     @NonNull
@@ -58,9 +59,25 @@ public class FeedListAdapter extends RecyclerView.Adapter<FeedListAdapter.MyView
         holder.mLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, FeedInfoActivity.class);
-                intent.putExtra("IDENTIFIER", identifierData.get(position));
-                context.startActivity(intent);
+                dialog.setContentView(R.layout.feed_info_view);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                TextView mTitle = dialog.findViewById(R.id.tvFeedInfoTitle);
+                TextView mAuthor = dialog.findViewById(R.id.tvFeedInfoAuthor);
+                TextView mDate = dialog.findViewById(R.id.tvFeedInfoDate);
+                TextView mContent = dialog.findViewById(R.id.tvFeedInfoContent);
+                Button mCloseButton = dialog.findViewById(R.id.btFeedInfoClose);
+                mTitle.setText(titleData.get(position));
+                mAuthor.setText(authorData.get(position));
+                mContent.setText(contentData.get(position));
+                mDate.setText(date);
+                dialog.setCancelable(false);
+                mCloseButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
             }
         });
     }

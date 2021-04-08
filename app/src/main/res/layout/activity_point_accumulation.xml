@@ -38,15 +38,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="25dp"
         android:layout_marginRight="25dp"
+        android:layout_marginBottom="10dp"
         android:fontFamily="@font/montserrat"
         android:gravity="center"
         android:text="Thanks for helping us make a difference in the world. Here are some points in return for your troubles:"
+        app:layout_constraintBottom_toTopOf="@+id/tvPointAccumulationPoints"
         app:layout_constraintEnd_toEndOf="@+id/ivPointAccumulationBackgroundOne"
-        app:layout_constraintStart_toStartOf="@+id/ivPointAccumulationBackgroundOne"
-        app:layout_constraintTop_toBottomOf="@+id/ivPointAccumulationPoints" />
+        app:layout_constraintStart_toStartOf="@+id/ivPointAccumulationBackgroundOne" />
 
     <TextView
         android:id="@+id/tvPointAccumulationTextTwo"
@@ -64,40 +64,48 @@
         android:id="@+id/tvPointAccumulationPoints"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
         android:fontFamily="@font/montserrat"
         android:text="+0pts"
         android:textSize="48sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btPointAccumulationNext"
         app:layout_constraintEnd_toEndOf="@+id/tvPointAccumulationTextOne"
         app:layout_constraintStart_toStartOf="@+id/tvPointAccumulationTextOne"
-        app:layout_constraintTop_toBottomOf="@+id/tvPointAccumulationTextOne" />
+        app:layout_constraintTop_toBottomOf="@+id/ivPointAccumulationPoints" />
 
     <Button
         android:id="@+id/btPointAccumulationNext"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/custom_button_style_5"
+        android:fontFamily="@font/montserrat"
         android:text="Finish"
+        android:textStyle="bold"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="@+id/ivPointAccumulationBackgroundOne"
         app:layout_constraintEnd_toEndOf="@+id/ivPointAccumulationBackgroundOne"
-        app:layout_constraintStart_toEndOf="@+id/imageButton2" />
+        app:layout_constraintStart_toEndOf="@+id/ibPointAccumulationShare" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="wrap_content"
+        android:id="@+id/ibPointAccumulationShare"
+        android:layout_width="100dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/custom_background_1"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="@+id/ivPointAccumulationBackgroundOne"
         app:layout_constraintStart_toStartOf="@+id/ivPointAccumulationBackgroundOne"
         app:layout_constraintTop_toTopOf="@+id/btPointAccumulationNext"
-        app:srcCompat="@drawable/points" />
+        app:srcCompat="@drawable/social_media" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

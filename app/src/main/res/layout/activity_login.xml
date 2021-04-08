@@ -41,7 +41,6 @@
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="20dp"
-        android:alpha="0.65"
         android:background="@android:color/transparent"
         android:rotation="180"
         android:scaleType="fitCenter"

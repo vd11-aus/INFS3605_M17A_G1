@@ -6,6 +6,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -62,6 +64,7 @@ public class ImagePostActivity extends AppCompatActivity {
     Uri imageLocation;
     Integer postcode;
     Boolean imageSelected = false;
+    Context pageContext = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -175,7 +178,7 @@ public class ImagePostActivity extends AppCompatActivity {
 
     // Upload data
     private void submitData() {
-        final LoadingDialog loadingDialog = new LoadingDialog(ImagePostActivity.this);
+        final LoadingDialog loadingDialog = new LoadingDialog(new Dialog(pageContext));
         loadingDialog.startLoadingAnimation();
         FirebaseStorage.getInstance().getReference().child("entries/" + uniqueEntry).putFile(imageLocation).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
             @Override

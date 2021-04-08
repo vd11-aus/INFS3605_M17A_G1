@@ -2,25 +2,25 @@ package com.example.custodian;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class LoadingDialog {
 
-    private Activity activity;
-    private AlertDialog dialog;
+    private Dialog dialog;
 
-    LoadingDialog(Activity myActivity) {
-        activity = myActivity;
+    LoadingDialog(Dialog dialogValue) {
+        dialog = dialogValue;
     }
 
     void startLoadingAnimation() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-
-        LayoutInflater inflater = activity.getLayoutInflater();
-        builder.setView(inflater.inflate(R.layout.loading_view, null));
-        builder.setCancelable(false);
-
-        dialog = builder.create();
+        dialog.setContentView(R.layout.loading_view);
+        dialog.setCancelable(false);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
     }
 
