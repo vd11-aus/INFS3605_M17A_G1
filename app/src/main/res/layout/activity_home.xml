@@ -130,8 +130,8 @@
                                 android:id="@+id/clHomeEventsOne"
                                 android:layout_width="250dp"
                                 android:layout_height="150dp"
-                                android:layout_marginStart="25dp"
-                                android:layout_marginLeft="25dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginLeft="20dp"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent">
 
@@ -289,8 +289,8 @@
                                 android:id="@+id/clHomeEventsThree"
                                 android:layout_width="250dp"
                                 android:layout_height="150dp"
-                                android:layout_marginEnd="25dp"
-                                android:layout_marginRight="25dp"
+                                android:layout_marginEnd="20dp"
+                                android:layout_marginRight="20dp"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toEndOf="@+id/clHomeEventsTwo"
                                 app:layout_constraintTop_toTopOf="parent">
