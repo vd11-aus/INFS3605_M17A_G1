@@ -120,8 +120,8 @@ public class VideoPostActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!checkFields()) {
-                    Snackbar.make(findViewById(R.id.clVideoPostMainLayout),
-                            "You haven't filled out all the fields yet.", Snackbar.LENGTH_SHORT).show();
+                    final com.example.custodian.AlertDialog incompleteDialog = new com.example.custodian.AlertDialog(new Dialog(pageContext), "You haven't filled out all the fields yet.", "warning");
+                    incompleteDialog.startLoadingAnimation();
                 } else {
                     showProceedWarningDialog(getCurrentFocus());
                 }

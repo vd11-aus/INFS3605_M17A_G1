@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clPermissionsMainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/ivPermissionsBackground"
+        android:layout_width="300dp"
+        android:layout_height="340dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/custom_background_1" />
+
+    <TextView
+        android:id="@+id/tvPermissionsTextOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Permissions"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/ivPermissionsBackground"
+        app:layout_constraintStart_toStartOf="@+id/ivPermissionsBackground"
+        app:layout_constraintTop_toTopOf="@+id/ivPermissionsBackground" />
+
+    <TextView
+        android:id="@+id/tvPermissionsTextTwo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:fontFamily="@font/montserrat"
+        android:text="In order to make our app operate correctly, we require your permission to use various aspects of your device, which you can accept below. We will inform you each time you use any of these services so you know beforehand what you're getting into."
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/ivPermissionsBackground"
+        app:layout_constraintStart_toStartOf="@+id/ivPermissionsBackground"
+        app:layout_constraintTop_toBottomOf="@+id/tvPermissionsTextOne" />
+
+    <Button
+        android:id="@+id/btPermissionsLocationServices"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Location Services"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btPermissionsReadExternalStorage"
+        app:layout_constraintEnd_toEndOf="@+id/ivPermissionsBackground"
+        app:layout_constraintStart_toStartOf="@+id/ivPermissionsBackground" />
+
+    <Button
+        android:id="@+id/btPermissionsReadExternalStorage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Access Files Upon Request"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ivPermissionsBackground"
+        app:layout_constraintEnd_toEndOf="@+id/btPermissionsLocationServices"
+        app:layout_constraintStart_toStartOf="@+id/btPermissionsLocationServices" />
+
+    <ImageButton
+        android:id="@+id/ibPermissionsClose"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="280dp"
+        android:layout_marginLeft="280dp"
+        android:layout_marginBottom="320dp"
+        android:background="@drawable/custom_circle_4"
+        app:layout_constraintBottom_toBottomOf="@+id/ivPermissionsBackground"
+        app:layout_constraintStart_toStartOf="@+id/ivPermissionsBackground"
+        app:srcCompat="@drawable/ic_baseline_close_24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

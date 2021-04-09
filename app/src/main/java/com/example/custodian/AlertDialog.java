@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,6 +28,7 @@ public class AlertDialog {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         TextView mMessage = dialog.findViewById(R.id.tvStandardAlertMessage);
         ImageView mIcon = dialog.findViewById(R.id.ivStandardAlertIcon);
+        ImageView mInteract = dialog.findViewById(R.id.ivStandardAlertInteract);
         switch (type) {
             case "information":
                 mIcon.setImageResource(R.drawable.information_icon);
@@ -37,6 +39,12 @@ public class AlertDialog {
         }
         mMessage.setText(message);
         dialog.show();
+        mInteract.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismissDialog();
+            }
+        });
     }
 
     void dismissDialog() {

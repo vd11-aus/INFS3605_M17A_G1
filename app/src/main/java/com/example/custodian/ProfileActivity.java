@@ -38,6 +38,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     // Declaration of variables
+    private ImageButton mSettings;
     private ImageButton mHomeButton;
     private ImageButton mHistoryButton;
     private ImageButton mNewPostButton;
@@ -51,6 +52,7 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView mPosts;
     private TextView mGender;
     private TextView mOrigin;
+    private TextView mNoMessages;
     private RecyclerView mFeedList;
 
     private String category = "profile";
@@ -62,6 +64,7 @@ public class ProfileActivity extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         // Assigning of variable values
+        mSettings = findViewById(R.id.ibProfileEditAccount);
         mHomeButton = findViewById(R.id.ibNavigationHome);
         mHistoryButton = findViewById(R.id.ibNavigationHistory);
         mNewPostButton = findViewById(R.id.ibNavigationNewPost);
@@ -75,7 +78,10 @@ public class ProfileActivity extends AppCompatActivity {
         mPosts = findViewById(R.id.tvProfilePosts);
         mGender = findViewById(R.id.tvProfileGender);
         mOrigin = findViewById(R.id.tvProfileOrigin);
+        mNoMessages = findViewById(R.id.tvProfileNoMessages);
         mFeedList = findViewById(R.id.rlProfileFeed);
+
+        mNoMessages.setVisibility(View.INVISIBLE);
 
         FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -85,9 +91,9 @@ public class ProfileActivity extends AppCompatActivity {
                 String pointsString = "";
                 if (allTimePoints >= 1000) {
                     allTimePoints = allTimePoints/1000;
-                    pointsString = allTimePoints + "k";
+                    pointsString = String.format("%.1f" + "k", allTimePoints);
                 } else {
-                    pointsString = String.valueOf(allTimePoints);
+                    pointsString = String.valueOf(allTimePoints.intValue());
                 }
                 mPoints.setText(pointsString);
                 mPosts.setText(String.valueOf(documentSnapshot.getLong("alltimeposts").intValue()));
@@ -97,27 +103,27 @@ public class ProfileActivity extends AppCompatActivity {
                 String originOutput = "";
                 switch (getGender) {
                     case "Male":
-                        genderOutput = "Gender: Male";
+                        genderOutput = "Male";
                         break;
                     case "Female":
-                        genderOutput = "Gender: Female";
+                        genderOutput = "Female";
                         break;
                     case "Other":
-                        genderOutput = "Gender: Other";
+                        genderOutput = "Other Gender";
                         break;
                     case "Did Not Disclose":
-                        genderOutput = "Gender: N/A";
+                        genderOutput = "Gender Undisclosed";
                         break;
                 }
                 switch (getOrigin) {
                     case "True":
-                        originOutput = "Origin: Indigenous / Torres Strait";
+                        originOutput = "Indigenous / Torres Strait";
                         break;
                     case "False":
-                        originOutput = "Origin: Non-Indigenous";
+                        originOutput = "Non-Indigenous";
                         break;
                     case "Did Not Disclose":
-                        originOutput = "Origin: N/A";
+                        originOutput = "Origin Undisclosed";
                         break;
                 }
                 mGender.setText(genderOutput);
@@ -184,6 +190,9 @@ public class ProfileActivity extends AppCompatActivity {
                 FeedListAdapter listAdapter = new FeedListAdapter(pageContext, identifierData, timeData, titleData, idData, authorData, contentData, FirebaseAuth.getInstance().getCurrentUser().getUid(), new Dialog(pageContext));
                 mFeedList.setAdapter(listAdapter);
                 mFeedList.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                if (snapshotList.size() == 0) {
+                    mNoMessages.setVisibility(View.VISIBLE);
+                }
             }
         });
 
@@ -191,6 +200,15 @@ public class ProfileActivity extends AppCompatActivity {
         BackgroundGenerator background = new BackgroundGenerator();
         Glide.with(mBackgroundImage).load(background.login()).centerCrop().placeholder(R.drawable.custom_background_2)
                 .error(R.drawable.custom_background_2).fallback(R.drawable.custom_background_2).into(mBackgroundImage);
+
+        // Edit account
+        mSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final UserSettingsDialog userSettingsDialog = new UserSettingsDialog(pageContext, new Dialog(pageContext));
+                userSettingsDialog.startLoadingAnimation();
+            }
+        });
 
         // Go to Home
         mHomeButton.setOnClickListener(new View.OnClickListener() {

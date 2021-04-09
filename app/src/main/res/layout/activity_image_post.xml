@@ -47,6 +47,7 @@
         android:textColor="#000000"
         android:textColorHint="#555555"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/ivImagePostBackground"
         app:layout_constraintEnd_toEndOf="@+id/ivImagePostBackgroundOne"
         app:layout_constraintStart_toStartOf="@+id/ivImagePostBackgroundOne" />

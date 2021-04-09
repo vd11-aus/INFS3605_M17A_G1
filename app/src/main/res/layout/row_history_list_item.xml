@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="150dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clHistoryRowItemMainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:background="@drawable/custom_background_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivHistoryRowItemIcon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:tint="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_text_fields_24" />
+
+        <TextView
+            android:id="@+id/tvHistoryRowItemTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginRight="25dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/montserrat"
+            android:singleLine="true"
+            android:text="Getting title ..."
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivHistoryRowItemIcon"
+            app:layout_constraintTop_toTopOf="@+id/ivHistoryRowItemIcon" />
+
+        <TextView
+            android:id="@+id/tvHistoryRowItemDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Getting date ..."
+            android:textSize="10sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toStartOf="@+id/tvHistoryRowItemLocation"
+            app:layout_constraintStart_toStartOf="@+id/tvHistoryRowItemTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvHistoryRowItemTitle" />
+
+        <TextView
+            android:id="@+id/tvHistoryRowItemLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:gravity="right"
+            android:text="Getting location ..."
+            android:textSize="10sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="@+id/tvHistoryRowItemTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvHistoryRowItemTitle" />
+
+        <TextView
+            android:id="@+id/tvHistoryRowItemOverview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/montserrat"
+            android:text="TextView"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivHistoryRowItemIcon"
+            app:layout_constraintEnd_toEndOf="@+id/tvHistoryRowItemTitle"
+            app:layout_constraintStart_toStartOf="@+id/tvHistoryRowItemTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvHistoryRowItemDate" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

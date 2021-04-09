@@ -36,6 +36,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.auth.User;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -114,28 +115,28 @@ public class CreateAccountActivity extends AppCompatActivity {
                 System.out.println("Create Account Button Clicked");
                 switch (entriesComplete()) {
                     case "incomplete-entry":
-                        Snackbar.make(findViewById(R.id.clCreateAccountMainLayout),
-                                "One or more text fields are blank, please fill them and try again.", Snackbar.LENGTH_SHORT).show();
+                        final com.example.custodian.AlertDialog incompleteDialog = new com.example.custodian.AlertDialog(new Dialog(pageContext), "One or more fields are blank, please fill them and try again.", "warning");
+                        incompleteDialog.startLoadingAnimation();
                         break;
                     case "invalid-username":
-                        Snackbar.make(findViewById(R.id.clCreateAccountMainLayout),
-                                "Invalid username, it has to be a minimum of 8 characters with no spaces and at least one upper & lower case letter.", Snackbar.LENGTH_SHORT).show();
+                        final com.example.custodian.AlertDialog invalidUsernameDialog = new com.example.custodian.AlertDialog(new Dialog(pageContext), "Invalid username, it has to be a minimum of 8 characters with no spaces and at least one upper & lower case letter.", "warning");
+                        invalidUsernameDialog.startLoadingAnimation();
                         break;
                     case "invalid-email":
-                        Snackbar.make(findViewById(R.id.clCreateAccountMainLayout),
-                                "Invalid email, it has to contain the '@' symbol.", Snackbar.LENGTH_SHORT).show();
+                        final com.example.custodian.AlertDialog invalidEmailDialog = new com.example.custodian.AlertDialog(new Dialog(pageContext), "Invalid email, it has to contain the '@' symbol.", "warning");
+                        invalidEmailDialog.startLoadingAnimation();
                         break;
                     case "invalid-password":
-                        Snackbar.make(findViewById(R.id.clCreateAccountMainLayout),
-                                "Invalid password, it has to be a minimum of 8 characters with no spaces and at least one upper & lower case letter.", Snackbar.LENGTH_SHORT).show();
+                        final com.example.custodian.AlertDialog invalidPasswordDialog = new com.example.custodian.AlertDialog(new Dialog(pageContext), "Invalid password, it has to be a minimum of 8 characters with no spaces and at least one upper & lower case letter.", "warning");
+                        invalidPasswordDialog.startLoadingAnimation();
                         break;
                     case "passwords-dont-match":
-                        Snackbar.make(findViewById(R.id.clCreateAccountMainLayout),
-                                "The passwords you've provided don't match each other. Please correct them and try again.", Snackbar.LENGTH_SHORT).show();
+                        final com.example.custodian.AlertDialog passwordMismatchDialog = new com.example.custodian.AlertDialog(new Dialog(pageContext), "The passwords you've provided don't match each other. Please correct them and try again.", "warning");
+                        passwordMismatchDialog.startLoadingAnimation();
                         break;
                     case "no-icon":
-                        Snackbar.make(findViewById(R.id.clCreateAccountMainLayout),
-                                "You haven't added an icon yet!", Snackbar.LENGTH_SHORT).show();
+                        final com.example.custodian.AlertDialog noIconDialog = new com.example.custodian.AlertDialog(new Dialog(pageContext), "You haven't added an icon yet!", "warning");
+                        noIconDialog.startLoadingAnimation();
                         break;
                     case "entries-validated":
                         genderQuestionCheck();
@@ -314,28 +315,31 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     // Adds user document in Firebase Cloud Firestore
     public void addUserDetails() {
-        firebaseStorage.getReference().child("profileicons/"+firebaseAuth.getCurrentUser().getUid()).putFile(iconImage);
-        firebaseStorage.getReference().child("profileicons/"+firebaseAuth.getCurrentUser().getUid()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        firebaseStorage.getReference().child("profileicons/"+firebaseAuth.getCurrentUser().getUid()).putFile(iconImage).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
             @Override
-            public void onSuccess(Uri uri) {
-                firebaseAuth.getCurrentUser().updateProfile(new UserProfileChangeRequest.Builder().setPhotoUri(uri).build());
-                launchWelcomeActivity();
-            }
-        });
-        Map<String, Object> map = new HashMap<>();
-        map.put("username", username);
-        map.put("gender", gender);
-        map.put("origin", origin);
-        map.put("currentpoints", (int) 0);
-        map.put("alltimepoints", (int) 0);
-        map.put("alltimeposts", (int) 0);
-        map.put("uniqueid", firebaseAuth.getCurrentUser().getUid());
-        firebaseFS.collection("users").document(firebaseAuth.getCurrentUser().getUid()).set(map)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
+            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                firebaseStorage.getReference().child("profileicons/"+firebaseAuth.getCurrentUser().getUid()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
+                    public void onSuccess(Uri uri) {
+                        firebaseAuth.getCurrentUser().updateProfile(new UserProfileChangeRequest.Builder().setPhotoUri(uri).build());
+                        Map<String, Object> map = new HashMap<>();
+                        map.put("username", username);
+                        map.put("gender", gender);
+                        map.put("origin", origin);
+                        map.put("currentpoints", (int) 0);
+                        map.put("alltimepoints", (int) 0);
+                        map.put("alltimeposts", (int) 0);
+                        map.put("uniqueid", firebaseAuth.getCurrentUser().getUid());
+                        firebaseFS.collection("users").document(firebaseAuth.getCurrentUser().getUid()).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                launchWelcomeActivity();
+                            }
+                        });
                     }
                 });
+            }
+        });
     }
 
     // Warn user that any entered data will be wiped

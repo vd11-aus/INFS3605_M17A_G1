@@ -105,8 +105,8 @@ public class IndigenousQuestionsActivity extends AppCompatActivity {
     // Initialise after performing field check
     private void submit() {
         if (mRatingOne.getRating() == SmileRating.NONE || mRatingTwo.getRating() == SmileRating.NONE || mRatingThree.getRating() == SmileRating.NONE) {
-            Snackbar.make(findViewById(R.id.clIndigenousQuestionsMainLayout),
-                    "You haven't filled out all the necessary fields yet.", Snackbar.LENGTH_SHORT).show();
+            final com.example.custodian.AlertDialog incompleteDialog = new com.example.custodian.AlertDialog(new Dialog(pageContext), "You haven't filled out the necessary fields yet.", "warning");
+            incompleteDialog.startLoadingAnimation();
         } else {
             insertData();
         }
@@ -133,6 +133,9 @@ public class IndigenousQuestionsActivity extends AppCompatActivity {
             case SmileRating.GREAT:
                 indigenousQuestionOne = "great";
                 break;
+            default:
+                indigenousQuestionOne = "okay";
+                break;
         }
         String indigenousQuestionTwo = "";
         switch (mRatingTwo.getRating()) {
@@ -151,6 +154,9 @@ public class IndigenousQuestionsActivity extends AppCompatActivity {
             case SmileRating.GREAT:
                 indigenousQuestionTwo = "great";
                 break;
+            default:
+                indigenousQuestionTwo = "okay";
+                break;
         }
         String indigenousQuestionThree = "";
         switch (mRatingOne.getRating()) {
@@ -168,6 +174,9 @@ public class IndigenousQuestionsActivity extends AppCompatActivity {
                 break;
             case SmileRating.GREAT:
                 indigenousQuestionThree = "great";
+                break;
+            default:
+                indigenousQuestionThree = "okay";
                 break;
         }
         Map<String, Object> map = new HashMap<>();

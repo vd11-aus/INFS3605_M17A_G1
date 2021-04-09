@@ -97,7 +97,7 @@ public class NewPostActivity extends AppCompatActivity {
     public void showProceedWarningDialog(View v, String type) {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle("Are you sure?");
-        alert.setMessage("If you continue, your current location postcode will be recorded.");
+        alert.setMessage("To continue, we will need to record the postcode of your location in order to improve the quality of our research on the Indigenous culture. Any submission you do can not be traced back to you and all messages you receive are automated so no third parties will have access to your location.");
         alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

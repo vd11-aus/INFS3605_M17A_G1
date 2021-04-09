@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clUserSettingsMainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/ivUserSettingsBackground"
+        android:layout_width="300dp"
+        android:layout_height="500dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/custom_background_1" />
+
+    <TextView
+        android:id="@+id/tvUserSettingsTextOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Settings"
+        android:textColor="#000000"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/ivUserSettingsBackground"
+        app:layout_constraintStart_toStartOf="@+id/ivUserSettingsBackground"
+        app:layout_constraintTop_toTopOf="@+id/ivUserSettingsBackground" />
+
+    <TextView
+        android:id="@+id/tvUserSettingsUsername"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Username: Getting ..."
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ibUserSettingsUsernameEdit"
+        app:layout_constraintEnd_toStartOf="@+id/ibUserSettingsEmailEdit"
+        app:layout_constraintStart_toStartOf="@+id/ivUserSettingsBackground"
+        app:layout_constraintTop_toTopOf="@+id/ibUserSettingsUsernameEdit" />
+
+    <ImageButton
+        android:id="@+id/ibUserSettingsUsernameEdit"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@android:color/transparent"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        app:layout_constraintEnd_toEndOf="@+id/ivUserSettingsBackground"
+        app:layout_constraintTop_toBottomOf="@+id/ivUserSettingsBorder"
+        app:srcCompat="@drawable/ic_baseline_create_24" />
+
+    <TextView
+        android:id="@+id/tvUserSettingsEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Email: Getting ..."
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ibUserSettingsEmailEdit"
+        app:layout_constraintEnd_toStartOf="@+id/ibUserSettingsEmailEdit"
+        app:layout_constraintStart_toStartOf="@+id/ivUserSettingsBackground"
+        app:layout_constraintTop_toTopOf="@+id/ibUserSettingsEmailEdit" />
+
+    <ImageButton
+        android:id="@+id/ibUserSettingsEmailEdit"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@android:color/transparent"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        app:layout_constraintEnd_toEndOf="@+id/ibUserSettingsUsernameEdit"
+        app:layout_constraintTop_toBottomOf="@+id/ibUserSettingsUsernameEdit"
+        app:srcCompat="@drawable/ic_baseline_create_24" />
+
+    <TextView
+        android:id="@+id/tvUserSettingsPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Password: ********"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ibUserSettingsPasswordEdit"
+        app:layout_constraintEnd_toStartOf="@+id/ibUserSettingsEmailEdit"
+        app:layout_constraintStart_toStartOf="@+id/ivUserSettingsBackground"
+        app:layout_constraintTop_toTopOf="@+id/ibUserSettingsPasswordEdit" />
+
+    <ImageButton
+        android:id="@+id/ibUserSettingsPasswordEdit"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@android:color/transparent"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        app:layout_constraintEnd_toEndOf="@+id/ibUserSettingsEmailEdit"
+        app:layout_constraintTop_toBottomOf="@+id/ibUserSettingsEmailEdit"
+        app:srcCompat="@drawable/ic_baseline_create_24" />
+
+    <TextView
+        android:id="@+id/tvUserSettingsGender"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Gender: Getting ..."
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ibUserSettingsGenderEdit"
+        app:layout_constraintEnd_toStartOf="@+id/ibUserSettingsEmailEdit"
+        app:layout_constraintStart_toStartOf="@+id/ivUserSettingsBackground"
+        app:layout_constraintTop_toTopOf="@+id/ibUserSettingsGenderEdit" />
+
+    <ImageButton
+        android:id="@+id/ibUserSettingsGenderEdit"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@android:color/transparent"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        app:layout_constraintEnd_toEndOf="@+id/ibUserSettingsPasswordEdit"
+        app:layout_constraintTop_toBottomOf="@+id/ibUserSettingsPasswordEdit"
+        app:srcCompat="@drawable/ic_baseline_create_24" />
+
+    <TextView
+        android:id="@+id/tvUserSettingsOrigin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Origin: Getting ..."
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ibUserSettingsOriginEdit"
+        app:layout_constraintEnd_toStartOf="@+id/ibUserSettingsEmailEdit"
+        app:layout_constraintStart_toStartOf="@+id/ivUserSettingsBackground"
+        app:layout_constraintTop_toTopOf="@+id/ibUserSettingsOriginEdit" />
+
+    <ImageButton
+        android:id="@+id/ibUserSettingsOriginEdit"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@android:color/transparent"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        app:layout_constraintEnd_toEndOf="@+id/ibUserSettingsGenderEdit"
+        app:layout_constraintTop_toBottomOf="@+id/ibUserSettingsGenderEdit"
+        app:srcCompat="@drawable/ic_baseline_create_24" />
+
+    <ImageView
+        android:id="@+id/ivUserSettingsIcon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="25dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="@+id/ivUserSettingsBackground"
+        app:layout_constraintStart_toStartOf="@+id/ivUserSettingsBackground"
+        app:layout_constraintTop_toBottomOf="@+id/tvUserSettingsTextOne"
+        tools:srcCompat="@drawable/avatar" />
+
+    <ImageView
+        android:id="@+id/ivUserSettingsBorder"
+        android:layout_width="115dp"
+        android:layout_height="115dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivUserSettingsIcon"
+        app:layout_constraintEnd_toEndOf="@+id/ivUserSettingsIcon"
+        app:layout_constraintStart_toStartOf="@+id/ivUserSettingsIcon"
+        app:layout_constraintTop_toTopOf="@+id/ivUserSettingsIcon"
+        app:srcCompat="@drawable/custom_icon_border_1" />
+
+    <ImageButton
+        android:id="@+id/ibUserSettingsIconEdit"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="85dp"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="85dp"
+        android:background="@drawable/custom_circle_1"
+        android:rotation="45"
+        app:layout_constraintStart_toStartOf="@+id/ivUserSettingsBorder"
+        app:layout_constraintTop_toTopOf="@+id/ivUserSettingsBorder"
+        app:srcCompat="@drawable/ic_baseline_attach_file_24" />
+
+    <Button
+        android:id="@+id/btUserSettingsLogOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Log Out"
+        app:layout_constraintBottom_toBottomOf="@+id/ivUserSettingsBackground"
+        app:layout_constraintEnd_toEndOf="@+id/ivUserSettingsBackground"
+        app:layout_constraintStart_toStartOf="@+id/ivUserSettingsBackground" />
+
+    <ImageButton
+        android:id="@+id/ibUserSettingsClose"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="280dp"
+        android:layout_marginLeft="280dp"
+        android:layout_marginBottom="480dp"
+        android:background="@drawable/custom_circle_4"
+        app:layout_constraintBottom_toBottomOf="@+id/ivUserSettingsBackground"
+        app:layout_constraintStart_toStartOf="@+id/ivUserSettingsBackground"
+        app:srcCompat="@drawable/ic_baseline_close_24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

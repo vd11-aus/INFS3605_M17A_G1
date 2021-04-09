@@ -3,8 +3,13 @@ package com.example.custodian;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -79,6 +84,14 @@ public class WelcomeActivity extends AppCompatActivity {
                 mNextPageButton.setEnabled(true);
             }
         });
+
+        // Get permissions
+        Context pageContext = this;
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            final PermissionsDialog permissionsDialog = new PermissionsDialog(pageContext,this, new Dialog(pageContext));
+            permissionsDialog.startLoadingAnimation();
+        }
 
         // Navigate to user home
         mNextPageButton.setOnClickListener(new View.OnClickListener() {

@@ -230,7 +230,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/montserrat"
-        android:text="TheRealStevieJ"
+        android:text="Getting ..."
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/ivProfileIconBorder"
@@ -246,7 +246,7 @@
         android:background="@drawable/custom_circle_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_edit_24" />
+        app:srcCompat="@drawable/ic_baseline_settings_24" />
 
     <ImageView
         android:id="@+id/ivProfileOriginBackground"
@@ -362,5 +362,18 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/ivProfileFeedbackMessages"
         app:layout_constraintTop_toBottomOf="@+id/ivProfilePointsOne" />
+
+    <TextView
+        android:id="@+id/tvProfileNoMessages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="No New Messages"
+        android:textColor="#444444"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivProfileFeedbackMessages"
+        app:layout_constraintEnd_toEndOf="@+id/ivProfileFeedbackMessages"
+        app:layout_constraintStart_toStartOf="@+id/ivProfileFeedbackMessages"
+        app:layout_constraintTop_toTopOf="@+id/ivProfileFeedbackMessages" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

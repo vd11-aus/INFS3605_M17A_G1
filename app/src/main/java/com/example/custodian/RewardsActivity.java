@@ -49,6 +49,7 @@ public class RewardsActivity extends AppCompatActivity {
     private ImageView mBackgroundImage;
     private RecyclerView mRewardsList;
     private TextView mCurrentPoints;
+    private TextView mNoRewards;
 
     private String category = "rewards";
     private String id;
@@ -68,6 +69,9 @@ public class RewardsActivity extends AppCompatActivity {
         mBackgroundImage = findViewById(R.id.ivRewardsBackground);
         mRewardsList = findViewById(R.id.rvRewardsList);
         mCurrentPoints = findViewById(R.id.tvRewardsCurrentPoints);
+        mNoRewards = findViewById(R.id.tvRewardsNoRewards);
+
+        mNoRewards.setVisibility(View.INVISIBLE);
 
         id = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -109,6 +113,9 @@ public class RewardsActivity extends AppCompatActivity {
                         RewardsListAdapter listAdapter = new RewardsListAdapter(pageContext, rewardTitles, rewardDescriptions, rewardImages, rewardIds, rewardCosts, currentPoints);
                         mRewardsList.setAdapter(listAdapter);
                         mRewardsList.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                        if (snapshotList.size() == 0) {
+                            mNoRewards.setVisibility(View.VISIBLE);
+                        }
                     }
                 });
             }
