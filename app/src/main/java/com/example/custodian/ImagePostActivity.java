@@ -150,8 +150,8 @@ public class ImagePostActivity extends AppCompatActivity {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     selectImage();
                 } else {
-                    Snackbar.make(findViewById(R.id.clImagePostMainLayout),
-                            "Permission denied.", Snackbar.LENGTH_SHORT).show();
+                    final com.example.custodian.AlertDialog permissionDeniedDialog = new com.example.custodian.AlertDialog(new Dialog(pageContext), "Permission denied.", "warning");
+                    permissionDeniedDialog.startLoadingAnimation();
                 }
             }
         }
@@ -188,6 +188,7 @@ public class ImagePostActivity extends AppCompatActivity {
                     public void onSuccess(Uri uri) {
                         Map<String, Object> map = new HashMap<>();
                         Timestamp time = new Timestamp(System.currentTimeMillis());
+                        map.put("identifier", uniqueEntry);
                         map.put("time", time);
                         map.put("title", mTitle.getText().toString());
                         map.put("overview", mOverview.getText().toString());

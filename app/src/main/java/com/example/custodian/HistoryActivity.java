@@ -92,6 +92,7 @@ public class HistoryActivity extends AppCompatActivity {
                 ArrayList<String> indigenousHeritageData = new ArrayList<String>();
                 ArrayList<String> indigenousPreservationData = new ArrayList<String>();
                 ArrayList<String> indigenousExposureData = new ArrayList<String>();
+                ArrayList<String> identifierData = new ArrayList<String>();
                 for (DocumentSnapshot snapshot: snapshotList) {
                     Date value = snapshot.getTimestamp("time").toDate();
                     timeData.add(value);
@@ -105,8 +106,9 @@ public class HistoryActivity extends AppCompatActivity {
                     indigenousHeritageData.add(snapshot.getString("indigenousheritage"));
                     indigenousPreservationData.add(snapshot.getString("indigenouspreservation"));
                     indigenousExposureData.add(snapshot.getString("indigenousexposure"));
+                    identifierData.add(snapshot.getString("identifier"));
                 }
-                HistoryListAdapter listAdapter = new HistoryListAdapter(timeData, titleData, overviewData, typeData, categoryData, postcodeData, analysedData, indigenousHeritageData, indigenousPreservationData, indigenousExposureData, FirebaseAuth.getInstance().getCurrentUser().getUid(), pageContext);
+                HistoryListAdapter listAdapter = new HistoryListAdapter(timeData, titleData, overviewData, typeData, categoryData, postcodeData, analysedData, indigenousHeritageData, indigenousPreservationData, indigenousExposureData, identifierData, FirebaseAuth.getInstance().getCurrentUser().getUid(), pageContext);
                 mHistoryList.setAdapter(listAdapter);
                 mHistoryList.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 if (snapshotList.size() == 0) {

@@ -114,7 +114,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <com.hsalf.smilerating.SmileRating
+                <com.hsalf.smileyrating.SmileyRating
                     android:id="@+id/srIndigenousQuestionsRatingOne"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -134,7 +134,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/srIndigenousQuestionsRatingOne" />
 
-                <com.hsalf.smilerating.SmileRating
+                <com.hsalf.smileyrating.SmileyRating
                     android:id="@+id/srIndigenousQuestionsRatingTwo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -149,12 +149,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/montserrat"
-                    android:text="What is your stance on public exposure to the harming effects of climate change on the traditional Indigenous way of life."
+                    android:text="What is your stance on public exposure to the harming effects of climate change on the traditional Indigenous way of life?"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/srIndigenousQuestionsRatingTwo" />
 
-                <com.hsalf.smilerating.SmileRating
+                <com.hsalf.smileyrating.SmileyRating
                     android:id="@+id/srIndigenousQuestionsRatingThree"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

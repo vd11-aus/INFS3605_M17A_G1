@@ -38,10 +38,11 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryListAdapter.
     ArrayList<String> indigenousHeritageData;
     ArrayList<String> indigenousPreservationData;
     ArrayList<String> indigenousExposureData;
+    ArrayList<String> identifierData;
     String user;
     Context context;
 
-    public HistoryListAdapter(ArrayList<Date> timeData, ArrayList<String> titleData, ArrayList<String> overviewData, ArrayList<String> typeData, ArrayList<String> categoryData, ArrayList<Integer> postcodeData, ArrayList<Boolean> analysedData, ArrayList<String> indigenousHeritageData, ArrayList<String> indigenousPreservationData, ArrayList<String> indigenousExposureData, String user, Context context) {
+    public HistoryListAdapter(ArrayList<Date> timeData, ArrayList<String> titleData, ArrayList<String> overviewData, ArrayList<String> typeData, ArrayList<String> categoryData, ArrayList<Integer> postcodeData, ArrayList<Boolean> analysedData, ArrayList<String> indigenousHeritageData, ArrayList<String> indigenousPreservationData, ArrayList<String> indigenousExposureData, ArrayList<String> identifierData, String user, Context context) {
         this.timeData = timeData;
         this.titleData = titleData;
         this.overviewData = overviewData;
@@ -52,6 +53,7 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryListAdapter.
         this.indigenousHeritageData = indigenousHeritageData;
         this.indigenousPreservationData = indigenousPreservationData;
         this.indigenousExposureData = indigenousExposureData;
+        this.identifierData = identifierData;
         this.user = user;
         this.context = context;
     }
@@ -77,6 +79,11 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryListAdapter.
                 holder.mIcon.setImageResource(R.drawable.ic_baseline_videocam_24);
                 break;
         }
+        if (analysedData.get(position)) {
+            holder.mAnalysed.setImageResource(R.drawable.custom_circle_5);
+        } else {
+            holder.mAnalysed.setImageResource(R.drawable.custom_circle_2);
+        }
         holder.mTitle.setText(titleData.get(position));
         SimpleDateFormat format = new SimpleDateFormat("dd MMM YYYY");
         String date = format.format(timeData.get(position)).toUpperCase();
@@ -96,7 +103,8 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryListAdapter.
         holder.mLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, RewardInfoActivity.class);
+                Intent intent = new Intent(context, HistoryInfoActivity.class);
+                intent.putExtra("IDENTIFIER", identifierData.get(position));
                 context.startActivity(intent);
             }
         });
@@ -110,6 +118,7 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryListAdapter.
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         ImageView mIcon;
+        ImageView mAnalysed;
         TextView mTitle;
         TextView mDate;
         TextView mLocation;
@@ -119,6 +128,7 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryListAdapter.
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             mIcon = itemView.findViewById(R.id.ivHistoryRowItemIcon);
+            mAnalysed = itemView.findViewById(R.id.ivHistoryRowItemAnalysed);
             mTitle = itemView.findViewById(R.id.tvHistoryRowItemTitle);
             mDate = itemView.findViewById(R.id.tvHistoryRowItemDate);
             mLocation = itemView.findViewById(R.id.tvHistoryRowItemLocation);

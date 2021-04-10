@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#111111"
+    tools:context=".ChangeIconActivity">
+
+    <ImageView
+        android:id="@+id/ivChangeIconBackground"
+        android:layout_width="250dp"
+        android:layout_height="350dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/custom_button_style_5" />
+
+    <ImageView
+        android:id="@+id/ivChangeIconIcon"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="25dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="@+id/ivChangeIconBackground"
+        app:layout_constraintStart_toStartOf="@+id/ivChangeIconBackground"
+        app:layout_constraintTop_toBottomOf="@+id/tvChangeIconTextOne"
+        tools:srcCompat="@drawable/avatar" />
+
+    <ImageView
+        android:id="@+id/ivChangeIconBorder"
+        android:layout_width="155dp"
+        android:layout_height="155dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivChangeIconIcon"
+        app:layout_constraintEnd_toEndOf="@+id/ivChangeIconIcon"
+        app:layout_constraintStart_toStartOf="@+id/ivChangeIconIcon"
+        app:layout_constraintTop_toTopOf="@+id/ivChangeIconIcon"
+        app:srcCompat="@drawable/custom_icon_border_4" />
+
+    <ImageButton
+        android:id="@+id/ibChangeIconEdit"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginLeft="125dp"
+        android:layout_marginTop="125dp"
+        android:background="@drawable/custom_circle_1"
+        android:rotation="45"
+        app:layout_constraintStart_toStartOf="@+id/ivChangeIconBorder"
+        app:layout_constraintTop_toTopOf="@+id/ivChangeIconBorder"
+        app:srcCompat="@drawable/ic_baseline_attach_file_24" />
+
+    <TextView
+        android:id="@+id/tvChangeIconTextOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="35dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Change Icon"
+        android:textColor="#FFF4F4"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/ivChangeIconBackground"
+        app:layout_constraintTop_toTopOf="@+id/ivChangeIconBackground" />
+
+    <Button
+        android:id="@+id/btChangeIconCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/custom_button_style_4"
+        android:fontFamily="@font/montserrat"
+        android:text="Cancel"
+        android:textSize="10sp"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="@+id/ivChangeIconBackground"
+        app:layout_constraintStart_toStartOf="@+id/ivChangeIconBackground" />
+
+    <Button
+        android:id="@+id/btChangeIconConfirm"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/custom_button_style_4"
+        android:fontFamily="@font/montserrat"
+        android:text="Confirm"
+        android:textSize="10sp"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="@+id/ivChangeIconBackground"
+        app:layout_constraintEnd_toEndOf="@+id/ivChangeIconBackground"
+        app:layout_constraintStart_toEndOf="@+id/btChangeIconCancel" />
+
+    <ImageButton
+        android:id="@+id/ibChangeIconHelp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:alpha="0.15"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/tvChangeIconTextOne"
+        app:layout_constraintEnd_toEndOf="@+id/ivChangeIconBackground"
+        app:layout_constraintTop_toTopOf="@+id/tvChangeIconTextOne"
+        app:srcCompat="@drawable/ic_baseline_help_outline_24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

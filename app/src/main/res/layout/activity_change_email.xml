@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#111111"
+    tools:context=".ChangeEmailActivity">
+
+    <ImageView
+        android:id="@+id/ivChangeEmailBackground"
+        android:layout_width="250dp"
+        android:layout_height="350dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/custom_button_style_5" />
+
+    <TextView
+        android:id="@+id/tvChangeEmailTextOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="35dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Change Email"
+        android:textColor="#FFF4F4"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/ivChangeEmailBackground"
+        app:layout_constraintTop_toTopOf="@+id/ivChangeEmailBackground" />
+
+    <Button
+        android:id="@+id/btChangeEmailCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/custom_button_style_4"
+        android:fontFamily="@font/montserrat"
+        android:text="Cancel"
+        android:textSize="10sp"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="@+id/ivChangeEmailBackground"
+        app:layout_constraintStart_toStartOf="@+id/ivChangeEmailBackground" />
+
+    <Button
+        android:id="@+id/btChangeEmailConfirm"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/custom_button_style_4"
+        android:fontFamily="@font/montserrat"
+        android:text="Confirm"
+        android:textSize="10sp"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="@+id/ivChangeEmailBackground"
+        app:layout_constraintEnd_toEndOf="@+id/ivChangeEmailBackground"
+        app:layout_constraintStart_toEndOf="@+id/btChangeEmailCancel" />
+
+    <EditText
+        android:id="@+id/etChangeEmailEmail"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/custom_edit_account_text_background"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:hint="Enter new email"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="Getting email ..."
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/ivChangeEmailBackground"
+        app:layout_constraintStart_toStartOf="@+id/ivChangeEmailBackground"
+        app:layout_constraintTop_toBottomOf="@+id/tvChangeEmailTextOne" />
+
+    <EditText
+        android:id="@+id/etChangeEmailEmailConfirm"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/custom_edit_account_text_background"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:hint="Confirm email"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/ivChangeEmailBackground"
+        app:layout_constraintStart_toStartOf="@+id/ivChangeEmailBackground"
+        app:layout_constraintTop_toBottomOf="@+id/etChangeEmailEmail" />
+
+    <ImageButton
+        android:id="@+id/ibChangeEmailHelp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:alpha="0.15"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/tvChangeEmailTextOne"
+        app:layout_constraintEnd_toEndOf="@+id/ivChangeEmailBackground"
+        app:layout_constraintTop_toTopOf="@+id/tvChangeEmailTextOne"
+        app:srcCompat="@drawable/ic_baseline_help_outline_24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

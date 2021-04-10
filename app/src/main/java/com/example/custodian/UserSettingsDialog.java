@@ -68,6 +68,55 @@ public class UserSettingsDialog {
                 mOrigin.setText("Origin: " + documentSnapshot.getString("origin"));
             }
         });
+        mIconBorder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ChangeIconActivity.class);
+                context.startActivity(intent);
+            }
+        });
+        mIconEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ChangeIconActivity.class);
+                context.startActivity(intent);
+            }
+        });
+        mUsernameEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ChangeUsernameActivity.class);
+                context.startActivity(intent);
+            }
+        });
+        mEmailEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ChangeEmailActivity.class);
+                context.startActivity(intent);
+            }
+        });
+        mPasswordEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ChangePasswordActivity.class);
+                context.startActivity(intent);
+            }
+        });
+        mGenderEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ChangeGenderActivity.class);
+                context.startActivity(intent);
+            }
+        });
+        mOriginEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ChangeOriginActivity.class);
+                context.startActivity(intent);
+            }
+        });
         mCloseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

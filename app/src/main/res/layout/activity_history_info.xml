@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E0E0E0"
+    tools:context=".HistoryInfoActivity">
+
+    <ImageView
+        android:id="@+id/ivHistoryInfoBackground"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/custom_background_2" />
+
+    <Button
+        android:id="@+id/btHistoryInfoClose"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/custom_button_style_5"
+        android:fontFamily="@font/montserrat"
+        android:text="Close"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivHistoryInfoContentBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="135dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/btHistoryInfoClose"
+        app:layout_constraintEnd_toEndOf="@+id/btHistoryInfoClose"
+        app:layout_constraintStart_toStartOf="@+id/btHistoryInfoClose"
+        app:layout_constraintTop_toTopOf="@+id/ivHistoryInfoBackground"
+        app:srcCompat="@drawable/custom_background_1" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivHistoryInfoBackground"
+        app:layout_constraintEnd_toEndOf="@+id/ivHistoryInfoContentBackground"
+        app:layout_constraintStart_toStartOf="@+id/ivHistoryInfoContentBackground">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvHistoryInfoTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:text="Getting title ..."
+                android:textColor="#000000"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/tvHistoryInfoDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="Getting date ..."
+        android:textSize="10sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvHistoryInfoLocation"
+        app:layout_constraintStart_toStartOf="@+id/horizontalScrollView2"
+        app:layout_constraintTop_toBottomOf="@+id/ivHistoryInfoBackground" />
+
+    <TextView
+        android:id="@+id/tvHistoryInfoLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:gravity="right"
+        android:text="Getting location ..."
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@+id/horizontalScrollView2"
+        app:layout_constraintTop_toTopOf="@+id/tvHistoryInfoDate" />
+
+    <ImageView
+        android:id="@+id/ivHistoryInfoCategoryBorder"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvHistoryInfoCategory"
+        app:layout_constraintEnd_toEndOf="@+id/tvHistoryInfoCategory"
+        app:layout_constraintStart_toStartOf="@+id/tvHistoryInfoCategory"
+        app:layout_constraintTop_toTopOf="@+id/tvHistoryInfoCategory"
+        app:srcCompat="@drawable/custom_button_style_5" />
+
+    <TextView
+        android:id="@+id/tvHistoryInfoCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:fontFamily="@font/montserrat"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="5dp"
+        android:text="Getting category ..."
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/ivHistoryInfoContentBackground"
+        app:layout_constraintTop_toTopOf="@+id/ivHistoryInfoBackground" />
+
+    <ImageView
+        android:id="@+id/ivHistoryInfoAnalysedBorder"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvHistoryInfoAnalysed"
+        app:layout_constraintEnd_toEndOf="@+id/tvHistoryInfoAnalysed"
+        app:layout_constraintStart_toStartOf="@+id/tvHistoryInfoAnalysed"
+        app:layout_constraintTop_toTopOf="@+id/tvHistoryInfoAnalysed"
+        app:srcCompat="@drawable/custom_button_style_5" />
+
+    <TextView
+        android:id="@+id/tvHistoryInfoAnalysed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:fontFamily="@font/montserrat"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="5dp"
+        android:text="Getting analysed ..."
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/ivHistoryInfoCategoryBorder"
+        app:layout_constraintTop_toTopOf="@+id/ivHistoryInfoBackground" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivHistoryInfoContentBackground"
+        app:layout_constraintEnd_toEndOf="@+id/ivHistoryInfoContentBackground"
+        app:layout_constraintStart_toStartOf="@+id/ivHistoryInfoContentBackground"
+        app:layout_constraintTop_toBottomOf="@+id/tvHistoryInfoDate">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tvHistoryInfoTextOne"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Overview"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvHistoryInfoOverview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Getting content ..."
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="@+id/tvHistoryInfoTextOne"
+                    app:layout_constraintStart_toStartOf="@+id/tvHistoryInfoTextOne"
+                    app:layout_constraintTop_toBottomOf="@+id/tvHistoryInfoTextOne" />
+
+                <TextView
+                    android:id="@+id/tvHistoryInfoTextTwo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Your Upload"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvHistoryInfoOverview" />
+
+                <ImageView
+                    android:id="@+id/ivHistoryInfoContentHolder"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintEnd_toEndOf="@+id/tvHistoryInfoOverview"
+                    app:layout_constraintStart_toStartOf="@+id/tvHistoryInfoOverview"
+                    app:layout_constraintTop_toBottomOf="@+id/tvHistoryInfoTextTwo"
+                    app:srcCompat="@drawable/custom_login_background" />
+
+                <EditText
+                    android:id="@+id/etHistoryInfoContent"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="#FFFFFF"
+                    android:clickable="false"
+                    android:ems="10"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivHistoryInfoContentHolder"
+                    app:layout_constraintEnd_toEndOf="@+id/ivHistoryInfoContentHolder"
+                    app:layout_constraintStart_toStartOf="@+id/ivHistoryInfoContentHolder"
+                    app:layout_constraintTop_toTopOf="@+id/ivHistoryInfoContentHolder" />
+
+                <ImageView
+                    android:id="@+id/ivHistoryInfoContent"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:scaleType="centerInside"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivHistoryInfoContentHolder"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/ivHistoryInfoContentHolder"
+                    app:srcCompat="@drawable/insert_media_large" />
+
+                <VideoView
+                    android:id="@+id/vvHistoryInfoContent"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivHistoryInfoContentHolder"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/ivHistoryInfoContentHolder" />
+
+                <TextView
+                    android:id="@+id/tvHistoryInfoTextThree"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="What do you think about the health of the Indigenous heritage in your community?"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivHistoryInfoContentHolder" />
+
+                <com.hsalf.smileyrating.SmileyRating
+                    android:id="@+id/srHistoryInfoHeritage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvHistoryInfoTextThree" />
+
+                <TextView
+                    android:id="@+id/tvHistoryInfoTextFour"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="How do you feel about the current work being done to protect Indigenous communities against climate change?"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/srHistoryInfoHeritage" />
+
+                <com.hsalf.smileyrating.SmileyRating
+                    android:id="@+id/srHistoryInfoPreservation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvHistoryInfoTextFour" />
+
+                <TextView
+                    android:id="@+id/tvHistoryInfoTextFive"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="What is your stance on public exposure to the harming effects of climate change on the traditional Indigenous way of life?"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/srHistoryInfoPreservation" />
+
+                <com.hsalf.smileyrating.SmileyRating
+                    android:id="@+id/srHistoryInfoExposure"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvHistoryInfoTextFive" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

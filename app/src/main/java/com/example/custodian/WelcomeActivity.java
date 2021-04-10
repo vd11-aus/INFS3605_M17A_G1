@@ -85,14 +85,6 @@ public class WelcomeActivity extends AppCompatActivity {
             }
         });
 
-        // Get permissions
-        Context pageContext = this;
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
-                ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            final PermissionsDialog permissionsDialog = new PermissionsDialog(pageContext,this, new Dialog(pageContext));
-            permissionsDialog.startLoadingAnimation();
-        }
-
         // Navigate to user home
         mNextPageButton.setOnClickListener(new View.OnClickListener() {
             @Override

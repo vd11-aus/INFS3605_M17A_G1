@@ -33,8 +33,8 @@
             android:layout_marginStart="15dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="25dp"
-            android:layout_marginRight="25dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"
             android:ellipsize="end"
             android:fontFamily="@font/montserrat"
             android:singleLine="true"
@@ -85,6 +85,17 @@
             app:layout_constraintEnd_toEndOf="@+id/tvHistoryRowItemTitle"
             app:layout_constraintStart_toStartOf="@+id/tvHistoryRowItemTitle"
             app:layout_constraintTop_toBottomOf="@+id/tvHistoryRowItemDate" />
+
+        <ImageView
+            android:id="@+id/ivHistoryRowItemAnalysed"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/custom_circle_2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -59,10 +59,10 @@
                     android:layout_marginRight="10dp"
                     android:background="@drawable/custom_edit_text_background"
                     android:ems="10"
-                    android:hint="Username"
+                    android:hint="Enter username"
                     android:inputType="textPersonName"
                     android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
+                    android:paddingRight="55dp"
                     android:textColor="#000000"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -76,10 +76,10 @@
                     android:layout_marginTop="20dp"
                     android:background="@drawable/custom_edit_text_background"
                     android:ems="10"
-                    android:hint="Email"
+                    android:hint="Enter email"
                     android:inputType="textPersonName|textEmailAddress"
                     android:paddingLeft="20dp"
-                    android:paddingRight="15dp"
+                    android:paddingRight="55dp"
                     android:textColor="#000000"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="@+id/etCreateAccountUsername"
@@ -93,7 +93,7 @@
                     android:layout_marginTop="20dp"
                     android:background="@drawable/custom_edit_text_background"
                     android:ems="10"
-                    android:hint="Password"
+                    android:hint="Enter password"
                     android:inputType="textPersonName"
                     android:paddingLeft="20dp"
                     android:paddingRight="15dp"
@@ -111,7 +111,7 @@
                     android:layout_marginTop="20dp"
                     android:background="@drawable/custom_edit_text_background"
                     android:ems="10"
-                    android:hint="Confirm Password"
+                    android:hint="Confirm password"
                     android:inputType="textPersonName"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
@@ -293,6 +293,81 @@
                     app:layout_constraintStart_toStartOf="@+id/ivCreateAccountIconBorder"
                     app:layout_constraintTop_toTopOf="@+id/ivCreateAccountIconBorder"
                     app:srcCompat="@drawable/ic_baseline_attach_file_24" />
+
+                <ImageButton
+                    android:id="@+id/ibCreateAccountHelpUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@android:color/transparent"
+                    android:tint="#999999"
+                    app:layout_constraintBottom_toBottomOf="@+id/etCreateAccountUsername"
+                    app:layout_constraintEnd_toEndOf="@+id/etCreateAccountUsername"
+                    app:layout_constraintTop_toTopOf="@+id/etCreateAccountUsername"
+                    app:srcCompat="@drawable/ic_baseline_help_outline_24" />
+
+                <ImageButton
+                    android:id="@+id/ibCreateAccountHelpEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@android:color/transparent"
+                    android:tint="#999999"
+                    app:layout_constraintBottom_toBottomOf="@+id/etCreateAccountEmail"
+                    app:layout_constraintEnd_toEndOf="@+id/etCreateAccountEmail"
+                    app:layout_constraintTop_toTopOf="@+id/etCreateAccountEmail"
+                    app:srcCompat="@drawable/ic_baseline_help_outline_24" />
+
+                <ImageButton
+                    android:id="@+id/ibCreateAccountHelpPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@android:color/transparent"
+                    android:tint="#999999"
+                    app:layout_constraintBottom_toBottomOf="@+id/etCreateAccountPassword"
+                    app:layout_constraintEnd_toEndOf="@+id/etCreateAccountPassword"
+                    app:layout_constraintTop_toTopOf="@+id/etCreateAccountPassword"
+                    app:srcCompat="@drawable/ic_baseline_help_outline_24" />
+
+                <ImageButton
+                    android:id="@+id/ibCreateAccountHelpGender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:paddingRight="5dp"
+                    android:tint="#999999"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCreateAccountTextTwo"
+                    app:layout_constraintStart_toEndOf="@+id/tvCreateAccountTextTwo"
+                    app:layout_constraintTop_toTopOf="@+id/tvCreateAccountTextTwo"
+                    app:srcCompat="@drawable/ic_baseline_help_outline_24" />
+
+                <ImageButton
+                    android:id="@+id/ibCreateAccountHelpOrigin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:paddingRight="5dp"
+                    android:tint="#999999"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCreateAccountTextThree"
+                    app:layout_constraintStart_toEndOf="@+id/tvCreateAccountTextThree"
+                    app:layout_constraintTop_toTopOf="@+id/tvCreateAccountTextThree"
+                    app:srcCompat="@drawable/ic_baseline_help_outline_24" />
+
+                <ImageButton
+                    android:id="@+id/ibCreateAccountHelpIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:paddingLeft="5dp"
+                    android:tint="#999999"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCreateAccountTextFour"
+                    app:layout_constraintStart_toEndOf="@+id/tvCreateAccountTextFour"
+                    app:layout_constraintTop_toTopOf="@+id/tvCreateAccountTextFour"
+                    app:srcCompat="@drawable/ic_baseline_help_outline_24" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

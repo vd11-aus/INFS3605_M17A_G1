@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#111111"
+    tools:context=".ChangeOriginActivity">
+
+    <ImageView
+        android:id="@+id/ivChangeOriginBackground"
+        android:layout_width="250dp"
+        android:layout_height="350dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/custom_button_style_5" />
+
+    <TextView
+        android:id="@+id/tvChangeOriginTextOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="35dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Change Origin"
+        android:textColor="#FFF4F4"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/ivChangeOriginBackground"
+        app:layout_constraintTop_toTopOf="@+id/ivChangeOriginBackground" />
+
+    <RadioGroup
+        android:id="@+id/rgChangeOriginGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+        android:alpha="0.7"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="@+id/ivChangeOriginBackground"
+        app:layout_constraintTop_toBottomOf="@+id/tvChangeOriginTextOne">
+
+        <RadioButton
+            android:id="@+id/rbChangeOriginTrue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="True"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            app:buttonTint="#FFFFFF" />
+
+        <RadioButton
+            android:id="@+id/rbChangeOriginFalse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="False"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            app:buttonTint="#FFFFFF" />
+
+        <RadioButton
+            android:id="@+id/rbChangeOriginDoNotDisclose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Prefer not to say"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            app:buttonTint="#FFFFFF" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btChangeOriginCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/custom_button_style_4"
+        android:fontFamily="@font/montserrat"
+        android:text="Cancel"
+        android:textSize="10sp"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="@+id/ivChangeOriginBackground"
+        app:layout_constraintStart_toStartOf="@+id/ivChangeOriginBackground" />
+
+    <Button
+        android:id="@+id/btChangeOriginConfirm"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/custom_button_style_4"
+        android:fontFamily="@font/montserrat"
+        android:text="Confirm"
+        android:textSize="10sp"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="@+id/ivChangeOriginBackground"
+        app:layout_constraintEnd_toEndOf="@+id/ivChangeOriginBackground"
+        app:layout_constraintStart_toEndOf="@+id/btChangeOriginCancel" />
+
+    <ImageButton
+        android:id="@+id/ibChangeOriginHelp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:alpha="0.15"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/tvChangeOriginTextOne"
+        app:layout_constraintEnd_toEndOf="@+id/ivChangeOriginBackground"
+        app:layout_constraintTop_toTopOf="@+id/tvChangeOriginTextOne"
+        app:srcCompat="@drawable/ic_baseline_help_outline_24" />
+</androidx.constraintlayout.widget.ConstraintLayout>

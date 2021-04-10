@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.hsalf.smilerating.BaseRating;
 import com.hsalf.smilerating.SmileRating;
 import com.hsalf.smileyrating.SmileyRating;
 
@@ -36,15 +37,21 @@ public class IndigenousQuestionsActivity extends AppCompatActivity {
 
     // Declaration of variables
     ImageView mBackgroundImage;
-    SmileRating mRatingOne;
-    SmileRating mRatingTwo;
-    SmileRating mRatingThree;
+    SmileyRating mRatingOne;
+    SmileyRating mRatingTwo;
+    SmileyRating mRatingThree;
     EditText mComments;
     Button mSubmitButton;
 
     String document;
     String type;
     Context pageContext = this;
+    String indigenousQuestionOne = "okay";
+    String indigenousQuestionTwo  = "okay";
+    String indigenousQuestionThree  = "okay";
+    Boolean questionOneFilled = false;
+    Boolean questionTwoFilled = false;
+    Boolean questionThreeFilled = false;
 
     // Brought to you by: https://github.com/sujithkanna/SmileyRating
 
@@ -56,15 +63,88 @@ public class IndigenousQuestionsActivity extends AppCompatActivity {
 
         // Assigning of variable values
         mBackgroundImage = findViewById(R.id.ivIndigenousQuestionsBackground);
-        mRatingOne = (SmileRating) findViewById(R.id.srIndigenousQuestionsRatingOne);;
-        mRatingTwo = (SmileRating) findViewById(R.id.srIndigenousQuestionsRatingTwo);
-        mRatingThree = (SmileRating) findViewById(R.id.srIndigenousQuestionsRatingThree);
+        mRatingOne = (SmileyRating) findViewById(R.id.srIndigenousQuestionsRatingOne);;
+        mRatingTwo = (SmileyRating) findViewById(R.id.srIndigenousQuestionsRatingTwo);
+        mRatingThree = (SmileyRating) findViewById(R.id.srIndigenousQuestionsRatingThree);
         mComments = findViewById(R.id.etIndigenousQuestionsComments);
         mSubmitButton = findViewById(R.id.btIndigenousQuestionsSubmit);
 
-        mRatingOne.setSelectedSmile(SmileRating.OKAY);
-        mRatingTwo.setSelectedSmile(SmileRating.OKAY);
-        mRatingThree.setSelectedSmile(SmileRating.OKAY);
+        mRatingOne.setRating(SmileyRating.Type.OKAY);
+        mRatingTwo.setRating(SmileyRating.Type.OKAY);
+        mRatingThree.setRating(SmileyRating.Type.OKAY);
+
+        mRatingOne.setSmileySelectedListener(new SmileyRating.OnSmileySelectedListener() {
+            @Override
+            public void onSmileySelected(SmileyRating.Type type) {
+                questionOneFilled = true;
+                Integer value = type.getRating();
+                switch (value) {
+                    case 1:
+                        indigenousQuestionOne = "terrible";
+                        break;
+                    case 2:
+                        indigenousQuestionOne = "bad";
+                        break;
+                    case 3:
+                        indigenousQuestionOne = "okay";
+                        break;
+                    case 4:
+                        indigenousQuestionOne = "good";
+                        break;
+                    case 5:
+                        indigenousQuestionOne = "great";
+                        break;
+                }
+            }
+        });
+        mRatingTwo.setSmileySelectedListener(new SmileyRating.OnSmileySelectedListener() {
+            @Override
+            public void onSmileySelected(SmileyRating.Type type) {
+                questionTwoFilled = true;
+                Integer value = type.getRating();
+                switch (value) {
+                    case 1:
+                        indigenousQuestionTwo = "terrible";
+                        break;
+                    case 2:
+                        indigenousQuestionTwo = "bad";
+                        break;
+                    case 3:
+                        indigenousQuestionTwo = "okay";
+                        break;
+                    case 4:
+                        indigenousQuestionTwo = "good";
+                        break;
+                    case 5:
+                        indigenousQuestionTwo = "great";
+                        break;
+                }
+            }
+        });
+        mRatingThree.setSmileySelectedListener(new SmileyRating.OnSmileySelectedListener() {
+            @Override
+            public void onSmileySelected(SmileyRating.Type type) {
+                questionThreeFilled = true;
+                Integer value = type.getRating();
+                switch (value) {
+                    case 1:
+                        indigenousQuestionThree = "terrible";
+                        break;
+                    case 2:
+                        indigenousQuestionThree = "bad";
+                        break;
+                    case 3:
+                        indigenousQuestionThree = "okay";
+                        break;
+                    case 4:
+                        indigenousQuestionThree = "good";
+                        break;
+                    case 5:
+                        indigenousQuestionThree = "great";
+                        break;
+                }
+            }
+        });
 
         Intent intent = getIntent();
         document = intent.getStringExtra("ENTRY_ID");
@@ -91,7 +171,12 @@ public class IndigenousQuestionsActivity extends AppCompatActivity {
         alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                submit();
+                if (!questionOneFilled || !questionTwoFilled || !questionThreeFilled) {
+                    final com.example.custodian.AlertDialog incompleteDialog = new com.example.custodian.AlertDialog(new Dialog(pageContext), "You haven't filled out the necessary fields yet.", "warning");
+                    incompleteDialog.startLoadingAnimation();
+                } else {
+                    insertData();
+                }
             }
         });
         alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -102,83 +187,10 @@ public class IndigenousQuestionsActivity extends AppCompatActivity {
         alert.create().show();
     }
 
-    // Initialise after performing field check
-    private void submit() {
-        if (mRatingOne.getRating() == SmileRating.NONE || mRatingTwo.getRating() == SmileRating.NONE || mRatingThree.getRating() == SmileRating.NONE) {
-            final com.example.custodian.AlertDialog incompleteDialog = new com.example.custodian.AlertDialog(new Dialog(pageContext), "You haven't filled out the necessary fields yet.", "warning");
-            incompleteDialog.startLoadingAnimation();
-        } else {
-            insertData();
-        }
-    }
-
     // Insert data into existing file
     private void insertData() {
         final LoadingDialog loadingDialog = new LoadingDialog(new Dialog(pageContext));
         loadingDialog.startLoadingAnimation();
-        String indigenousQuestionOne = "";
-        switch (mRatingOne.getRating()) {
-            case SmileRating.TERRIBLE:
-                indigenousQuestionOne = "terrible";
-                break;
-            case SmileRating.BAD:
-                indigenousQuestionOne = "bad";
-                break;
-            case SmileRating.OKAY:
-                indigenousQuestionOne = "okay";
-                break;
-            case SmileRating.GOOD:
-                indigenousQuestionOne = "good";
-                break;
-            case SmileRating.GREAT:
-                indigenousQuestionOne = "great";
-                break;
-            default:
-                indigenousQuestionOne = "okay";
-                break;
-        }
-        String indigenousQuestionTwo = "";
-        switch (mRatingTwo.getRating()) {
-            case SmileRating.TERRIBLE:
-                indigenousQuestionTwo = "terrible";
-                break;
-            case SmileRating.BAD:
-                indigenousQuestionTwo = "bad";
-                break;
-            case SmileRating.OKAY:
-                indigenousQuestionTwo = "okay";
-                break;
-            case SmileRating.GOOD:
-                indigenousQuestionTwo = "good";
-                break;
-            case SmileRating.GREAT:
-                indigenousQuestionTwo = "great";
-                break;
-            default:
-                indigenousQuestionTwo = "okay";
-                break;
-        }
-        String indigenousQuestionThree = "";
-        switch (mRatingOne.getRating()) {
-            case SmileRating.TERRIBLE:
-                indigenousQuestionThree = "terrible";
-                break;
-            case SmileRating.BAD:
-                indigenousQuestionThree = "bad";
-                break;
-            case SmileRating.OKAY:
-                indigenousQuestionThree = "okay";
-                break;
-            case SmileRating.GOOD:
-                indigenousQuestionThree = "good";
-                break;
-            case SmileRating.GREAT:
-                indigenousQuestionThree = "great";
-                break;
-            default:
-                indigenousQuestionThree = "okay";
-                break;
-        }
         Map<String, Object> map = new HashMap<>();
         map.put("indigenousheritage", indigenousQuestionOne);
         map.put("indigenouspreservation", indigenousQuestionTwo);

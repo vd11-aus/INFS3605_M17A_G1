@@ -56,6 +56,7 @@ public class ProfileActivity extends AppCompatActivity {
     private RecyclerView mFeedList;
 
     private String category = "profile";
+    private Boolean openSettings = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +83,14 @@ public class ProfileActivity extends AppCompatActivity {
         mFeedList = findViewById(R.id.rlProfileFeed);
 
         mNoMessages.setVisibility(View.INVISIBLE);
+
+        Intent intent = getIntent();
+        openSettings = intent.getBooleanExtra("OPEN_SETTINGS", false);
+
+        if (openSettings) {
+            final UserSettingsDialog userSettingsDialog = new UserSettingsDialog(this, new Dialog(this));
+            userSettingsDialog.startLoadingAnimation();
+        }
 
         FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override

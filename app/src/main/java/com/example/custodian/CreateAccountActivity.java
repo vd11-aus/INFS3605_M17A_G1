@@ -64,6 +64,12 @@ public class CreateAccountActivity extends AppCompatActivity {
     private ImageView mBackgroundImage;
     private ImageView mProfileIconBorder;
     private ImageButton mProfileIconAlternate;
+    private ImageButton mHelpUsername;
+    private ImageButton mHelpEmail;
+    private ImageButton mHelpPassword;
+    private ImageButton mHelpGender;
+    private ImageButton mHelpOrigin;
+    private ImageButton mHelpIcon;
 
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFS;
@@ -98,6 +104,12 @@ public class CreateAccountActivity extends AppCompatActivity {
         mBackgroundImage = findViewById(R.id.ivCreateAccountBackground);
         mProfileIconBorder = findViewById(R.id.ivCreateAccountIconBorder);
         mProfileIconAlternate = findViewById(R.id.ibCreateAccountIconAlternate);
+        mHelpUsername = findViewById(R.id.ibCreateAccountHelpUsername);
+        mHelpEmail = findViewById(R.id.ibCreateAccountHelpEmail);
+        mHelpPassword = findViewById(R.id.ibCreateAccountHelpPassword);
+        mHelpGender = findViewById(R.id.ibCreateAccountHelpGender);
+        mHelpOrigin = findViewById(R.id.ibCreateAccountHelpOrigin);
+        mHelpIcon = findViewById(R.id.ibCreateAccountHelpIcon);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFS = FirebaseFirestore.getInstance();
@@ -107,6 +119,48 @@ public class CreateAccountActivity extends AppCompatActivity {
         BackgroundGenerator background = new BackgroundGenerator();
         Glide.with(mBackgroundImage).load(background.login()).centerCrop().placeholder(R.drawable.custom_background_2)
                 .error(R.drawable.custom_background_2).fallback(R.drawable.custom_background_2).into(mBackgroundImage);
+
+        mHelpUsername.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showHelpDialog("Usernames must be a minimum of 8 characters with no spaces and at least one upper & lower case letter.");
+            }
+        });
+
+        mHelpEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showHelpDialog("Emails must contain the '@' symbol.");
+            }
+        });
+
+        mHelpPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showHelpDialog("Passwords must be a minimum of 8 characters with no spaces and at least one upper & lower case letter.");
+            }
+        });
+
+        mHelpGender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showHelpDialog("Please pick a gender from the radio group below.");
+            }
+        });
+
+        mHelpOrigin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showHelpDialog("Select an origin from the radio group below.");
+            }
+        });
+
+        mHelpIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showHelpDialog("Select an icon from your local device storage. Permissions must be enabled.");
+            }
+        });
 
         // Confirm create account
         mCreateAccountButton.setOnClickListener(new View.OnClickListener() {
@@ -259,6 +313,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                 break;
             case R.id.rbCreateAccountGenderDoNotDisclose:
                 gender = "Did Not Disclose";
+                break;
         }
     }
 
@@ -360,6 +415,12 @@ public class CreateAccountActivity extends AppCompatActivity {
             }
         });
         alert.create().show();
+    }
+
+    // Provide help
+    private void showHelpDialog(String message) {
+        final com.example.custodian.AlertDialog helpDialog = new com.example.custodian.AlertDialog(new Dialog(pageContext), message, "information");
+        helpDialog.startLoadingAnimation();
     }
 
     // Go to WelcomeActivity

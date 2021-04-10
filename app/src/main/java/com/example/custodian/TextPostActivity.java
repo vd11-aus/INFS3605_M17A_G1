@@ -120,6 +120,7 @@ public class TextPostActivity extends AppCompatActivity {
         loadingDialog.startLoadingAnimation();
         Map<String, Object> map = new HashMap<>();
         Timestamp time = new Timestamp(System.currentTimeMillis());
+        map.put("identifier", uniqueEntry);
         map.put("time", time);
         map.put("title", mTitle.getText().toString());
         map.put("overview", mOverview.getText().toString());
