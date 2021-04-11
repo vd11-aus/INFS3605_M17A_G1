@@ -207,6 +207,8 @@ public class HomeActivity extends AppCompatActivity {
 
     // Finds current location
     private void getGeolocation() {
+        final LoadingDialog loadingDialog = new LoadingDialog(new Dialog(this));
+        loadingDialog.startLoadingAnimation();
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(HomeActivity.this, new String[] {Manifest.permission.ACCESS_COARSE_LOCATION}, 45);
@@ -265,6 +267,7 @@ public class HomeActivity extends AppCompatActivity {
                     postCode = Integer.parseInt(postalCode);
                     System.out.println("Postcode: " + postalCode);
                     updateEvents(context);
+                    loadingDialog.dismissDialog();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -272,7 +275,6 @@ public class HomeActivity extends AppCompatActivity {
                 final com.example.custodian.AlertDialog cantFindDialog = new com.example.custodian.AlertDialog(new Dialog(this), "Can't find your location. Please try again.", "warning");
                 cantFindDialog.startLoadingAnimation();
             }
-
         }
     }
 

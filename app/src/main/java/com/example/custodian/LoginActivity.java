@@ -105,12 +105,15 @@ public class LoginActivity extends AppCompatActivity {
                     final AlertDialog invalidDialog = new AlertDialog(new Dialog(pageContext), "Please enter an email and password.", "warning");
                     invalidDialog.startLoadingAnimation();
                 } else {
+                    final LoadingDialog loadingDialog = new LoadingDialog(new Dialog(pageContext));
+                    loadingDialog.startLoadingAnimation();
                     FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 launchWelcomeActivity();
                             } else {
+                                loadingDialog.dismissDialog();
                                 final AlertDialog invalidDialog = new AlertDialog(new Dialog(pageContext), "There's something wrong with the email or password that you entered. Please try again.", "warning");
                                 invalidDialog.startLoadingAnimation();
                             }

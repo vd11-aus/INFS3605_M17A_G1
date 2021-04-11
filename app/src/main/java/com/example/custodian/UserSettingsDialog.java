@@ -126,6 +126,8 @@ public class UserSettingsDialog {
         mLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final LoadingDialog loadingDialog = new LoadingDialog(new Dialog(context));
+                loadingDialog.startLoadingAnimation();
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(context, MainActivity.class);
                 context.startActivity(intent);
