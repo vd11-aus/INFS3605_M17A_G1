@@ -2,6 +2,7 @@ package com.example.custodian;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -214,11 +215,12 @@ public class HomeActivity extends AppCompatActivity {
         } else if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_NETWORK_STATE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(HomeActivity.this, new String[] {Manifest.permission.ACCESS_NETWORK_STATE}, 43);
         } else {
-            Double latitude;
-            Double longitude;
+            Double latitude = 0.0;
+            Double longitude = 0.0;
             Location gpsLocation = null;
             Location networkLocation = null;
             Location finalLocation = null;
+            Boolean working = true;
             try {
                 gpsLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                 networkLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
@@ -234,34 +236,39 @@ public class HomeActivity extends AppCompatActivity {
                 latitude = finalLocation.getLatitude();
                 longitude = finalLocation.getLongitude();
             } else {
-                latitude = 0.0;
-                longitude = 0.0;
+                working = false;
             }
-            Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-            try {
-                List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
-                String address = addresses.get(0).getAddressLine(0);
-                String city = addresses.get(0).getLocality();
-                String state = addresses.get(0).getAdminArea();
-                String country = addresses.get(0).getCountryName();
-                String postalCode = addresses.get(0).getPostalCode();
-                String knownName = addresses.get(0).getFeatureName();
+            if (working) {
+                Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+                try {
+                    List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
+                    String address = addresses.get(0).getAddressLine(0);
+                    String city = addresses.get(0).getLocality();
+                    String state = addresses.get(0).getAdminArea();
+                    String country = addresses.get(0).getCountryName();
+                    String postalCode = addresses.get(0).getPostalCode();
+                    String knownName = addresses.get(0).getFeatureName();
 
-                FirebaseFirestore.getInstance().collection("lands").whereEqualTo("postcode", Integer.parseInt(postalCode)).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        List<DocumentSnapshot> snapshotList = queryDocumentSnapshots.getDocuments();
-                        for (DocumentSnapshot document: snapshotList) {
-                            mGeolocation.setText(document.getString("name") + " - " + document.getString("suburb") + ", " + state + " " + postalCode);
+                    FirebaseFirestore.getInstance().collection("lands").whereEqualTo("postcode", Integer.parseInt(postalCode)).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                            List<DocumentSnapshot> snapshotList = queryDocumentSnapshots.getDocuments();
+                            for (DocumentSnapshot document: snapshotList) {
+                                mGeolocation.setText(document.getString("name") + " - " + document.getString("suburb") + ", " + state + " " + postalCode);
+                            }
                         }
-                    }
-                });
-                postCode = Integer.parseInt(postalCode);
-                System.out.println("Postcode: " + postalCode);
-                updateEvents(context);
-            } catch (IOException e) {
-                e.printStackTrace();
+                    });
+                    postCode = Integer.parseInt(postalCode);
+                    System.out.println("Postcode: " + postalCode);
+                    updateEvents(context);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                final com.example.custodian.AlertDialog cantFindDialog = new com.example.custodian.AlertDialog(new Dialog(this), "Can't find your location. Please try again.", "warning");
+                cantFindDialog.startLoadingAnimation();
             }
+
         }
     }
 

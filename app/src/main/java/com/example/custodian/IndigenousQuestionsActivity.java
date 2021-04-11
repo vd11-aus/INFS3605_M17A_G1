@@ -69,10 +69,6 @@ public class IndigenousQuestionsActivity extends AppCompatActivity {
         mComments = findViewById(R.id.etIndigenousQuestionsComments);
         mSubmitButton = findViewById(R.id.btIndigenousQuestionsSubmit);
 
-        mRatingOne.setRating(SmileyRating.Type.OKAY);
-        mRatingTwo.setRating(SmileyRating.Type.OKAY);
-        mRatingThree.setRating(SmileyRating.Type.OKAY);
-
         mRatingOne.setSmileySelectedListener(new SmileyRating.OnSmileySelectedListener() {
             @Override
             public void onSmileySelected(SmileyRating.Type type) {
@@ -158,7 +154,12 @@ public class IndigenousQuestionsActivity extends AppCompatActivity {
         mSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showSubmitWarningDialog(getCurrentFocus());
+                if (!questionOneFilled || !questionTwoFilled || !questionThreeFilled) {
+                    final com.example.custodian.AlertDialog incompleteDialog = new com.example.custodian.AlertDialog(new Dialog(pageContext), "You haven't filled out the necessary fields yet.", "warning");
+                    incompleteDialog.startLoadingAnimation();
+                } else {
+                    showSubmitWarningDialog(getCurrentFocus());
+                }
             }
         });
     }
@@ -171,12 +172,7 @@ public class IndigenousQuestionsActivity extends AppCompatActivity {
         alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if (!questionOneFilled || !questionTwoFilled || !questionThreeFilled) {
-                    final com.example.custodian.AlertDialog incompleteDialog = new com.example.custodian.AlertDialog(new Dialog(pageContext), "You haven't filled out the necessary fields yet.", "warning");
-                    incompleteDialog.startLoadingAnimation();
-                } else {
-                    insertData();
-                }
+                insertData();
             }
         });
         alert.setNegativeButton("No", new DialogInterface.OnClickListener() {

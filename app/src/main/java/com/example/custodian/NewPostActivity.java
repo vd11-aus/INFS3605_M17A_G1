@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -122,11 +123,12 @@ public class NewPostActivity extends AppCompatActivity {
         } else if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_NETWORK_STATE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(NewPostActivity.this, new String[] {Manifest.permission.ACCESS_NETWORK_STATE}, 43);
         } else {
-            Double latitude;
-            Double longitude;
+            Double latitude = 0.0;
+            Double longitude = 0.0;
             Location gpsLocation = null;
             Location networkLocation = null;
             Location finalLocation = null;
+            Boolean working = true;
             try {
                 gpsLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                 networkLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
@@ -142,23 +144,26 @@ public class NewPostActivity extends AppCompatActivity {
                 latitude = finalLocation.getLatitude();
                 longitude = finalLocation.getLongitude();
             } else {
-                latitude = 0.0;
-                longitude = 0.0;
+                working = false;
             }
-            Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-            try {
-                List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
-                String address = addresses.get(0).getAddressLine(0);
-                String city = addresses.get(0).getLocality();
-                String state = addresses.get(0).getAdminArea();
-                String country = addresses.get(0).getCountryName();
-                String postalCode = addresses.get(0).getPostalCode();
-                String knownName = addresses.get(0).getFeatureName();
-
-                postCode = Integer.parseInt(postalCode);
-                launchXActivity(type);
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (working) {
+                Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+                try {
+                    List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
+                    String address = addresses.get(0).getAddressLine(0);
+                    String city = addresses.get(0).getLocality();
+                    String state = addresses.get(0).getAdminArea();
+                    String country = addresses.get(0).getCountryName();
+                    String postalCode = addresses.get(0).getPostalCode();
+                    String knownName = addresses.get(0).getFeatureName();
+                    postCode = Integer.parseInt(postalCode);
+                    launchXActivity(type);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                final com.example.custodian.AlertDialog cantFindDialog = new com.example.custodian.AlertDialog(new Dialog(this), "Can't find your location. Please try again.", "warning");
+                cantFindDialog.startLoadingAnimation();
             }
         }
     }

@@ -227,16 +227,31 @@
                     app:layout_constraintTop_toBottomOf="@+id/tvHistoryInfoTextTwo"
                     app:srcCompat="@drawable/custom_login_background" />
 
+                <TextView
+                    android:id="@+id/tvHistoryInfoContentLoader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Loading ...."
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivHistoryInfoContentHolder"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/ivHistoryInfoContentHolder" />
+
                 <EditText
                     android:id="@+id/etHistoryInfoContent"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:background="#FFFFFF"
                     android:clickable="false"
+                    android:editable="false"
                     android:ems="10"
+                    android:enabled="false"
                     android:fontFamily="@font/montserrat"
                     android:gravity="start|top"
                     android:inputType="textMultiLine"
+                    android:textColor="@android:color/secondary_text_light"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/ivHistoryInfoContentHolder"
                     app:layout_constraintEnd_toEndOf="@+id/ivHistoryInfoContentHolder"
@@ -281,6 +296,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:clickable="false"
+                    android:longClickable="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvHistoryInfoTextThree" />
@@ -303,6 +320,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:clickable="false"
+                    android:longClickable="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvHistoryInfoTextFour" />
@@ -325,6 +344,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:clickable="false"
+                    android:longClickable="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvHistoryInfoTextFive" />

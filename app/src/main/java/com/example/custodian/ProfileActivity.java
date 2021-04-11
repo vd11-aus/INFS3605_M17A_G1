@@ -187,6 +187,7 @@ public class ProfileActivity extends AppCompatActivity {
                 ArrayList<String> idData = new ArrayList<String>();
                 ArrayList<String> authorData = new ArrayList<String>();
                 ArrayList<String> contentData = new ArrayList<String>();
+                ArrayList<Boolean> readData = new ArrayList<Boolean>();
                 for (DocumentSnapshot snapshot: snapshotList) {
                     identifierData.add(snapshot.getString("identifier"));
                     Date value = snapshot.getTimestamp("date").toDate();
@@ -195,8 +196,9 @@ public class ProfileActivity extends AppCompatActivity {
                     idData.add(snapshot.getString("user"));
                     authorData.add(snapshot.getString("author"));
                     contentData.add(snapshot.getString("content"));
+                    readData.add(snapshot.getBoolean("read"));
                 }
-                FeedListAdapter listAdapter = new FeedListAdapter(pageContext, identifierData, timeData, titleData, idData, authorData, contentData, FirebaseAuth.getInstance().getCurrentUser().getUid(), new Dialog(pageContext));
+                FeedListAdapter listAdapter = new FeedListAdapter(pageContext, identifierData, timeData, titleData, idData, authorData, contentData, readData, FirebaseAuth.getInstance().getCurrentUser().getUid(), new Dialog(pageContext));
                 mFeedList.setAdapter(listAdapter);
                 mFeedList.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 if (snapshotList.size() == 0) {

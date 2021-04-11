@@ -89,6 +89,10 @@ public class HistoryInfoActivity extends AppCompatActivity {
         mContentImage.setVisibility(View.INVISIBLE);
         mContentVideo.setVisibility(View.INVISIBLE);
 
+        mRatingOne.disallowSelection(true);
+        mRatingTwo.disallowSelection(true);
+        mRatingThree.disallowSelection(true);
+
         Intent intent = getIntent();
         identifier = intent.getStringExtra("IDENTIFIER");
 
@@ -114,8 +118,8 @@ public class HistoryInfoActivity extends AppCompatActivity {
                                         .error(R.drawable.custom_background_2).fallback(R.drawable.custom_background_2).into(mContentImage);
                                 break;
                             case "video":
-                                mContentVideo.setVisibility(View.VISIBLE);
                                 mContentVideo.setVideoURI(Uri.parse(task.getResult().getString("content")));
+                                mContentVideo.setVisibility(View.VISIBLE);
                                 MediaController mediaController = new MediaController(pageContext);
                                 mContentVideo.setMediaController(mediaController);
                                 mediaController.setAnchorView(mContentVideo);
@@ -147,58 +151,58 @@ public class HistoryInfoActivity extends AppCompatActivity {
                         mCategory.setText(task.getResult().getString("category"));
                         switch (task.getResult().getString("indigenousheritage")) {
                             case "terrible":
-                                mRatingOne.setRating(SmileyRating.Type.TERRIBLE);
+                                mRatingOne.setRating(SmileyRating.Type.TERRIBLE, true);
                                 break;
                             case "bad":
-                                mRatingOne.setRating(SmileyRating.Type.BAD);
+                                mRatingOne.setRating(SmileyRating.Type.BAD, true);
                                 break;
                             case "okay":
-                                mRatingOne.setRating(SmileyRating.Type.OKAY);
+                                mRatingOne.setRating(SmileyRating.Type.OKAY, true);
                                 break;
                             case "good":
-                                mRatingOne.setRating(SmileyRating.Type.GOOD);
+                                mRatingOne.setRating(SmileyRating.Type.GOOD, true);
                                 break;
                             case "great":
-                                mRatingOne.setRating(SmileyRating.Type.GREAT);
+                                mRatingOne.setRating(SmileyRating.Type.GREAT, true);
                                 break;
                         }
                         switch (task.getResult().getString("indigenouspreservation")) {
                             case "terrible":
-                                mRatingTwo.setRating(SmileyRating.Type.TERRIBLE);
+                                mRatingTwo.setRating(SmileyRating.Type.TERRIBLE, true);
                                 break;
                             case "bad":
-                                mRatingTwo.setRating(SmileyRating.Type.BAD);
+                                mRatingTwo.setRating(SmileyRating.Type.BAD, true);
                                 break;
                             case "okay":
-                                mRatingTwo.setRating(SmileyRating.Type.OKAY);
+                                mRatingTwo.setRating(SmileyRating.Type.OKAY, true);
                                 break;
                             case "good":
-                                mRatingTwo.setRating(SmileyRating.Type.GOOD);
+                                mRatingTwo.setRating(SmileyRating.Type.GOOD, true);
                                 break;
                             case "great":
-                                mRatingTwo.setRating(SmileyRating.Type.GREAT);
+                                mRatingTwo.setRating(SmileyRating.Type.GREAT, true);
                                 break;
                         }
                         switch (task.getResult().getString("indigenousexposure")) {
                             case "terrible":
-                                mRatingThree.setRating(SmileyRating.Type.TERRIBLE);
+                                mRatingThree.setRating(SmileyRating.Type.TERRIBLE, true);
                                 break;
                             case "bad":
-                                mRatingThree.setRating(SmileyRating.Type.BAD);
+                                mRatingThree.setRating(SmileyRating.Type.BAD, true);
                                 break;
                             case "okay":
-                                mRatingThree.setRating(SmileyRating.Type.OKAY);
+                                mRatingThree.setRating(SmileyRating.Type.OKAY, true);
                                 break;
                             case "good":
-                                mRatingThree.setRating(SmileyRating.Type.GOOD);
+                                mRatingThree.setRating(SmileyRating.Type.GOOD, true);
                                 break;
                             case "great":
-                                mRatingThree.setRating(SmileyRating.Type.GREAT);
+                                mRatingThree.setRating(SmileyRating.Type.GREAT, true);
                                 break;
                         }
                     }
                 };
-                handler.postDelayed(runnable, 1500);
+                handler.postDelayed(runnable, 500);
             }
         });
 
