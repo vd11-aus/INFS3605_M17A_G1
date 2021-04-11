@@ -253,8 +253,12 @@ public class HomeActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                             List<DocumentSnapshot> snapshotList = queryDocumentSnapshots.getDocuments();
-                            for (DocumentSnapshot document: snapshotList) {
-                                mGeolocation.setText(document.getString("name") + " - " + document.getString("suburb") + ", " + state + " " + postalCode);
+                            if (snapshotList.isEmpty()) {
+                                mGeolocation.setText("No data on this location");
+                            } else {
+                                for (DocumentSnapshot document: snapshotList) {
+                                    mGeolocation.setText(document.getString("name") + " - " + document.getString("suburb") + ", " + state + " " + postalCode);
+                                }
                             }
                         }
                     });
@@ -282,56 +286,59 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 List<DocumentSnapshot> snapshotList = queryDocumentSnapshots.getDocuments();
-                for (DocumentSnapshot document: snapshotList) {
-                    backgroundArray.add(document.getString("image"));
-                    headerArray.add(document.getString("event"));
-                    @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd MMM YYYY");
-                    Date date = Objects.requireNonNull(document.getTimestamp("date")).toDate();
-                    subtextArray.add(formatter.format(date).toUpperCase());
-                    linkArray.add(document.getString("link"));
+                if (snapshotList.isEmpty()) {
+                } else {
+                    for (DocumentSnapshot document: snapshotList) {
+                        backgroundArray.add(document.getString("image"));
+                        headerArray.add(document.getString("event"));
+                        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd MMM YYYY");
+                        Date date = Objects.requireNonNull(document.getTimestamp("date")).toDate();
+                        subtextArray.add(formatter.format(date).toUpperCase());
+                        linkArray.add(document.getString("link"));
+                    }
+
+                    Glide.with(mEventOneBackground).load(backgroundArray.get(0)).centerCrop().placeholder(R.drawable.custom_background_2)
+                            .error(R.drawable.custom_background_2).fallback(R.drawable.custom_background_2).into(mEventOneBackground);
+                    mEventOneHeader.setText(headerArray.get(0));
+                    mEventOneSubtext.setText(subtextArray.get(0));
+                    mEventOneInteractButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            System.out.println("Redirecting ...");
+                            Intent intent = new Intent(context, RedirectActivity.class);
+                            intent.putExtra("LINK_LOCATION", linkArray.get(0));
+                            startActivity(intent);
+                        }
+                    });
+
+                    Glide.with(mEventTwoBackground).load(backgroundArray.get(1)).centerCrop().placeholder(R.drawable.custom_background_2)
+                            .error(R.drawable.custom_background_2).fallback(R.drawable.custom_background_2).into(mEventTwoBackground);
+                    mEventTwoHeader.setText(headerArray.get(1));
+                    mEventTwoSubtext.setText(subtextArray.get(1));
+                    mEventTwoInteractButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            System.out.println("Redirecting ...");
+                            Intent intent = new Intent(context, RedirectActivity.class);
+                            intent.putExtra("LINK_LOCATION", linkArray.get(1));
+                            startActivity(intent);
+                        }
+                    });
+
+                    Glide.with(mEventThreeBackground).load(backgroundArray.get(2)).centerCrop().placeholder(R.drawable.custom_background_2)
+                            .error(R.drawable.custom_background_2).fallback(R.drawable.custom_background_2).into(mEventThreeBackground);
+                    mEventThreeHeader.setText(headerArray.get(2));
+                    mEventThreeSubtext.setText(subtextArray.get(2));
+                    mEventThreeInteractButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            System.out.println("Redirecting ...");
+                            Intent intent = new Intent(context, RedirectActivity.class);
+                            intent.putExtra("LINK_LOCATION", linkArray.get(2));
+                            startActivity(intent);
+                        }
+                    });
                 }
-
-                Glide.with(mEventOneBackground).load(backgroundArray.get(0)).centerCrop().placeholder(R.drawable.custom_background_2)
-                        .error(R.drawable.custom_background_2).fallback(R.drawable.custom_background_2).into(mEventOneBackground);
-                mEventOneHeader.setText(headerArray.get(0));
-                mEventOneSubtext.setText(subtextArray.get(0));
-                mEventOneInteractButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        System.out.println("Redirecting ...");
-                        Intent intent = new Intent(context, RedirectActivity.class);
-                        intent.putExtra("LINK_LOCATION", linkArray.get(0));
-                        startActivity(intent);
-                    }
-                });
-
-                Glide.with(mEventTwoBackground).load(backgroundArray.get(1)).centerCrop().placeholder(R.drawable.custom_background_2)
-                        .error(R.drawable.custom_background_2).fallback(R.drawable.custom_background_2).into(mEventTwoBackground);
-                mEventTwoHeader.setText(headerArray.get(1));
-                mEventTwoSubtext.setText(subtextArray.get(1));
-                mEventTwoInteractButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        System.out.println("Redirecting ...");
-                        Intent intent = new Intent(context, RedirectActivity.class);
-                        intent.putExtra("LINK_LOCATION", linkArray.get(1));
-                        startActivity(intent);
-                    }
-                });
-
-                Glide.with(mEventThreeBackground).load(backgroundArray.get(2)).centerCrop().placeholder(R.drawable.custom_background_2)
-                        .error(R.drawable.custom_background_2).fallback(R.drawable.custom_background_2).into(mEventThreeBackground);
-                mEventThreeHeader.setText(headerArray.get(2));
-                mEventThreeSubtext.setText(subtextArray.get(2));
-                mEventThreeInteractButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        System.out.println("Redirecting ...");
-                        Intent intent = new Intent(context, RedirectActivity.class);
-                        intent.putExtra("LINK_LOCATION", linkArray.get(2));
-                        startActivity(intent);
-                    }
-                });
             }
         });
     }
