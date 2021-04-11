@@ -17,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -76,9 +78,6 @@ public class NewsOneFragment extends Fragment {
     private TextView mDate;
     private Button mLink;
 
-    FirebaseFirestore mFirebaseFS;
-    FirebaseDatabase mFirebaseDB;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,16 +98,14 @@ public class NewsOneFragment extends Fragment {
         mDate = view.findViewById(R.id.tvNewsOneFragmentDate);
         mLink = view.findViewById(R.id.btNewsOneFragmentLink);
 
-        mFirebaseFS = FirebaseFirestore.getInstance();
-        DocumentReference reference = mFirebaseFS.document("news/newsone");
-        reference.addSnapshotListener((Activity) getActivity(), new EventListener<DocumentSnapshot>() {
+        FirebaseFirestore.getInstance().collection("news").document("newsone").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
-            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                String title = value.getString("title");
-                Date time = Objects.requireNonNull(value.getTimestamp("date")).toDate();
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                String title = task.getResult().getString("title");
+                Date time = task.getResult().getTimestamp("date").toDate();
                 SimpleDateFormat format = new SimpleDateFormat("dd MMM YYYY");
-                String link = value.getString("link");
-                String image = value.getString("image");
+                String link = task.getResult().getString("link");
+                String image = task.getResult().getString("image");
                 mTitle.setText(title);
                 mDate.setText(format.format(time).toUpperCase());
                 Glide.with(mBackgroundImage).load(image).centerCrop().placeholder(R.drawable.custom_background_2)

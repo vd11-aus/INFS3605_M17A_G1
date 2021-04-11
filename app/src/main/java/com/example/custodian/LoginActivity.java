@@ -41,8 +41,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mPasswordText;
     private ImageView mBackgroundImage;
 
-    FirebaseAuth mFirebaseAuth;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +56,6 @@ public class LoginActivity extends AppCompatActivity {
         mForgotDetailsButton = findViewById(R.id.tvLoginForgotDetails);
         mEmailText = findViewById(R.id.etLoginEmailInput);
         mPasswordText = findViewById(R.id.etLoginPasswordInput);
-        mFirebaseAuth = FirebaseAuth.getInstance();
         mBackgroundImage = findViewById(R.id.ivLoginBackground);
 
         Context pageContext = this;
@@ -108,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
                     final AlertDialog invalidDialog = new AlertDialog(new Dialog(pageContext), "Please enter an email and password.", "warning");
                     invalidDialog.startLoadingAnimation();
                 } else {
-                    mFirebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {

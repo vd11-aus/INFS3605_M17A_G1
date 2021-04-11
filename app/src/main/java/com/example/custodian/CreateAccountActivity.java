@@ -14,8 +14,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.provider.MediaStore;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -31,11 +29,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.UserProfileChangeRequest;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.auth.User;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
@@ -70,10 +65,6 @@ public class CreateAccountActivity extends AppCompatActivity {
     private ImageButton mHelpGender;
     private ImageButton mHelpOrigin;
     private ImageButton mHelpIcon;
-
-    FirebaseAuth firebaseAuth;
-    FirebaseFirestore firebaseFS;
-    FirebaseStorage firebaseStorage;
 
     Uri iconImage;
     String username = "";
@@ -110,10 +101,6 @@ public class CreateAccountActivity extends AppCompatActivity {
         mHelpGender = findViewById(R.id.ibCreateAccountHelpGender);
         mHelpOrigin = findViewById(R.id.ibCreateAccountHelpOrigin);
         mHelpIcon = findViewById(R.id.ibCreateAccountHelpIcon);
-
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseFS = FirebaseFirestore.getInstance();
-        firebaseStorage = FirebaseStorage.getInstance();
 
         // Get background
         BackgroundGenerator background = new BackgroundGenerator();
@@ -349,7 +336,7 @@ public class CreateAccountActivity extends AppCompatActivity {
             returnValue = "invalid-password";
         } else if (!passwordConfirm.equals(password)) {
             returnValue = "passwords-dont-match";
-        } else if (imageSelected == false ){
+        } else if (!imageSelected){
             returnValue = "no-icon";
         } else {
             returnValue = "entries-validated";
@@ -360,7 +347,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     // Adds user in Firebase Authentication
     public void createUser() {
-        firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 addUserDetails();
@@ -370,13 +357,13 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     // Adds user document in Firebase Cloud Firestore
     public void addUserDetails() {
-        firebaseStorage.getReference().child("profileicons/"+firebaseAuth.getCurrentUser().getUid()).putFile(iconImage).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+        FirebaseStorage.getInstance().getReference().child("profileicons/"+ FirebaseAuth.getInstance().getCurrentUser().getUid()).putFile(iconImage).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                firebaseStorage.getReference().child("profileicons/"+firebaseAuth.getCurrentUser().getUid()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                FirebaseStorage.getInstance().getReference().child("profileicons/"+FirebaseAuth.getInstance().getCurrentUser().getUid()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        firebaseAuth.getCurrentUser().updateProfile(new UserProfileChangeRequest.Builder().setPhotoUri(uri).build());
+                        FirebaseAuth.getInstance().getCurrentUser().updateProfile(new UserProfileChangeRequest.Builder().setPhotoUri(uri).build());
                         Map<String, Object> map = new HashMap<>();
                         map.put("username", username);
                         map.put("gender", gender);
@@ -384,8 +371,8 @@ public class CreateAccountActivity extends AppCompatActivity {
                         map.put("currentpoints", (int) 0);
                         map.put("alltimepoints", (int) 0);
                         map.put("alltimeposts", (int) 0);
-                        map.put("uniqueid", firebaseAuth.getCurrentUser().getUid());
-                        firebaseFS.collection("users").document(firebaseAuth.getCurrentUser().getUid()).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        map.put("uniqueid", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                        FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 launchWelcomeActivity();

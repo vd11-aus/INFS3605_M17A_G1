@@ -59,6 +59,7 @@ public class HistoryInfoActivity extends AppCompatActivity {
     EditText mContentText;
     ImageView mContentImage;
     VideoView mContentVideo;
+    TextView mAdditionalComments;
 
     Context pageContext = this;
     String identifier;
@@ -84,6 +85,7 @@ public class HistoryInfoActivity extends AppCompatActivity {
         mContentText = findViewById(R.id.etHistoryInfoContent);
         mContentImage = findViewById(R.id.ivHistoryInfoContent);
         mContentVideo = findViewById(R.id.vvHistoryInfoContent);
+        mAdditionalComments = findViewById(R.id.tvHistoryInfoAdditionalComments);
 
         mContentText.setVisibility(View.INVISIBLE);
         mContentImage.setVisibility(View.INVISIBLE);
@@ -200,6 +202,7 @@ public class HistoryInfoActivity extends AppCompatActivity {
                                 mRatingThree.setRating(SmileyRating.Type.GREAT, true);
                                 break;
                         }
+                        mAdditionalComments.setText(task.getResult().getString("indigenouscomments"));
                     }
                 };
                 handler.postDelayed(runnable, 500);

@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/ivHistoryInfoBackground"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="300dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -53,11 +53,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="25dp"
         android:layout_marginRight="25dp"
-        app:layout_constraintBottom_toBottomOf="@+id/ivHistoryInfoBackground"
         app:layout_constraintEnd_toEndOf="@+id/ivHistoryInfoContentBackground"
-        app:layout_constraintStart_toStartOf="@+id/ivHistoryInfoContentBackground">
+        app:layout_constraintStart_toStartOf="@+id/ivHistoryInfoContentBackground"
+        app:layout_constraintTop_toTopOf="@+id/ivHistoryInfoContentBackground">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -85,18 +86,19 @@
         android:textSize="10sp"
         app:layout_constraintEnd_toStartOf="@+id/tvHistoryInfoLocation"
         app:layout_constraintStart_toStartOf="@+id/horizontalScrollView2"
-        app:layout_constraintTop_toBottomOf="@+id/ivHistoryInfoBackground" />
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2" />
 
     <TextView
         android:id="@+id/tvHistoryInfoLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
         android:fontFamily="@font/montserrat"
         android:gravity="right"
         android:text="Getting location ..."
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="@+id/horizontalScrollView2"
-        app:layout_constraintTop_toTopOf="@+id/tvHistoryInfoDate" />
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2" />
 
     <ImageView
         android:id="@+id/ivHistoryInfoCategoryBorder"
@@ -349,6 +351,30 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvHistoryInfoTextFive" />
+
+                <TextView
+                    android:id="@+id/tvHistoryInfoTextSix"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Additional Thoughts"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/srHistoryInfoExposure" />
+
+                <TextView
+                    android:id="@+id/tvHistoryInfoAdditionalComments"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Getting content ..."
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvHistoryInfoTextSix" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>

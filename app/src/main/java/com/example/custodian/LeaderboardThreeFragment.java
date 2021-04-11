@@ -87,8 +87,7 @@ public class LeaderboardThreeFragment extends Fragment {
         ArrayList<Integer> pointArray = new ArrayList<Integer>();
         ArrayList<String> usernameArray = new ArrayList<String>();
         ArrayList<String> idArray = new ArrayList<String>();
-        FirebaseFirestore firebaseFS = FirebaseFirestore.getInstance();
-        firebaseFS.collection("users").orderBy("alltimepoints", Query.Direction.DESCENDING).limit(3).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        FirebaseFirestore.getInstance().collection("users").orderBy("alltimepoints", Query.Direction.DESCENDING).limit(3).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 List<DocumentSnapshot> snapshotList = queryDocumentSnapshots.getDocuments();
