@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.TextView;
@@ -60,6 +61,7 @@ public class HistoryInfoActivity extends AppCompatActivity {
     ImageView mContentImage;
     VideoView mContentVideo;
     TextView mAdditionalComments;
+    FrameLayout mVideoLayout;
 
     Context pageContext = this;
     String identifier;
@@ -86,10 +88,12 @@ public class HistoryInfoActivity extends AppCompatActivity {
         mContentImage = findViewById(R.id.ivHistoryInfoContent);
         mContentVideo = findViewById(R.id.vvHistoryInfoContent);
         mAdditionalComments = findViewById(R.id.tvHistoryInfoAdditionalComments);
+        mVideoLayout = findViewById(R.id.flHistoryInfoContentVideoLayout);
 
         mContentText.setVisibility(View.INVISIBLE);
         mContentImage.setVisibility(View.INVISIBLE);
         mContentVideo.setVisibility(View.INVISIBLE);
+        mVideoLayout.setVisibility(View.INVISIBLE);
 
         mRatingOne.disallowSelection(true);
         mRatingTwo.disallowSelection(true);
@@ -122,9 +126,10 @@ public class HistoryInfoActivity extends AppCompatActivity {
                             case "video":
                                 mContentVideo.setVideoURI(Uri.parse(task.getResult().getString("content")));
                                 mContentVideo.setVisibility(View.VISIBLE);
+                                mVideoLayout.setVisibility(View.VISIBLE);
                                 MediaController mediaController = new MediaController(pageContext);
                                 mContentVideo.setMediaController(mediaController);
-                                mediaController.setAnchorView(mContentVideo);
+                                mediaController.setAnchorView(mVideoLayout);
                                 break;
                         }
                         mTitle.setText(task.getResult().getString("title"));
