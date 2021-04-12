@@ -29,8 +29,12 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import org.w3c.dom.Document;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -74,13 +78,10 @@ public class WelcomeActivity extends AppCompatActivity {
 
         // Connect to Firestore FS
         String uniqueIdentifier = currentUser.getUid();
-        mFirebaseFS = FirebaseFirestore.getInstance();
-        DocumentReference referencePathOne = mFirebaseFS.document("users/"+uniqueIdentifier);
-        referencePathOne.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+        FirebaseFirestore.getInstance().document("users/"+uniqueIdentifier).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
-            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                username = value.getString("username");
-                mUsernameText.setText(username);
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                mUsernameText.setText(task.getResult().getString("username"));
                 mNextPageButton.setEnabled(true);
             }
         });

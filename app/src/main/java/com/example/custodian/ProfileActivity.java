@@ -24,6 +24,8 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 
+import org.w3c.dom.Document;
+
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -92,6 +94,15 @@ public class ProfileActivity extends AppCompatActivity {
             userSettingsDialog.startLoadingAnimation();
         }
 
+        FirebaseFirestore.getInstance().collection("entries").whereEqualTo("user", FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                List<DocumentSnapshot> snapshotList = queryDocumentSnapshots.getDocuments();
+                Integer postsAmount = snapshotList.size();
+                mPosts.setText(String.valueOf(postsAmount));
+            }
+        });
+
         FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -105,7 +116,6 @@ public class ProfileActivity extends AppCompatActivity {
                     pointsString = String.valueOf(allTimePoints.intValue());
                 }
                 mPoints.setText(pointsString);
-                mPosts.setText(String.valueOf(documentSnapshot.getLong("alltimeposts").intValue()));
                 String getGender = documentSnapshot.getString("gender");
                 String getOrigin = documentSnapshot.getString("origin");
                 String genderOutput = "";
