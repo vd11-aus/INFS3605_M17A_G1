@@ -120,7 +120,7 @@ public class HistoryInfoActivity extends AppCompatActivity {
                                 break;
                             case "image":
                                 mContentImage.setVisibility(View.VISIBLE);
-                                Glide.with(mContentImage).load(task.getResult().getString("content")).centerCrop().placeholder(R.drawable.custom_background_2)
+                                Glide.with(mContentImage).load(task.getResult().getString("content")).fitCenter().placeholder(R.drawable.custom_background_2)
                                         .error(R.drawable.custom_background_2).fallback(R.drawable.custom_background_2).into(mContentImage);
                                 break;
                             case "video":
