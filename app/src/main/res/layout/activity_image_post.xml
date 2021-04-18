@@ -178,4 +178,17 @@
         app:layout_constraintStart_toStartOf="@+id/ivImagePostBackgroundThree"
         app:layout_constraintTop_toTopOf="@+id/ivImagePostBackgroundThree"
         app:srcCompat="@drawable/insert_media_large" />
+
+    <ImageButton
+        android:id="@+id/ibImagePostInsertMediaAlternate"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="55dp"
+        android:background="@drawable/custom_circle_1"
+        android:rotation="45"
+        app:layout_constraintBottom_toTopOf="@+id/btImagePostProceed"
+        app:layout_constraintEnd_toEndOf="@+id/btImagePostProceed"
+        app:srcCompat="@drawable/ic_baseline_attach_file_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>

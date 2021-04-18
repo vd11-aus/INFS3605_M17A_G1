@@ -59,7 +59,6 @@ public class PointAccumulationActivity extends AppCompatActivity {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 Integer currentPoints = documentSnapshot.getLong("currentpoints").intValue();
                 Integer allTimePoints = documentSnapshot.getLong("alltimepoints").intValue();
-                Integer allTimePosts = documentSnapshot.getLong("alltimeposts").intValue();
                 Integer additiveValue = 0;
                 switch (type) {
                     case "text":
@@ -76,11 +75,9 @@ public class PointAccumulationActivity extends AppCompatActivity {
                 mPoints.setText("+" + additiveValue + "pts");
                 currentPoints += additiveValue;
                 allTimePoints += additiveValue;
-                allTimePosts += 1;
                 Map<String, Object> map = new HashMap<>();
                 map.put("currentpoints", currentPoints);
                 map.put("alltimepoints", allTimePoints);
-                map.put("alltimeposts", allTimePosts);
                 FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).update(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

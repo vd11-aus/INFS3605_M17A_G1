@@ -59,6 +59,7 @@ public class ImagePostActivity extends AppCompatActivity {
     ImageView mBackgroundImage;
     Spinner mCategorySelect;
     ImageView mSelectImage;
+    ImageButton mSelectImageAlternate;
 
     String uniqueEntry = System.currentTimeMillis()/1000 + "-" + codeGenerator();
     Uri imageLocation;
@@ -80,6 +81,9 @@ public class ImagePostActivity extends AppCompatActivity {
         mBackgroundImage = findViewById(R.id.ivImagePostBackground);
         mCategorySelect = findViewById(R.id.spImagePostCategorySelect);
         mSelectImage = findViewById(R.id.ivImagePostInsertMedia);
+        mSelectImageAlternate = findViewById(R.id.ibImagePostInsertMediaAlternate);
+
+        mSelectImageAlternate.setVisibility(View.INVISIBLE);
 
         Intent intent = getIntent();
         postcode = intent.getIntExtra("POSTCODE", 0);
@@ -134,6 +138,23 @@ public class ImagePostActivity extends AppCompatActivity {
                 }
             }
         });
+
+        mSelectImageAlternate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                            PackageManager.PERMISSION_DENIED) {
+                        String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                        requestPermissions(permissions, PERMISSION_CODE);
+                    } else {
+                        selectImage();
+                    }
+                } else {
+                    selectImage();
+                }
+            }
+        });
     }
 
     // Pick image
@@ -164,6 +185,7 @@ public class ImagePostActivity extends AppCompatActivity {
             imageLocation = data.getData();
             mSelectImage.setImageURI(imageLocation);
             imageSelected = true;
+            mSelectImageAlternate.setVisibility(View.VISIBLE);
         }
     }
 
